@@ -1,0 +1,48 @@
+<!-- <core:FragmentDefinition xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog id="idcharDialogOPMIXP" resizable="true" selectionChange="handleSelectionChange" titleAlignment="Center" liveChange=".onAllSearch" noDataText="No Characteristics Found" multiSelect="true" rememberSelections="true" title="Characteristic" search=".onSearch" growingThreshold="30" updateStarted=".onUpdateStarted" items="{
+			path: '/items'
+		}" confirm="onConfirmSelection">
+        <StandardListItem title="{CHAR_DESC}" description="{CHAR_NUM}"  info="{CHAR_NAME}" iconDensityAware="false" iconInset="false" type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition> -->
+
+
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+
+    <TableSelectDialog
+        id="idcharDialogOPMIXP"
+        title="Characteristic"
+        multiSelect="true"
+        rememberSelections="true"
+        growing="true"
+        growingThreshold="200"
+        search="handleSearch"
+        liveChange="onAllSearch"
+        confirm="onConfirmSelection"
+        cancel="handleClose"
+        selectionChange="onSelProd"
+        items="{path: '/items', sorter: { path: 'CHAR_NUM' }}"
+        contentWidth="300px">
+
+        <columns>
+            <Column>
+                <Text text="Characteristic"/>
+            </Column>
+        </columns>
+
+        <!--  MUST be inside items -->
+        <items>
+            <ColumnListItem>
+                <ObjectIdentifier
+                    title="{CHAR_DESC}"
+                    text="{CHAR_NUM}" />
+            </ColumnListItem>
+        </items>
+
+    </TableSelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,172 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+    xmlns:ui="sap.ui.codeeditor"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+
+    <Dialog id="idDialogCompAR" contentHeight="80vh" contentWidth="80vw" draggable="true" resizable="true" titleAlignment="Center" class="UniqueDialog">
+
+        <content>
+            <Page showHeader="true" showNavButton="false" enableScrolling="true">
+
+                <!-- Simple SAP Header -->
+                <customHeader>
+                    <Bar>
+                        <contentMiddle>
+                            <Title text="Unique IDs" level="H3"/>
+                        </contentMiddle>
+                    </Bar>
+                </customHeader>
+
+                <content>
+                    <VBox height="100%">
+
+                        <!-- Context Information Cards -->
+                        <HBox wrap="Wrap" class="sapUiSmallMargin" justifyContent="SpaceAround">
+                            <VBox class="sapUiTinyMargin">
+                                <Label text="Location" class="sapUiTinyMarginBottom"/>
+                                <ObjectStatus id="idLocLabel1" text="" state="Information" />
+                            </VBox>
+
+                            <VBox class="sapUiTinyMargin">
+                                <Label text="Product" class="sapUiTinyMarginBottom"/>
+                                <ObjectStatus id="idProdLabel1" text="" state="Information" />
+                            </VBox>
+
+                            <VBox class="sapUiTinyMargin">
+                                <Label text="Assembly" class="sapUiTinyMarginBottom"/>
+                                <ObjectStatus id="idAsmLabel1" text="" state="Information"/>
+                            </VBox>
+
+                            <VBox class="sapUiTinyMargin">
+                                <Label text="Version" class="sapUiTinyMarginBottom"/>
+                                <ObjectStatus id="idVerLabel1" text="" state="Success"/>
+                            </VBox>
+
+                            <VBox class="sapUiTinyMargin">
+                                <Label text="Scenario" class="sapUiTinyMarginBottom"/>
+                                <ObjectStatus id="idSceLabel1" text="" state="Warning"/>
+                            </VBox>
+
+                            <VBox class="sapUiTinyMargin">
+                                <Label text="Week" class="sapUiTinyMarginBottom"/>
+                                <ObjectStatus id="idWeekLabel1" text="" state="None" />
+                            </VBox>
+
+                            <VBox class="sapUiTinyMargin">
+                                <Label text="From" class="sapUiTinyMarginBottom"/>
+                                <ObjectStatus id="idFromLabel1" text="" state="None" />
+                            </VBox>
+
+                            <VBox class="sapUiTinyMargin">
+                                <Label text="To" class="sapUiTinyMarginBottom"/>
+                                <ObjectStatus id="idToLabel1" text="" state="None" />
+                            </VBox>
+                        </HBox>
+
+                        <!-- IconTabBar with both sections -->
+                        <IconTabBar id="idIconTabBar1" selectedKey="requirements" headerMode="Inline" expanded="true" expandable="false" class="sapUiResponsiveContentPadding">
+
+                            <!-- Tab 1: Dependencies Overview -->
+                            <items>
+                                <IconTabFilter text="Component Requirements" icon="sap-icon://product" key="requirements">
+                                    <VBox class="sapUiSmallMargin">
+                                        <table:Table id="idTableCompAR" class="TableCompAR" rows="{/comp}" selectionMode="None" enableColumnFreeze="true" visibleRowCountMode="Auto">
+                                            <table:extension>
+                                                <OverflowToolbar style="Clear">
+                                                    <SearchField id="IdSearchUniqueIDCompAR" width="20%" placeholder="Search Unique IDs" search="onSearchUniqueId" liveChange="onSearchUniqueId"/>
+                                                </OverflowToolbar>
+                                            </table:extension>
+
+                                            <!-- Group 1: Component + Unique ID -->
+                                            
+                                            <!-- Group 1: Location + Product + Assembly + Unique ID -->
+                                            <table:Column headerSpan="4">
+                                                <table:multiLabels>
+                                                    <Label text="" textAlign="Center" width="100%"/>
+                                                    <Label text="Location ID" textAlign="Center" width="100%"/>
+                                                </table:multiLabels>
+                                                <table:template>
+                                                    <Text text="{LOCATION_ID}"/>
+                                                </table:template>
+                                            </table:Column>
+                                            <table:Column>
+                                                <table:multiLabels>
+                                                    <Label text=""/>
+                                                    <Label text="Product ID" textAlign="Center" width="100%"/>
+                                                </table:multiLabels>
+                                                <table:template>
+                                                    <Text text="{PRODUCT_ID}"/>
+                                                </table:template>
+                                            </table:Column>
+                                            <table:Column>
+                                                <table:multiLabels>
+                                                    <Label text=""/>
+                                                    <Label text="Assembly" textAlign="Center" width="100%"/>
+                                                </table:multiLabels>
+                                                <table:template>
+                                                    <Text text="{ASSEMBLY}"/>
+                                                </table:template>
+                                            </table:Column>
+                                            <table:Column>
+                                                <table:multiLabels>
+                                                    <Label text=""/>
+                                                    <Label text="Unique ID" textAlign="Center" width="100%"/>
+                                                </table:multiLabels>
+                                                <table:template>
+                                                    <Link text="{UNIQUE_ID}" press="onOpenUniqueIdDialog"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <!-- Group 2: Component Quantity -->
+                                            <table:Column headerSpan="3">
+                                                <table:multiLabels>
+                                                    <Label text="" textAlign="Center" width="100%"/>
+                                                    <Label text="Component Quantity" textAlign="Center" width="100%"/>
+                                                </table:multiLabels>
+                                                <table:template>
+                                                    <Text text="{TOTAL_COMPONENT_QTY}"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                        </table:Table>
+                                    </VBox>
+                                </IconTabFilter>
+                                <IconTabFilter text="Dependencies" icon="sap-icon://chain-link" key="dependencies">
+                                    <VBox class="sapUiSmallMargin">
+                                        <Table id="idChartabCom" items="{path: '/results'}" sticky="ColumnHeaders">
+                                            <columns>
+                                                <Column hAlign="Begin">
+                                                    <header>
+                                                        <Label text="Dependency" design="Bold"/>
+                                                    </header>
+                                                </Column>
+                                            </columns>
+                                            <items>
+                                                <ColumnListItem type="Inactive">
+                                                    <cells>
+                                                        <ui:CodeEditor value="{LINE}" editable="false" type="text" height="100px" colorTheme="default" lineNumbers="true"/>
+                                                    </cells>
+                                                </ColumnListItem>
+                                            </items>
+                                        </Table>
+                                    </VBox>
+                                </IconTabFilter>
+
+                                <!-- Tab 2: Component Requirements -->
+
+                            </items>
+                        </IconTabBar>
+
+                    </VBox>
+                </content>
+
+            </Page>
+        </content>
+
+        <endButton>
+            <Button tooltip="Cancel" text="Cancel" press=".onCloseUniquetableComp"/>
+        </endButton>
+
+    </Dialog>
+</core:FragmentDefinition>

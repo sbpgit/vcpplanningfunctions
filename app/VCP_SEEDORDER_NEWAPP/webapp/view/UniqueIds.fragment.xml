@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" showFooter="true">
+<!-- <SelectDialog id="idUniqueDetailsSON" title="Unique Id's" rememberSelections="true" search="handleSearch" liveChange="handleSearch"
+		confirm="" cancel="handleClose" multiSelect="false"  contentWidth="320px" items="{/uniqueDetails}" 
+        selectionChange="" growing="true" >
+		<StandardListItem title="{UNIQUE_ID}" description="{UNIQUE_DESC}" type="Active"/>
+	</SelectDialog>                    -->
+	<Dialog title="Unqiue Id's" contentWidth="100px" titleAlignment="Center" showHeader="true">
+	<Table  id="idUniqueDetailsSON" items="{path: '/uniqueDetails', sorter:{path:'UNIQUE_ID'}}" rememberSelections="false"  sticky="ColumnHeaders" >
+	<headerToolbar>
+	<OverflowToolbar >
+	<SearchField id="idUniqueSearchSON" liveChange="handleSearch" change="handleSearch" width="auto" placeholder="Unqiue Id"></SearchField></OverflowToolbar></headerToolbar>
+	 <columns>
+                        <Column hAlign="Center" >
+                                <Text text="Unique ID" />
+                            </Column>
+							</columns>
+							<ColumnListItem >
+							<cells>
+							<Link text="{UNIQUE_ID}" press="onUniqueIdPress" >
+							</Link>
+							</cells>
+							</ColumnListItem>
+	</Table>
+	<buttons>
+            <Button id="idUniqueIdSON" type='Reject' text="Close" press="handleClose2"></Button>
+        </buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,116 @@
+<mvc:View xmlns:smarttable="sap.ui.comp.smarttable"
+    xmlns:filterbar="sap.ui.comp.filterbar"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.f" controllerName="vcpapp.vcpforecastingordersbeta.controller.Home"
+    xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="sap.m"
+    xmlns:m="sap.m">
+    <f:DynamicPage id="dynamicPage" showFooter="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <HBox>
+                        <m:VariantManagement id="idMatList123" select="handleSelectPress" save="onCreate" manage="onManage" supportFavorites="false" showFooter="true" popoverTitle="My Views" items="{path: '/items12'}" creationAllowed="true" supportPublic="true" supportApplyAutomatically="false" manageCancel="onManageCancel" cancel="onNameCancel" visible="true">
+                            <items>
+                                <m:VariantItem key="{VARIANTID}" title="{VARIANTNAME}" author="{USER}" visible="true" remove="{path:'REMOVE', formatter:'.formatter.formatRemove'}" sharing="{path:'SCOPE', formatter:'.formatter.formatScope'}" changeable="{path:'CHANGE', formatter:'.formatter.formatChange'}" rename="false" enabled="{path:'ENABLE', formatter:'.formatter.formatEnable'}"/>
+                            </items>
+                        </m:VariantManagement>
+                    </HBox>
+                </f:heading>
+                <f:navigationActions>
+                    <Button class="classHdr" icon="sap-icon://sys-help" id="idNav3PRD" press="onNavPress" type="Emphasized" tooltip="Help Document"/>
+                </f:navigationActions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader>
+                <l:HorizontalLayout allowWrapping="true">
+                    <filterbar:FilterBar id="filterBar" search="onGo" showClearOnFB="true" clear="onClear" useToolbar="false">
+                        <filterbar:filterGroupItems>
+                            <filterbar:FilterGroupItem mandatory="true" label="{i18n>ManLocation}" groupName="filterGroup" name="LOCATION_ID" visibleInFilterBar="true" id="idManLabel">
+                                <filterbar:control>
+                                    <MultiInput id="idManlocInp" name="ManLocation" value="" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"/>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+                            <filterbar:FilterGroupItem mandatory="true" label="{i18n>DemLocation}" groupName="filterGroup" name="PLANNING_LOC" visibleInFilterBar="true" id="idDemLabel">
+                                <filterbar:control>
+                                    <MultiInput id="idDemLocInp" name="DemLocation" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"/>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+                            <filterbar:FilterGroupItem mandatory="true" label="{i18n>Product}" groupName="filterGroup" name="PRODUCT_ID" visibleInFilterBar="true" id="idProdLabel">
+                                <filterbar:control>
+                                    <MultiInput id="idProdInp" name="Product" value="" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"/>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+                            <filterbar:FilterGroupItem label="{i18n>Unq}" groupName="filterGroup" name="UNIQUE_ID" visibleInFilterBar="true" id="idUniqueLabel">
+                                <filterbar:control>
+                                    <MultiInput id="idUnqInp" name="UniqueId" value="" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"/>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+                            <filterbar:FilterGroupItem mandatory="true" label="{i18n>Version}" groupName="filterGroup" name="VERSION" visibleInFilterBar="true" id="idVerLabel">
+                                <filterbar:control>
+                                    <MultiInput id="idVerInp" name="Version" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"/>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+                            <filterbar:FilterGroupItem mandatory="true" label="{i18n>Scenario}" groupName="filterGroup" name="SCENARIO" visibleInFilterBar="true" id="idScenLabel">
+                                <filterbar:control>
+                                    <MultiInput id="idScenInp" name="Scenario" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"/>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+                            <filterbar:FilterGroupItem label="Valid Between" mandatory="true" groupName="filterGroup" name="WEEK_DATE" visibleInFilterBar="true">
+                                <filterbar:control>
+                                    <DateRangeSelection id="idDateRange"/>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+                            <filterbar:FilterGroupItem label="{i18n>mVer}" mandatory="true" groupName="filterGroup" name="MODEL_VERSION" visibleInFilterBar="true" id="idModLabel">
+                                <filterbar:control>
+                                    <Select id="idModelVer" selectedKey="Active">
+                                        <core:ListItem id="_IDGenListItem1" key="Active" text="Active"/>
+                                        <core:ListItem id="_IDGenListItem2" key="Simulation" text="Simulation"/>
+                                    </Select>
+                                </filterbar:control>
+                            </filterbar:FilterGroupItem>
+                        </filterbar:filterGroupItems>
+                    </filterbar:FilterBar>
+                </l:HorizontalLayout>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <Page showHeader="false">
+                <content>
+                    <Panel id="qtyPanel" class="qtyPanelClass" expandable="true" expand="onPanelExpand" headerText="Total Quantities">
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <ToolbarSpacer ></ToolbarSpacer>
+                                <Button id="charBtn" text="Characteristics" press=".onOpenCharacteristics" />
+                                <ToggleButton  id ="idToggle" text="Telescopic View" width="200px" pressed="true" press="onTogglePress" />
+                                <!-- <Button id="idLoadPhaseBtn" icon="sap-icon://navigation-right-arrow" type="Transparent" visible="false" press=".onLoadPhase" tooltip="Load next period"/> -->
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <html:div id="quantityContainer"/>
+                        </content>
+                    </Panel>
+                    <Panel expandable="false" expandAnimation="true" expanded="true" id="exlVbox" busyIndicatorDelay="0">
+                        <content>
+                            <html:div id="excelContainer"/>
+                        </content>
+                    </Panel>
+                </content>
+            </Page>
+        </f:content>
+        <f:footer>
+           <OverflowToolbar id="_IDGenOverflowToolbar1" width="100%">
+                <ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+                <Button id="idResetbtn" icon="sap-icon://refresh" press="onReloadData" type="Emphasized"/>
+                <Button id="_IDGenButton4" icon="sap-icon://it-host" text="Assembly Requirements" press="onPressAssemblyRequirements" type="Emphasized" />
+                <Button id="_IDGenButton5" icon="sap-icon://save" text="Save" press="onPressSave" type="Emphasized"/>
+                <Button id="_IDGenButton6" icon="sap-icon://paper-plane" text="Publish" press="checkAuthPublish" type="Emphasized"/>
+                <Button id="_IDGenButton3" icon="sap-icon://arrow-bottom" text="Download" press="onPressDownload" type="Emphasized"/>
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

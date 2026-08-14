@@ -1,0 +1,19 @@
+<mvc:View controllerName="vcpapp.vcpuniquecharacteristics.controller.Details" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f">
+    <Page id="pageIdUC" showHeader="false">
+        <customHeader>
+            <Bar>
+                <contentMiddle>
+            
+                <Button id="leftMenuUC" icon="sap-icon://menu2" tooltip="Side Menu Expand/Collapse" visible="false" press="expandBegin" type="Transparent"  class ="oMenu"/>
+                    <!-- <Title text="{i18n>title}" class="boldText" /> -->
+                </contentMiddle>
+                <!-- <contentRight> -->
+                    <!-- <Button class="hdrBtnMarginHdr" icon="sap-icon://sys-help" id="idNavUC" press="onNavPress" type="Emphasized" tooltip="Help Document" /> -->
+                <!-- </contentRight> -->
+            </Bar>
+        </customHeader>
+        <content>
+            <f:FlexibleColumnLayout id="fclUC" />
+        </content>
+    </Page>
+</mvc:View>

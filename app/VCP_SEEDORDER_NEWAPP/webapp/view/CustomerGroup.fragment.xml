@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<!-- <SelectDialog id="custGrpListSON" title="Customer Group" rememberSelections="true" search="handleSearch" liveChange="handleSearch"
+		confirm="handleCustSelection" cancel="handleClose" multiSelect="true"  contentWidth="320px" items="{/custDetails}" 
+        selectionChange="handleCustChange" growing="false">
+		<StandardListItem title="{CUSTOMER_GROUP}" description="{CUSTOMER_DESC}" type="Active" press="onUniqueIdPress"/>
+	</SelectDialog> -->
+
+
+	<TableSelectDialog id="custGrpListSON" title="" search="handleSearch" liveChange="handleSearch" rememberSelections="false"
+		confirm="handleCustSelection" cancel="handleClose"
+		items="{/custDetails}" multiSelect="true" contentWidth="300px">
+			<columns>
+			<Column width="auto" hAlign="Left">
+				<header>
+					<Text text="Customer Group" />
+				</header>
+			</Column>
+			</columns>
+			<ColumnListItem vAlign="Middle">
+			<cells>
+			<ObjectIdentifier title="{CUSTOMER_DESC}" text="{CUSTOMER_GROUP}" ></ObjectIdentifier>
+			</cells>
+			</ColumnListItem>
+		</TableSelectDialog>
+</core:FragmentDefinition>

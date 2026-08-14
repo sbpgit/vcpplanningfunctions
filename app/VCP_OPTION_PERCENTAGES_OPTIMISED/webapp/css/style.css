@@ -1,0 +1,628 @@
+/* Remove full-page scrolling */
+html,
+body,
+.sapUiBody,
+.sapMPage {
+    height: 100% !important;
+    overflow: hidden !important;
+}
+
+/* Main table wrapper */
+#mainDivOPMIXP,
+.hotWrap,
+#subDivOPMIXP,
+#topScrollBar,
+#topScrollInner,
+.handsontable,
+.handsontable .wtHolder,
+.handsontable .wtHider,
+.handsontable .wtSpreader {
+    background: #ffffff !important;   /* white */
+}
+
+/* If you want light gray instead */
+#mainDivOPMIXP {
+   background:#f5f5f5 !important;
+}
+
+/* Let DynamicPage scroll internally instead of whole screen */
+.sapFDynamicPageContentWrapper {
+    overflow-y: auto !important;
+}
+
+.topScrollBar::-webkit-scrollbar-thumb{
+   background:#888;
+}
+
+
+
+/* .handsontable .htDimmed {
+   
+    opacity: 1 !important;
+    font-family: "72", "72full", Arial, Helvetica, sans-serif !important;
+    background-color: #f7f7f7 !important;
+    text-align: left !important;
+} */
+
+.handsontable .htDimmed{
+   color:#222 !important;
+   opacity:1 !important;
+}
+
+/* .handsontable .manualBg {
+    background: #a6a7a8 !important;
+    text-align: right !important;
+}
+
+.handsontable .manualBgAlign {
+    background: #e3e6ea !important;
+    text-align: right !important;
+} */
+
+.handsontable .editable {
+    background: white !important;
+    text-align: right !important;
+}
+
+/* .handsontable .editableFirm {
+    background: #a9bccf !important;
+    text-align: right !important;
+} */
+
+.handsontable td.finalKeyFigT {
+    color: #0070f2 !important;
+    font-weight: 700 !important;
+    font-weight: bold !important;
+    text-align: right !important;
+}
+
+.handsontable td.finalKeyFigF {
+    color: #0070f2 !important;
+    font-weight: 700 !important;
+    font-weight: bold !important;
+    text-align: right !important;
+}
+
+.handsontable td.rowWhite {
+    background: #edecec !important;
+    text-align: right !important;
+    color:#000
+}
+
+.handsontable td.rowGrey {
+    background: #d0cfcf  !important;
+    text-align: right !important;
+    color:#000
+}
+
+/* .handsontable .rowWhite,
+.handsontable .rowGrey{
+   color:#222 !important;
+} */
+
+
+
+.handsontable th {
+    /* background-color: rgb(4, 94, 124) !important; */
+    color: #fff !important;
+    font-weight: 500 !important;
+    white-space: nowrap !important;
+    font-family: system-ui !important;
+}
+
+.handsontable td,
+.handsontable th {
+    /* border-right: 1px solid #d9d9d9  */
+
+    border-right: 1px solid #d9d9d9;
+}
+
+.handsontable .hotAlign {
+    text-align: right !important;
+}
+
+.handsontable .rightAlign {
+    text-align: left !important;
+}
+
+div [id*='idScenarioInp-content'] {
+    margin-left: 6px !important;
+}
+
+div [id*='idVersionInp-content'] {
+    margin-left: 6px !important;
+}
+
+/* div [id*='KeyFigPopup'] {
+    width: 26rem !important;
+    height: 26rem !important;
+} */
+
+.sapMPanelContent {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.handsontable.ht__manualRowMove.after-selection--rows tbody th.ht__highlight {
+    cursor: -webkit-grab !important;
+}
+
+.sapFDynamicPageTitleMain>.sapFDynamicPageTitleMainInner .sapFDynamicPageTitleMainHeading .sapFDynamicPageTitleMainHeadingInner .sapMTitle:not(.sapUICompVarMngmtTitle) {
+    font-size: larger !important;
+}
+
+
+.sapUiFormResGridCont {
+    padding-bottom: 1rem !important;
+}
+
+.handsontable .wtBorder.corner {
+    cursor: crosshair !important;
+}
+
+.handsontable .toptable{
+    background-color: #ffffff !important;
+}
+.icon {
+    visibility: hidden;
+}
+
+.selectItem:hover .icon {
+    visibility: visible;
+}
+
+/* div [id*='excelSubGrid'] .wtHolder {
+    scrollbar-width: none !important;
+} */
+
+/* * {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+} */
+
+.handsontable .wtHolder {
+    scrollbar-width: thin;
+    scrollbar-color: #c1c1c1 #f5f5f5;
+}
+
+.handsontable .wtHolder::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.handsontable .wtHolder::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.handsontable .wtHolder::-webkit-scrollbar-track {
+    background: #f5f5f5;
+}
+
+/* .applyWeek {
+    background-color: #0096c7 !important;
+}
+
+.applyMonth {
+    background-color: #0077b6 !important;
+}
+
+.applyQ {
+    background-color: #225290 !important;
+}
+
+.applyHeader {
+    background-color: #0096c7 !important;
+
+} */
+
+.handsontable th.applyWeek {
+    background-color: #0096c7 !important;
+    color: white !important;
+}
+
+.handsontable th.applyMonth {
+    background-color: #0077b6 !important;
+    color: white !important;
+}
+
+.handsontable th.applyQ {
+    background-color: #225290 !important;
+    color: white !important;
+}
+
+.handsontable th.applyHeader {
+    background-color: #0096c7 !important;
+    color: white !important;
+}
+
+/* Base table styling with consistent heights */
+.handsontable * {
+    box-sizing: border-box !important;
+}
+
+.handsontable .ht_master .htCore tbody th,
+.handsontable .ht_master .htCore tbody td,
+.handsontable .ht_clone_left .htCore tbody th,
+.handsontable .ht_clone_left .htCore tbody td {
+    height: 30px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    box-sizing: border-box !important;
+    vertical-align: middle !important;
+    line-height: 1.2 !important;
+    padding: 4px 8px !important;
+}
+
+/* Fix for virtual scrolling row alignment */
+.handsontable .ht_master .htCore tbody tr,
+.handsontable .ht_clone_left .htCore tbody tr {
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+}
+
+/* Header consistency */
+.handsontable .ht_master .htCore thead th,
+.handsontable .ht_clone_left .htCore thead th {
+    height: 40px !important;
+    min-height: 40px !important;
+    box-sizing: border-box !important;
+}
+
+/* .sapUiDisabledText {
+    opacity: 0.5;
+    pointer-events: none;
+    Prevent clicks
+    transition: opacity 0.2s ease;
+} */
+
+
+.sapUiNormalText {
+    /* opacity: 1 !important; */
+    font-weight: 600 !important;
+    color: inherit !important;
+    transition: opacity 0.2s ease, font-weight 0.2s ease;
+}
+
+
+.handsontable td.rowGrey1 {
+    background-color: #e0e0e0 !important;
+    text-align: right !important;
+}
+
+.handsontable td.charValDivider {
+    /* border-top: 1px solid #d9d9d9 !important; */
+    border-top: 1px solid #6a6a6a !important;
+}
+
+/* .handsontable td.lastCharVal {
+    border-top: 1px solid #d7d6d6 !important;
+} */
+/* 
+.topScrollBar{
+   width:100%;
+   height:18px;
+   overflow-x:scroll; 
+   overflow-y:hidden;
+   display:block;
+   background:#f5f5f5;
+}
+
+#topScrollInner{
+   height:1px;
+   min-width:2000px;   
+} */
+
+/* Chrome / Edge */
+/* .topScrollBar::-webkit-scrollbar{
+   height:14px;
+} */
+
+/* .topScrollBar::-webkit-scrollbar-track{
+   background:#dcdcdc;
+} */
+
+/* .topScrollBar::-webkit-scrollbar-thumb{
+   background:#888;
+   border-radius:8px;
+} */
+
+/* Top custom scrollbar */
+.topScrollBar{
+   width:100%;
+   height:16px;
+   overflow-x:scroll;
+   overflow-y:hidden;
+   background:#f3f3f3 !important;
+}
+
+/* Track */
+.topScrollBar::-webkit-scrollbar{
+   height:14px;
+}
+
+.topScrollBar::-webkit-scrollbar-track{
+   background:#e6e6e6 !important;
+   border-radius:8px;
+}
+
+/* Thumb */
+.topScrollBar::-webkit-scrollbar-thumb{
+   background:#bdbdbd !important;
+   border-radius:8px;
+}
+
+.topScrollBar::-webkit-scrollbar-thumb:hover{
+   background:#9e9e9e !important;
+}
+
+/* Bottom handsontable scrollbar */
+.handsontable .wtHolder::-webkit-scrollbar-track{
+   background:#e6e6e6 !important;
+}
+
+.handsontable .wtHolder::-webkit-scrollbar-thumb{
+   background:#bdbdbd !important;
+}
+
+
+/* 3️⃣ Ensure numeric and percentage data align right in all dynamic (week/date) columns */
+.handsontable .hotAlign,
+.handsontable .editable,
+.handsontable .editableFirm,
+.handsontable .finalKeyFigF,
+.handsontable .finalKeyFigT {
+    text-align: right !important;
+}
+
+/* 4️⃣ Specifically fix Option Percentage % text alignment */
+.handsontable td:has(span:contains("Option Percentage %")),
+.handsontable td:has(div:contains("Option Percentage %")) {
+    
+    text-align: right !important;
+}
+
+
+.manualOptionWhite {
+    background-color: white !important;
+    /* color: black(255, 255, 255) !important; */
+    font-weight: 500;
+
+    text-align: right !important;
+}
+
+.manualOptionLocked {
+    background-color: #f2f2f2 !important;
+    color: #2e2e2e !important;
+}
+
+.handsontable .noCustomer {
+    text-align: right !important;
+}
+
+.handsontable.readOnlyGrey {
+    background-color: #e0e0e0 !important;
+    /* grey for locked/manual past/frozen */
+    color: #555 !important;
+}
+
+.handsontable.editableManual {
+    background-color: #f5fff0 !important;
+    /* soft green tint for manual editable cells */
+}
+
+.noColon::after {
+    content: "" !important;
+    /* remove colon */
+}
+
+.filterContainer {
+    gap: 1.5rem;
+    /* space between filters */
+}
+
+.filterBox {
+    min-width: 12rem;
+    /* consistent width */
+}
+
+
+
+.buttonRow {
+    margin-top: 0.5rem;
+}
+
+.filtersColumn VBox {
+    margin-bottom: 0.5rem;
+    /* spacing between filters */
+}
+
+
+
+.btnGap {
+    margin-left: 1rem;
+}
+
+VBox>* {
+    margin-bottom: 0.1rem;
+}
+
+
+@media only screen and (min-width: 1800px) {
+    .customGrid>div {
+        width: 48% !important;
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+
+/* =======================================
+   FINAL TEXT COLOR FIX
+   Option Percentage = Blue
+   Remaining Rows = Black
+======================================= */
+
+/* All normal table text black */
+.handsontable td,
+.handsontable .htDimmed,
+.handsontable td.rowWhite,
+.handsontable td.rowGrey,
+.handsontable td.rowGrey1,
+.handsontable td.manualBg,
+.handsontable td.manualBgAlign,
+.handsontable td.editable,
+.handsontable td.editableFirm,
+.handsontable td.manualOptionWhite,
+.handsontable td.readOnlyGrey,
+.handsontable td.editableManual {
+    color: #000000 !important;
+    opacity: 1 !important;
+}
+
+/* Key Figure column text black */
+.handsontable td:nth-child(6) {
+    color: #000000 !important;
+    font-weight: 500 !important;
+}
+
+/* ONLY Option Percentage row blue */
+.handsontable td.finalKeyFigT,
+.handsontable td.finalKeyFigF {
+    color: #0070f2 !important;
+    font-weight: 700 !important;
+}
+
+/* Child text also blue */
+.handsontable td.finalKeyFigT *,
+.handsontable td.finalKeyFigF * {
+    color: #0070f2 !important;
+}
+
+
+/* Handsontable Context Menu - White Background */
+.htContextMenu,
+.htContextMenu .ht_master .wtHolder,
+.htContextMenu table.htCore {
+    background: #ffffff !important;
+}
+
+/* Menu items */
+.htContextMenu tbody tr td {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 14px;
+}
+
+/* Hover item */
+.htContextMenu tbody tr td.current,
+.htContextMenu tbody tr:hover td {
+    background: #eaf3ff !important;
+    color: #000000 !important;
+}
+
+/* Disabled items */
+.htContextMenu tbody tr td.htDisabled {
+    background: #ffffff !important;
+    color: #999999 !important;
+}
+
+/* Separator line */
+.htContextMenu .htSeparator td {
+    background: #f5f5f5 !important;
+    border-top: 1px solid #dcdcdc !important;
+}
+
+/* Outer border */
+.htContextMenu {
+    border: 1px solid #d0d0d0 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+/* for the d3 graph */
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+}
+
+/* =========================================
+   FORCE HANDSONTABLE LIGHT THEME
+   (Keeps all existing custom colors)
+========================================= */
+
+.handsontable,
+.handsontable *,
+.ht_master,
+.ht_clone_top,
+.ht_clone_left,
+.ht_clone_corner,
+.htCore,
+.wtHolder,
+.wtHider,
+.wtSpreader {
+    color-scheme: light !important;
+}
+
+/* Default cells white */
+.handsontable td,
+.handsontable th,
+.handsontable .htCore,
+.handsontable table,
+.handsontable tbody,
+.handsontable tr {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+/* KEEP HEADER BLUE */
+.handsontable thead th {
+    background: #0096c7 !important;
+    color: #ffffff !important;
+}
+
+/* KEEP YOUR EXISTING CUSTOM ROW COLORS */
+.handsontable td.rowWhite {
+    background: #edecec !important;
+}
+
+.handsontable td.rowGrey {
+    background: #d0cfcf !important;
+}
+
+.handsontable td.rowGrey1 {
+    background: #e0e0e0 !important;
+}
+
+.manualOptionLocked {
+    background-color: #f2f2f2 !important;
+}
+
+.handsontable.editableManual {
+    background-color: #f5fff0 !important;
+}
+
+/* KEEP OPTION PERCENTAGE BLUE */
+.handsontable td.finalKeyFigT,
+.handsontable td.finalKeyFigF,
+.handsontable td.finalKeyFigT *,
+.handsontable td.finalKeyFigF * {
+    color: #0070f2 !important;
+    font-weight: 700 !important;
+}
+
+/* Derivation Results table — green shades per level (darker = lower/root level) */
+/* Group header rows */
+.levelHeader0 { background-color: #b7debb !important; border-left: 5px solid #1b5e20 !important; font-weight: 700 !important; }
+.levelHeader1 { background-color: #c5e6c8 !important; border-left: 5px solid #2e7d32 !important; font-weight: 700 !important; }
+.levelHeader2 { background-color: #d4edcc !important; border-left: 5px solid #388e3c !important; font-weight: 700 !important; }
+.levelHeader3 { background-color: #e2f3d5 !important; border-left: 5px solid #558b2f !important; font-weight: 700 !important; }
+.levelHeader4 { background-color: #eef8de !important; border-left: 5px solid #7cb342 !important; font-weight: 700 !important; }
+.levelHeader5 { background-color: #f5fbe8 !important; border-left: 5px solid #9ccc65 !important; font-weight: 700 !important; }
+
+/* Data rows — lighter tint matching the group header shade */
+.levelRow0 { background-color: #eaf5eb !important; border-left: 3px solid #81c784 !important; }
+.levelRow1 { background-color: #eef7ef !important; border-left: 3px solid #a5d6a7 !important; }
+.levelRow2 { background-color: #f2f9f2 !important; border-left: 3px solid #b9deba !important; }
+.levelRow3 { background-color: #f5faf4 !important; border-left: 3px solid #c8e6c9 !important; }
+.levelRow4 { background-color: #f8fcf7 !important; border-left: 3px solid #dcedc8 !important; }
+.levelRow5 { background-color: #fbfdf9 !important; border-left: 3px solid #e8f5e9 !important; }

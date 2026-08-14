@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog id="charDialog" resizable="true" selectionChange="handleSelectionChange" titleAlignment="Center" liveChange=".onSearch" noDataText="No Characteristics Found" multiSelect="true" rememberSelections="true" title="Select Characteristic" search=".onSearch" growingThreshold="30" updateStarted=".onUpdateStarted" items="{
+			path: '/items'
+		}" confirm="onConfirmSelection">
+        <StandardListItem title="{CHAR_DESC}" description="{CHAR_NUM}" iconDensityAware="false" iconInset="false" type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

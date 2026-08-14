@@ -1,0 +1,41 @@
+<!-- <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="prodSlctListUC" title="{i18n>PrdId}" rememberSelections="true" search="handleSearch" liveChange="handleSearch"
+		confirm="handleSelection" cancel="handleClose" multiSelect="false"  contentWidth="320px" items="{/results}" 
+        selectionChange="handleProdChange" growing="false">
+		<StandardListItem title="{PRODUCT_ID}" description="{PROD_DESC}" type="Active"/>
+	</SelectDialog>
+</core:FragmentDefinition> -->
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog type="Standard" title="{i18n>PrdId}" contentWidth="400px" id="idprodUC">
+		<content>
+			<Table id="prodSlctListUC" mode="SingleSelectMaster" growing="true" growingDirection="Downwards" growingScrollToLoad="true"
+                     items="{path: '/results'}" selectionChange="handleSelection" sticky="ColumnHeaders" >
+				<headerToolbar>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<SearchField id="ProdSearchUC"   search="handleSearch" liveChange="handleSearch1" placeholder="{i18n>PrdId}"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column hAlign="Begin" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" >
+						<Text text="{i18n>PrdId}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectIdentifier title="{REF_PRODID}" text="{REFPROD_DESC}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<!-- <beginButton>
+			<Button type='Accept' text="{i18n>submit}" press="handleSelection"></Button>
+		</beginButton> -->
+		<endButton>
+			<Button type='Reject' text="{i18n>close}" press="handleClose"></Button>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

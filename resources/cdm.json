@@ -1,0 +1,227 @@
+[
+  {
+    "_version": "3.0",
+    "identification": {
+      "id": "vcpplanningfunctions-catalog",
+      "title": "catalog.vcpplanningfunctions.title",
+      "entityType": "catalog"
+    },
+    "payload": {
+      "viz": [
+        {
+          "appId": "vcp.vcpseedordercreationnew",
+          "vizId": "SeedOrderCreation-Display"
+        },
+        {
+          "appId": "vcpapp.vcpuniquecharacteristics",
+          "vizId": "vcpunique-display"
+        },
+        {
+          "appId": "vcpapp.vcpplanningrelevantpid",
+          "vizId": "PlanRelevant-Display"
+        },
+        {
+          "appId": "vcpapp.vcpforecastingordersbeta",
+          "vizId": "vcpforecastingorders-display"
+        },
+        {
+          "appId": "vcpapp.vcpconstraints",
+          "vizId": "getCharGroupWeightage-Display"
+        },
+        {
+          "appId": "vcpapp.vcpmaterialrequirements",
+          "vizId": "vcpmaterialrequirements-display"
+        },
+        {
+          "appId": "vcpapp.vcpoptionpercentage",
+          "vizId": "getOptionpercentages-display"
+        },
+        {
+          "appId": "vcp.vcpoptionpercentagesoptimised",
+          "vizId": "getOptionpercentagesoptimised-display"
+        }
+      ]
+    },
+    "texts": [
+      {
+        "locale": "",
+        "textDictionary": {
+          "catalog.vcpplanningfunctions.title": "VCP Sass Location Management"
+        }
+      }
+    ]
+  },
+  {
+    "_version": "3.0",
+    "identification": {
+      "id": "vcpplanningfunctions-group",
+      "title": "Planning Functions",
+      "entityType": "group"
+    },
+    "payload": {
+      "viz": [
+        {
+          "appId": "vcp.vcpseedordercreationnew",
+          "vizId": "SeedOrderCreation-Display"
+        },
+        {
+          "appId": "vcpapp.vcpuniquecharacteristics",
+          "vizId": "vcpunique-display"
+        },
+        {
+          "appId": "vcpapp.vcpplanningrelevantpid",
+          "vizId": "PlanRelevant-Display"
+        },
+        {
+          "appId": "vcpapp.vcpforecastingordersbeta",
+          "vizId": "vcpforecastingorders-display"
+        },
+        {
+          "appId": "vcpapp.vcpconstraints",
+          "vizId": "getCharGroupWeightage-Display"
+        },
+        {
+          "appId": "vcpapp.vcpmaterialrequirements",
+          "vizId": "vcpmaterialrequirements-display"
+        },
+        {
+          "appId": "vcpapp.vcpoptionpercentage",
+          "vizId": "getOptionpercentages-display"
+        },
+        {
+          "appId": "vcp.vcpoptionpercentagesoptimised",
+          "vizId": "getOptionpercentagesoptimised-display"
+        }
+      ]
+    },
+    "texts": [
+      {
+        "locale": "",
+        "textDictionary": {
+          "group.vcpplanningfunctions.title": "Planning Functions"
+        }
+      }
+    ]
+  },
+  {
+    "_version": "3.0",
+    "identification": {
+      "id": "vcpplanningfunctionsRole",
+      "entityType": "role",
+      "title": "VCP Planning Functions Role",
+      "description": "VCP Planning Functions Role"
+    },
+    "payload": {
+      "apps": [
+        {
+          "id": "vcp.vcpseedordercreationnew"
+        },
+        {
+          "id": "vcpapp.vcpuniquecharacteristics"
+        },
+        {
+          "id": "vcpapp.vcpplanningrelevantpid"
+        },
+        {
+          "id": "vcpapp.vcpforecastingordersbeta"
+        },
+        {
+          "id": "vcpapp.vcpconstraints"
+        },
+        {
+          "id": "vcpapp.vcpmaterialrequirements"
+        },
+        {
+          "id": "vcpapp.vcpoptionpercentage"
+        },
+        {
+          "id": "vcp.vcpoptionpercentagesoptimised"
+        }
+      ],
+      "catalogs": [
+        {
+          "id": "vcpplanningfunctions-catalog"
+        }
+      ],
+      "groups": [
+        {
+          "id": "vcpplanningfunctions-group"
+        }
+      ],
+      "spaces":   [{ "id": "vcpplanningfunctions-space" }]
+    }
+  },
+   {
+    "_version": "3.2.0",
+    "identification": {
+      "id": "vcpplanningfunctions-page",
+      "title": "Planning Functions",
+      "entityType": "page"
+    },
+    "payload": {
+      "layout": {
+        "sectionLayout": "tabbed"
+      },
+      "sections": [
+        {
+          "id": "vcpplanningfunctions-section-1",
+          "title": "Planning Functions",
+          "viz": [
+             {
+          "appId": "vcpapp.vcpoptionpercentage",
+          "vizId": "getOptionpercentages-display"
+        },
+        {
+          "appId": "vcp.vcpoptionpercentagesoptimised",
+          "vizId": "getOptionpercentagesoptimised-display"
+        },
+         {
+          "appId": "vcpapp.vcpforecastingordersbeta",
+          "vizId": "vcpforecastingorders-display"
+        },
+         {
+          "appId": "vcpapp.vcpmaterialrequirements",
+          "vizId": "vcpmaterialrequirements-display"
+        },
+        {
+          "appId": "vcpapp.vcpconstraints",
+          "vizId": "getCharGroupWeightage-Display"
+        }
+          ]
+        },
+        {
+          "id": "vcpplanningfunctions-section-2",
+          "title": "Maintenance",
+          "viz": [
+             {
+          "appId": "vcpapp.vcpplanningrelevantpid",
+          "vizId": "PlanRelevant-Display"
+        },
+        {
+          "appId": "vcp.vcpseedordercreationnew",
+          "vizId": "SeedOrderCreation-Display"
+        },
+        {
+          "appId": "vcpapp.vcpuniquecharacteristics",
+          "vizId": "vcpunique-display"
+        }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "_version": "3.2.0",
+    "identification": {
+      "id": "vcpplanningfunctions-space",
+      "title": "Planning Functions",
+      "entityType": "space"
+    },
+    "payload": {
+      "contentNodes": [
+        { "id": "vcpplanningfunctions-page",
+      "type": "page" }
+      ]
+    }
+  }
+]

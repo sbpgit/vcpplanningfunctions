@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:l="sap.ui.layout" xmlns:t="sap.ui.table" xmlns:f="sap.ui.layout.form">
+
+    <Dialog id="publishDialog" title="Confirmation" showHeader="true" contentWidth="25%">
+        <VBox id="VPublish1">
+            <CheckBox id="chkSnapshot" text="Save Snapshot" selected="false" select="chkSnapshotSelect"/>
+            <RadioButtonGroup id="publishrg" columns="2" selectedIndex="0" class="" visible="false" select="radioGrpSelect">
+                <RadioButton id="RB2-1" text="Create"/>
+                <RadioButton id="RB2-2" text="Update"/>
+            </RadioButtonGroup>
+            <HBox id="HPublish" visible="false" class="ml-10">
+                <Label id="lblPublish" text="Snapshot Description:" labelFor="iDescription"/>
+                <Input id="iDescription" class="sapUiTinyMarginBegin" maxLength="60"/>
+            </HBox>
+        </VBox>
+        <VBox id="VPublish2" class="sapUiSmallMarginBottom">
+            <Title id="publishtitle" text="Would you like to publish?" level="H3" class="ml-10 sapUiTinyMarginTop"/>
+        </VBox>
+
+        <buttons>
+            <Button id="" text="Yes" type="Emphasized" press="onPressPublishConfirm"/>
+            <Button id="" text="No" press="closePublishDialog"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

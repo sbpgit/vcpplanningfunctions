@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog id="idsceDialogOPMIXP" resizable="true" selectionChange="handleSelectionChange" titleAlignment="Center" liveChange=".onSearch" noDataText="No Scenarios Found" multiSelect="false" rememberSelections="true" title="Scenario" search=".onSearch" growingThreshold="30" updateStarted=".onUpdateStarted" items="{
+			path: '/items'
+		}" confirm="onConfirmSelection">
+        <StandardListItem title="{SCENARIO_NAME}" description="{SCENARIO}" iconDensityAware="false" iconInset="false" type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

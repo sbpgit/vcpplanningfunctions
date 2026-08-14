@@ -1,0 +1,257 @@
+.yellow {
+    background-color: #FFFF66;
+}
+
+.table {
+    padding-left: 0.1rem;
+    margin-right: 0.1rem;
+    margin-bottom: 0.1rem;
+    height: auto;
+}
+
+.filterActions {
+    margin-left: 3em;
+}
+
+.hdrBtnMarginHdr1 {
+    margin-left: 82rem;
+}
+
+.hdrBtnMargin {
+    margin-left: 1rem;
+}
+
+.hdrBtnMarginU {
+    margin-left: 35rem;
+}
+
+.disableDP input {
+    pointer-events: none;
+    color: transparent;
+    text-shadow: 0 0 0 gray;
+}
+
+.classHdr {
+    margin-left: 90rem;
+}
+
+.backgroundColorGrey {
+    background-color: #E5E4E2 !important;
+}
+
+.sapFDynamicPageTitleMain>.sapFDynamicPageTitleMainInner .sapFDynamicPageTitleMainHeading .sapFDynamicPageTitleMainHeadingInner .sapMTitle {
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
+}
+
+.sapUxAPObjectPageWrapper>.sapUxAPObjectPageWrapperTransform .sapUiScrollDelegate {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.tableScrollV {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.iconDisp {
+    margin-top: 1px;
+}
+
+.boldText {
+    margin-left: 40vw;
+}
+
+.variantName {
+    font-size: 1.25rem;
+    padding-top: 0.3rem;
+    padding-right: 0.2rem;
+    color: #0a6ed1;
+}
+
+.sapMPopover {
+    position: absolute;
+    color: #32363a;
+    min-width: 6.25rem;
+    box-sizing: border-box;
+    outline: none;
+    width: 25%;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+    border: none;
+    box-shadow: 0 0 0 0.0625rem rgb(0 0 0 / 42%), 0 0.625rem 1.875rem 0 rgb(0 0 0 / 30%);
+    border-radius: 0.25rem;
+    min-height: 2rem;
+}
+
+.sapMPopoverHeader .sapMBarMiddle>.sapMBarPH {
+    box-sizing: border-box;
+    justify-content: flex-start;
+}
+
+.sapMIBar>.sapMBarLeft>.sapMBarChild:last-child,
+.sapMIBar .sapMBarPH>.sapMBarChild:last-child {
+    font-weight: normal !important;
+    padding-left: 0.75rem;
+    color: #32363a;
+}
+
+.multiComboInpt {
+    width: auto;
+}
+
+#prodCapacityDialog-title {
+    width: 100% !important;
+}
+
+.sapMIBar.sapMTB.sapMTB-Info-CTX {
+    padding: 0 1rem 0 0.75rem;
+    visibility: visible !important;
+}
+
+.sapFDynamicPage-Std-Desktop-XL .sapFDynamicPageContent,
+.sapFDynamicPage-Std-Desktop-XL .sapFDynamicPageContentFitContainer {
+    padding: 0 !important;
+}
+
+.smartTable {
+    margin-top: 2rem;
+}
+
+/* ============================================
+   HANDSONTABLE — updated for ht-theme-main
+   ============================================ */
+
+.ht-theme-main .handsontable .htDimmed {
+    color: #000000 !important;
+    font-family: "72", "72full", Arial, Helvetica, sans-serif !important;
+    background-color: #d2d6db4f !important;
+}
+
+.ht-theme-main .handsontable td.manualBg {
+    color: #0070f2 !important;
+    font-weight: bold !important;
+    text-align: right !important;
+}
+
+.ht-theme-main .handsontable thead th {
+    padding: 0;
+    font-weight: bold;
+    color: #fff;
+}
+
+.ht-theme-main .handsontable td.manualQty {
+    font-weight: 400;
+}
+
+.ht-theme-main .handsontable td.alignmentHot {
+    text-align: right !important;
+}
+
+.ht-theme-main .handsontable td.alignmentTot {
+    text-align: right !important;
+    font-weight: 600 !important;
+}
+
+.ht-theme-main .handsontable td.editable {
+    background: white;
+    text-align: right !important;
+}
+
+.ht-theme-main .handsontable td.firmCell {
+    background: rgb(253, 250, 160) !important;
+}
+
+.ht-theme-main .handsontable td.frozenCell {
+    background: rgb(124, 219, 238) !important;
+}
+
+/* ============================================
+   HANDSONTABLE — layout & row height (no theme scope needed)
+   ============================================ */
+
+.handsontable * {
+    box-sizing: border-box !important;
+}
+
+.handsontable .ht_master .htCore tbody th,
+.handsontable .ht_master .htCore tbody td,
+.handsontable .ht_clone_left .htCore tbody th,
+.handsontable .ht_clone_left .htCore tbody td {
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    box-sizing: border-box !important;
+    vertical-align: middle !important;
+    line-height: 1.2 !important;
+    padding: 4px 8px !important;
+}
+
+.handsontable .ht_master .htCore tbody tr,
+.handsontable .ht_clone_left .htCore tbody tr {
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+}
+
+.handsontable .ht_master .htCore thead th,
+.handsontable .ht_clone_left .htCore thead th {
+    height: 40px !important;
+    min-height: 40px !important;
+    box-sizing: border-box !important;
+}
+
+/* ============================================
+   TELESCOPIC HEADER COLORS
+   ============================================ */
+
+.ht-theme-main .handsontable thead th.applyWeek {
+    background-color: #0096c7 !important;
+}
+
+.ht-theme-main .handsontable thead th.applyMonth {
+    background-color: #0077b6 !important;
+}
+
+.ht-theme-main .handsontable thead th.applyQ {
+    background-color: #225290 !important;
+}
+
+.ht-theme-main .handsontable thead th.applyHeader {
+    background-color: #0096c7 !important;
+}
+
+/* ============================================
+   MISC
+   ============================================ */
+
+.unqLink {
+    cursor: pointer !important;
+}
+
+.sapMITB.sapUiResponsiveContentPadding>.sapMITBContainerContent>.sapMITBContent {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.div-selectall {
+    background: #fff;
+}
+
+.sapMPanelContent {
+    padding: 0 !important;
+}
+
+#quantityGrid .handsontable .wtHolder::-webkit-scrollbar:horizontal {
+    background: transparent;
+}
+
+#quantityGrid .handsontable .wtHolder {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.qtyPanelClass .sapMPanelContent {
+    margin-right: 1% !important;
+}

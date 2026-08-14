@@ -1,0 +1,183 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "vcpapp.vcpforecastingordersbeta",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "2512.01.01"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.13.6",
+      "toolsId": "b1a88509-b491-4a75-977e-bdadfbd39bec"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/v2/catalog/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "Jobs": {
+        "uri": "/v2/jobs/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0",
+          "localUri": "localService/metadata.xml"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "vcpforecastingorders-display": {
+          "semanticObject": "vcpforecastingorders",
+          "icon": "sap-icon://tag-cloud-chart",
+          "action": "display",
+          "title": "{{flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://tag-cloud-chart",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.143.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "vcpapp.vcpforecastingordersbeta.i18n.i18n"
+        }
+      },
+      "oModel": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "useBatch" : true,
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "oGModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "settings": {
+          "defaultBindingMode": "TwoWay"
+        },
+        "preload": true
+      },
+      "JModel": {
+        "dataSource": "Jobs",
+        "preload": true
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "vcpapp.vcpforecastingordersbeta.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "Home",
+          "pattern": ":?query:",
+          "target": [
+            "Home"
+          ]
+        },
+        {
+          "name": "View1",
+          "pattern": "View1",
+          "target": [
+            "View1"
+          ]
+        }
+      ],
+      "targets": {
+        "Home": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Home",
+          "viewName": "Home"
+        },
+        "View1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "View1",
+          "viewName": "View1"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "vcpapp.vcpforecastingordersbeta.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "vcpplanningfunctions"
+  },
+  "sap.platform.cf": {
+    "oAuthScopes": [
+      "$XSAPPNAME.User",
+      "$XSAPPNAME.admin"
+    ]
+  }
+}

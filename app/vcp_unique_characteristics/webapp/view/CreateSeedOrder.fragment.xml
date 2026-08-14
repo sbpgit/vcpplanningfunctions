@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified">
+    <Dialog title="Create Seed Order" contentWidth="450px" titleAlignment="Center">
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm
+                id="SimpleFormToolbarSOUC"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="4"
+                labelSpanL="4"
+                labelSpanM="4"
+                labelSpanS="4"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="0"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false">
+                <f:content>
+
+                    
+                    <Label text="{i18n>prodid}" />
+                    <Input id="idprodIdSOUC" value="" editable="false" width="100%" enabled="false" />
+
+                    <Label text="{i18n>locid}" />
+                    <Input id="idlocIdSOUC" value="" editable="true" width="100%" enabled="true" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"/>
+
+
+                    <Label text="{i18n>UidTid}" />
+                    <Input id="idUniqSOUC" value="" editable="false" width="100%" enabled="false" type="Text" />
+
+                    <Label text="{i18n>unidesc}" />
+                    <Input id="idUniqSODescUC" value="" editable="false" width="100%" enabled="false" type="Text" />
+
+                    <Label text="Customer Group"/>
+					<Input id="idCustUC" value="" width="100%" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"/>
+
+                    <Label text="Order Quantity" />
+                    <Input id="idOrdQtySOUC" value="" liveChange="onNumChange"  width="100%" type="Number" maxLength="10"/>
+
+                    <Label text="Material Availability Date" />
+                    <DatePicker id="DP1SOUC" placeholder="Enter Date" change="handleChange" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" class="sapUiSmallMarginBottom" />
+                </f:content>
+            </f:SimpleForm>
+        </VBox>
+        <buttons>
+            <Button type='Ghost' text="Create" press="onCreateSO" />
+            <Button type='Reject' text="{i18n>close}" press="onCloseSO" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

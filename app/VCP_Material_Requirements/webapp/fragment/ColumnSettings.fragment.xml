@@ -1,0 +1,97 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        contentHeight="60vh"
+        contentWidth="25vw"
+        title="Columns"
+    >
+        <Table
+            id="idDataTableAR"
+            items="{
+    path: '/data',
+    templateShareable: true
+}"
+            showNoData="false"
+            mode="MultiSelect"
+            selectionChange="checkSelect"
+        >
+            <columns>
+                <Column />
+                <Column />
+                <Column />
+            </columns>
+            <items>
+                <ColumnListItem selected="{select}">
+                    <cells>
+                        <Text text="{field}" />
+                        <Select
+                            items="{
+							path: 'option',
+							templateShareable: true
+						}"
+                            visible="{= ${option}.length > 0 }"
+                            selectedKey="{selectedKey}"
+                        >
+                            <items>
+                                <core:Item
+                                    key="{key}"
+                                    text="{text}"
+                                />
+                            </items>
+                        </Select>
+                        <FlexBox
+                            justifyContent="SpaceAround"
+                            width="50%"
+                        >
+                            <core:Icon
+                                color="blue"
+                                class="icon"
+                                press="onIconPress"
+                                src="sap-icon://navigation-up-arrow"
+                                tooltip="up"
+                            />
+                            <core:Icon
+                                color="blue"
+                                class="icon"
+                                press="onIconPress"
+                                src="sap-icon://slim-arrow-down"
+                                tooltip="down"
+                            />
+                            <core:Icon
+                                color="blue"
+                                class="icon"
+                                press="onIconPress"
+                                src="sap-icon://collapse-group"
+                                tooltip="top"
+                            />
+                            <core:Icon
+                                color="blue"
+                                class="icon"
+                                press="onIconPress"
+                                src="sap-icon://expand-group"
+                                tooltip="bottom"
+                            />
+                        </FlexBox>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <beginButton>
+            <Button
+                tooltip="OK"
+                text="OK"
+                type="Emphasized"
+                press="onAddColumn"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                tooltip="Cancel"
+                text="Cancel"
+                press=".onCloseColumn"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

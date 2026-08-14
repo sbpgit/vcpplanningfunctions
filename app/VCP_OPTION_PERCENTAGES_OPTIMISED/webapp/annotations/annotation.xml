@@ -1,0 +1,522 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/v2/analytical/$metadata">
+        <edmx:Include Namespace="AnalyticalService" Alias="SAP"/>
+    </edmx:Reference>
+      
+    
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="SAP.getOptFilterdata">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>LOCATION_ID</PropertyPath>
+                        <PropertyPath>PRODUCT_ID</PropertyPath>
+                        <PropertyPath>CUSTOMER_GROUP</PropertyPath>
+                        <PropertyPath>CHAR_NUM</PropertyPath>
+                        <PropertyPath>CHARVAL_NUM</PropertyPath>
+                        <PropertyPath>VERSION_NAME</PropertyPath>
+                        <PropertyPath>SCENARIO_NAME</PropertyPath>
+                        <PropertyPath>MODEL_VERSION</PropertyPath>
+                        <!-- <PropertyPath>WEEK_STARTDATE</PropertyPath> -->
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getOptFilterdata/LOCATION_ID">
+                <!-- <Annotation Term="Common.Label" String="Manufacturing Location"/> -->
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getOptFilterdata"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record> 
+                              <!--   <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CUSTOMER_GROUP"/>
+                                    <PropertyValue Property="ValueListProperty" String="CUSTOMER_GROUP"/>
+                                </Record>
+                                 <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION" />
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME" />
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                            
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                              -->
+                             
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getOptFilterdata/PRODUCT_ID">
+                <!-- <Annotation Term="Common.Label" String="Partial Products"/> -->
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getOptFilterdata"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <!-- <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CUSTOMER_GROUP"/>
+                                    <PropertyValue Property="ValueListProperty" String="CUSTOMER_GROUP"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_NUM"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_NUM"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHARVAL_NUM"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHARVAL_NUM"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHARVAL_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHARVAL_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record> -->
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getOptFilterdata/CUSTOMER_GROUP">
+                <!-- <Annotation Term="Common.Label" String="Customer Group"/> -->
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getOptFilterdata"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CUSTOMER_GROUP"/>
+                                    <PropertyValue Property="ValueListProperty" String="CUSTOMER_GROUP"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_NUM"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_NUM"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHARVAL_NUM"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHARVAL_NUM"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHARVAL_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHARVAL_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+             <Annotations Target="SAP.getOptFilterdata/CHAR_NUM">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getOptFilterdata"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_DESC"/>
+                                </Record>
+                              
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_NUM"/>
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_NUM"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CUSTOMER_GROUP"/>
+                                    <PropertyValue Property="ValueListProperty" String="CUSTOMER_GROUP"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHARVAL_NUM"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHARVAL_NUM"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHARVAL_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHARVAL_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="com.sap.vocabularies.Common.v1.Text" Path="CHAR_DESC"/>
+                
+            </Annotations>       
+            <Annotations Target="SAP.getOptFilterdata/CHARVAL_NUM">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getOptFilterdata"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_NUM"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_NUM"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHARVAL_NUM"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHARVAL_NUM"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHARVAL_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHARVAL_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CUSTOMER_GROUP"/>
+                                    <PropertyValue Property="ValueListProperty" String="CUSTOMER_GROUP"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getOptFilterdata/VERSION_NAME">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getOptFilterdata"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <!-- <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record> -->
+                                <!-- <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_NUM"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_NUM"/>
+                                </Record> -->
+                                <!-- <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHARVAL_NUM"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHARVAL_NUM"/>
+                                </Record> -->
+                                <!-- <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHARVAL_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHARVAL_DESC"/>
+                                </Record> -->
+                                    <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record>
+                              <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION" />
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME" />
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                                <!-- <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CUSTOMER_GROUP"/>
+                                    <PropertyValue Property="ValueListProperty" String="CUSTOMER_GROUP"/>
+                                </Record> -->
+                                <!-- <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record> -->
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getOptFilterdata/SCENARIO_NAME">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getOptFilterdata"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <!-- <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID"/>
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PROD_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="PROD_DESC"/>
+                                </Record> -->
+                                <!-- <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_NAME"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_NUM"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_NUM"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHAR_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHAR_DESC"/>
+                                </Record> -->
+                                <!-- <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHARVAL_NUM"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHARVAL_NUM"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CHARVAL_DESC"/>
+                                    <PropertyValue Property="ValueListProperty" String="CHARVAL_DESC"/>
+                                </Record> -->
+                                    <!-- <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CUSTOMER_GROUP"/>
+                                    <PropertyValue Property="ValueListProperty" String="CUSTOMER_GROUP"/>
+                                </Record> -->
+                               
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME"/>
+                                </Record>
+                             
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME"/>
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getOptFilterdata/MODEL_VERSION">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getOptFilterdata"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="MODEL_VERSION"/>
+                                    <PropertyValue Property="ValueListProperty" String="MODEL_VERSION"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

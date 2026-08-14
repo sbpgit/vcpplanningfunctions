@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "vcp_option_percentages-config",
+      "cwd": "${workspaceFolder}",
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "args": [
+        "--open",
+        "index.html"
+      ],
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "outputCapture": "std",
+      "env": {
+        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/vcp_option_percentages\"}",
+        "FIORI_TOOLS_BACKEND_CONFIG": "[{\"destination\":\"ConfigProdAuth\",\"url\":\"https://sbpbtp-vcpprovider-sc0jeojq-dev-config-products-srv.cfapps.us10.hana.ondemand.com\",\"path\":\"/v2\"}]",
+        "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
+      }
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+
+    <Dialog title="Select Visualization" contentHeight="80vh" contentWidth="45vw" stretch="false" draggable="true" resizable="true">
+
+        <IconTabBar class="sapUiNoContentPadding sapUiSizeCompact" headerBackgroundDesign="Transparent" expandable="false" stretchContentHeight="true" applyContentPadding="false">
+
+            <items>
+                <IconTabFilter icon="sap-icon://table-view" text="Tables" key="tables">
+                    <ScrollContainer height="100%" width="100%" vertical="true" horizontal="true">
+                        <FlexBox wrap="Wrap" justifyContent="Start" class="sapUiSmallMargin">
+
+                            <GenericTile id="tile-TableAR" class="sapUiSmallMarginEnd sapUiSmallMarginBottom tileStyle" header="Table" press=".onSelectVisualization" frameType="OneByOne" state="Loaded" width="10rem">
+                                <customData>
+                                    <core:CustomData key="type" value="Table" />
+                                </customData>
+                                <TileContent footer="Basic table view">
+                                    <ImageContent src="sap-icon://table-view" description="Table" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile id="tile-TableBarchartAR" class="sapUiSmallMarginEnd sapUiSmallMarginBottom tileStyle" header="Table Barchart" press=".onSelectVisualization" frameType="OneByOne" state="Loaded" width="10rem">
+                                <customData>
+                                    <core:CustomData key="type" value="Table Barchart" />
+                                </customData>
+                                <TileContent footer="Table with charts">
+                                    <ImageContent src="sap-icon://table-chart" description="Table with charts" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile id="tile-HeatmapAR" class="sapUiSmallMarginEnd sapUiSmallMarginBottom tileStyle" header="Heatmap" press=".onSelectVisualization" frameType="OneByOne" state="Loaded" width="10rem">
+                                <customData>
+                                    <core:CustomData key="type" value="Heatmap" />
+                                </customData>
+                                <TileContent footer="Full matrix heatmap">
+                                    <ImageContent src="sap-icon://heatmap-chart" description="Heatmap" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile id="tile-RowHeatmapAR" class="sapUiSmallMarginEnd sapUiSmallMarginBottom tileStyle" header="Row Heatmap" press=".onSelectVisualization" frameType="OneByOne" state="Loaded" width="10rem">
+                                <customData>
+                                    <core:CustomData key="type" value="Row Heatmap" />
+                                </customData>
+                                <TileContent footer="Row-based heat">
+                                    <ImageContent src="sap-icon://horizontal-stacked-chart" description="Row Heatmap" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile id="tile-ColHeatmapAR" class="sapUiSmallMarginEnd sapUiSmallMarginBottom tileStyle" header="Col Heatmap" press=".onSelectVisualization" frameType="OneByOne" state="Loaded" width="10rem">
+                                <customData>
+                                    <core:CustomData key="type" value="Col Heatmap" />
+                                </customData>
+                                <TileContent footer="Column-based heat">
+                                    <ImageContent src="sap-icon://vertical-stacked-chart" description="Column Heatmap" />
+                                </TileContent>
+                            </GenericTile>
+                        </FlexBox>
+                    </ScrollContainer>
+                </IconTabFilter>
+
+                <IconTabFilter icon="sap-icon://line-chart" text="Charts" key="charts">
+                    <ScrollContainer height="100%" width="100%" vertical="true" horizontal="true">
+                        <FlexBox wrap="Wrap" justifyContent="Start" class="sapUiSmallMargin">
+
+                            <GenericTile id="tile-LineChartAR" class="sapUiSmallMarginEnd sapUiSmallMarginBottom tileStyle" header="Line Chart" press=".onSelectVisualization" frameType="OneByOne" state="Loaded" width="10rem">
+                                <customData>
+                                    <core:CustomData key="type" value="Line Chart" />
+                                </customData>
+                                <TileContent footer="Trends over time">
+                                    <ImageContent src="sap-icon://line-chart" description="Line Chart" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile id="tile-AreaChartAR" class="sapUiSmallMarginEnd sapUiSmallMarginBottom tileStyle" header="Area Chart" press=".onSelectVisualization" frameType="OneByOne" state="Loaded" width="10rem">
+                                <customData>
+                                    <core:CustomData key="type" value="Area Chart" />
+                                </customData>
+                                <TileContent footer="Data regions">
+                                    <ImageContent src="sap-icon://area-chart" description="Area Chart" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile id="tile-ScatterChartAR" class="sapUiSmallMarginEnd sapUiSmallMarginBottom tileStyle" header="Scatter Chart" press=".onSelectVisualization" frameType="OneByOne" state="Loaded" width="10rem">
+                                <customData>
+                                    <core:CustomData key="type" value="Scatter Chart" />
+                                </customData>
+                                <TileContent footer="Data correlation">
+                                    <ImageContent src="sap-icon://scatter-chart" description="Scatter Chart" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile id="tile-HorizontalBarChartAR" class="sapUiSmallMarginEnd sapUiSmallMarginBottom tileStyle" header="Horizontal Bar" press=".onSelectVisualization" frameType="Auto" state="Loaded" width="10rem">
+                                <customData>
+                                    <core:CustomData key="type" value="Horizontal Bar Chart" />
+                                </customData>
+                                <TileContent footer="Left-to-right">
+                                    <ImageContent src="sap-icon://horizontal-bar-chart" description="Horizontal Bar Chart" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile id="tile-HorizontalStackedBarChartAR" class="sapUiSmallMarginEnd sapUiSmallMarginBottom tileStyle" header="H-Stacked Bar" press=".onSelectVisualization" frameType="Auto" state="Loaded" width="10rem">
+                                <customData>
+                                    <core:CustomData key="type" value="Horizontal Stacked Bar Chart" />
+                                </customData>
+                                <TileContent footer="Multi-dimension">
+                                    <ImageContent src="sap-icon://horizontal-stacked-chart" description="Horizontal Stacked Bar" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile id="tile-BarChartAR" class="sapUiSmallMarginEnd sapUiSmallMarginBottom tileStyle" header="Bar Chart" press=".onSelectVisualization" frameType="Auto" state="Loaded" width="10rem">
+                                <customData>
+                                    <core:CustomData key="type" value="Bar Chart" />
+                                </customData>
+                                <TileContent footer="Bottom-to-top">
+                                    <ImageContent src="sap-icon://vertical-bar-chart" description="Bar Chart" />
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile id="tile-StackedBarChartAR" class="sapUiSmallMarginEnd sapUiSmallMarginBottom tileStyle" header="Stacked Bar" press=".onSelectVisualization" frameType="Auto" state="Loaded" width="10rem">
+                                <customData>
+                                    <core:CustomData key="type" value="Stacked Bar Chart" />
+                                </customData>
+                                <TileContent footer="Multi-dimension">
+                                    <ImageContent src="sap-icon://vertical-stacked-chart" description="Stacked Bar Chart" />
+                                </TileContent>
+                            </GenericTile>
+                        </FlexBox>
+                    </ScrollContainer>
+                </IconTabFilter>
+            </items>
+
+        </IconTabBar>
+
+        <buttons>
+            <Button text="Cancel" press=".onCancelVisualizationDialog"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

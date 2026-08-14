@@ -1,0 +1,169 @@
+{
+  "_version": "1.82.0",
+  "sap.app": {
+    "id": "vcpapp.vcpconstraints",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.20.4",
+      "toolsId": "db6c5d85-644a-4541-a1b3-7651ad810212"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/v2/analytical/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "catService": {
+        "uri": "/v2/catalog/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/catService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "getCharGroupWeightage-Display": {
+          "semanticObject": "getCharGroupWeightage",
+          "action": "Display",
+          "title": "{{getCharGroupWeightage-Display.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.146.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.comp": {},
+        "sap.ui.table": {},
+        "sap.ui.layout": {},
+        "sap.ui.unified": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "vcpapp.vcpconstraints.i18n.i18n"
+        }
+      },
+      "aModel": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      },
+      "cModel": {
+        "dataSource": "catService",
+        "preload": true,
+        "settings": {}
+      },
+      "catService": {
+        "dataSource": "catService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "vcpapp.vcpconstraints.view",
+        "async": true,
+        "viewPath": "vcpapp.vcpconstraints.view"
+      },
+      "routes": [
+        {
+          "name": "RouteHome",
+          "pattern": ":?query:",
+          "target": [
+            "TargetHome"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetHome": {
+          "id": "Home",
+          "name": "Home"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "vcpapp.vcpconstraints.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "vcpplanningfunctions"
+  },
+  "sap.platform.cf": {
+    "oAuthScopes": [
+      "$XSAPPNAME.User",
+      "$XSAPPNAME.admin"
+    ]
+  }
+}

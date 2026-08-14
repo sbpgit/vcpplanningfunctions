@@ -1,0 +1,57 @@
+/* Enter your custom styles here */
+/* Enter your custom styles here */
+
+.mainDivClass {
+    overflow: scroll;
+    width: 100%;
+    height: 87vh;
+ 
+}
+table.pvtTable tbody tr th {
+    color: #090909 !important;
+}
+
+.colorYellow {
+    background: rgb(235, 243, 7) !important;
+}
+.colorGreen{
+    background:lightgreen !important ;
+}
+.colorRed{
+    background: rgb(222, 129, 129) !important;
+}
+.count{
+    margin-top:10px;
+    margin-right:10px
+}
+/* .btn{
+    margin-top:21px !important ; 
+    margin-right:10px;
+} */
+.Type{
+    margin-top:27px !important ; 
+    margin-right:6px;
+}
+.oLoc{
+    margin-right:10px !important ;
+}
+/* div#__layout5 {
+    margin-left: 28.5%;
+} */
+
+div#__layout7 {
+    margin-left: 19%;
+}
+
+span.sapMSelectListCell.sapMSelectListLastCell {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+*{
+    scrollbar-width: thin;
+    /*"auto"or "thin"*/
+    scrollbar-color: #888 #f1f1f1;
+    /*thumb and track color*/
+}

@@ -1,0 +1,264 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+>
+    <Dialog
+        title="Product"
+        id="idSimulationProd"
+        contentWidth="90%"
+        titleAlignment="Center"
+        contentHeight="90%"
+        stretch="true"
+    >
+        <content>
+            <IconTabBar
+                id="mainTabBar"
+                selectedKey="simulator"
+                expandable="false"
+                stretchContentHeight="true"
+            >
+                <items>
+                    <!--  SIMULATOR TAB  -->
+                    <IconTabFilter
+                        text="Simulator"
+                        icon="sap-icon://simulate"
+                        key="simulator"
+                    >
+                        <f:FlexibleColumnLayout layout="TwoColumnsMidExpanded">
+                            <!--  MASTER  -->
+                            <f:beginColumnPages>
+                                <!--  <Page title="Product Configuration">  -->
+                                <Page title="Probability Distribution">
+                                    <content>
+                                        <Button
+                                            id="oGraphOPMIXP"
+                                            text="Compute"
+                                            type="Emphasized"
+                                            width="100%"
+                                            press=".onCompute"
+                                            enabled="{state>/canDerive}"
+                                            class="sapUiSmallMarginTop"
+                                        />
+                                        <Text
+                                            id="oPrddmd"
+                                            text="{oGModel>/SelectedWeekValue}"
+                                        />
+                                        <ScrollContainer
+                                            height="100%"
+                                            vertical="true"
+                                        >
+                                            <!--  <core:Fragment fragmentName="vcp.vcpoptionpercentagesoptimised.view.ModeToggle" type="XML"/>  -->
+                                            <!--  <Title text="{i18n>titleInputChars}" level="H5" class="sapUiTinyMarginBottom sapUiTinyMarginTop"/>  -->
+                                            <VBox class="sapUiSmallMargin">
+                                                <VBox
+                                                    id="probInputs"
+                                                    visible="{state>/isProbMode}"
+                                                >
+                                                    <!--  <Title text="Usage Probability Distribution" level="H5" class="sapUiTinyMarginBottom sapUiTinyMarginTop"/>  -->
+                                                    <HBox visible="false">
+                                                        <Label
+                                                            text="Customer Group:"
+                                                            labelFor="idCustGroupSelect"
+                                                            class="sapUiTinyMarginTop sapUiTinyMarginEnd"
+                                                        />
+                                                        <Select
+                                                            id="idCustGroupSelect"
+                                                            selectedKey=""
+                                                            items="{ path: '/customerGroups' }"
+                                                        >
+                                                            <core:Item
+                                                                key="{key}"
+                                                                text="{text}"
+                                                            />
+                                                        </Select>
+                                                    </HBox>
+                                                    <HBox
+                                                        class="sapUiTinyMarginBottom"
+                                                    >
+                                                        <!--  <Label text="Session ID:" design="Bold" width="6rem"/>  -->
+                                                        <Text
+                                                            text="{oGModel>/sessionId}"
+                                                        />
+                                                    </HBox>
+                                                    <List
+                                                        id="probList"
+                                                        noDataText="Select a product line to configure probabilities."
+                                                        showSeparators="None"
+                                                    />
+                                                </VBox>
+                                            </VBox>
+                                            <Button
+                                                text="{i18n>btnReset}"
+                                                type="Default"
+                                                width="100%"
+                                                press=".onReset"
+                                                class="sapUiTinyMarginTop"
+                                            />
+                               
+                                        </ScrollContainer>
+                                    </content>
+                                </Page>
+                            </f:beginColumnPages>
+                            <!--  DETAIL 1111  -->
+                            <f:midColumnPages>
+                                <Page title="Dependency Resolution Chain">
+                                    <content>
+                                        <l:Splitter
+                                            id="graphTableSplitter"
+                                            orientation="Vertical"
+                                            height="100%"
+ 
+                                                                                 >
+                                            <!--   TOP PANE : GRAPH  -->
+                                            <l:contentAreas>
+                                                <VBox id="graphPane">
+                                                    <layoutData>
+                                                        <l:SplitterLayoutData
+                                                           size="70%"
+ 
+                                                        />
+                                                    </layoutData>
+                                                    <Toolbar>
+                                                        <Title text="Graph" />
+                                                        <ToolbarSpacer />
+                                                        <Button
+                                                            icon="sap-icon://minimize"
+                                                            press=".onMaxGraph"
+                                                        />
+                                                        <Button
+                                                            icon="sap-icon://full-screen"
+                                                            press="onOpenGraphFullscreen"
+                                                        />
+                                                    </Toolbar>
+                                                    <!-- <ScrollContainer
+                                                        horizontal="true"
+                                                        vertical="false"
+                                                        width="100%"
+                                                        height="10%"
+                                                        class="noPaddingScroll"
+                                                    > -->
+                                                        <VBox
+                                                            id="chartVBox"
+                                                            width="100%"
+                                                        />
+                                                    <!-- </ScrollContainer> -->
+                                                </VBox>
+                                                <!--   BOTTOM PANE : TABLE  -->
+                                                <VBox >
+                                                    <layoutData>
+                                                        <l:SplitterLayoutData
+                                                          size="30%"
+                                                        />
+                                                    </layoutData>
+                                                    <Toolbar>
+                                                        <Title
+                                                            text="Derivation Results"
+                                                        />
+                                                        <ToolbarSpacer />
+                                                        <Button
+                                                            icon="sap-icon://minimize"
+                                                            press=".onMaxTable"
+                                                        />
+                                                        <!-- <Button
+                                                            text="Reset"
+                                                            press=".onResetSplit"
+                                                        /> -->
+                                                    </Toolbar>
+                                                    <Table
+                                                        id="classListCHACON"
+                                                        items="{/results}"
+                                                        growingScrollToLoad="true"
+                                                        noDataText="Configure inputs and click Compute to run DAG derivation via HANA Graph"
+                                                        mode="SingleSelectMaster"
+                                                        sticky="ColumnHeaders"
+                                                    >
+                                                        <columns>
+                                                            <Column>
+                                                                <Text
+                                                                    text="Characteristic Name"
+                                                                    width="150px"
+                                                                />
+                                                            </Column>
+                                                            <Column>
+                                                                <Text
+                                                                    text="Characteristic Value"
+                                                                />
+                                                            </Column>
+                                                            <!--  <Column><Text text="Level"/></Column>  -->
+                                                            <Column>
+                                                                <Text
+                                                                    text="Old Quantity"
+                                                                />
+                                                            </Column>
+                                                            <Column>
+                                                                <Text
+                                                                    text="Derived Quantity"
+                                                                />
+                                                            </Column>
+                                                            <Column>
+                                                                <Text
+                                                                    text="Derived Percentage %"
+                                                                    width="150px"
+                                                                />
+                                                            </Column>
+                                                        </columns>
+                                                        <items>
+                                                            <ColumnListItem>
+                                                                <cells>
+                                                                    <ObjectIdentifier
+                                                                        title="{CHAR_DESC}"
+                                                                        text="{CHAR_NAME}"
+                                                                    />
+                                                                    <Text
+                                                                        text="{CHAR_VALUE}"
+                                                                    />
+                                                                    <!--  <Text text="{LEVEL}"/>  -->
+                                                                    <Text
+                                                                        text="{OLD_QTY}"
+                                                                    />
+                                                                    <Text
+                                                                        text="{OPT_QTY}"
+                                                                    />
+                                                                    <Text
+                                                                        text="{DERIVED_PERCENTAGE}"
+                                                                    />
+                                                                </cells>
+                                                            </ColumnListItem>
+                                                        </items>
+                                                    </Table>
+                                                </VBox>
+                                            </l:contentAreas>
+                                        </l:Splitter>
+                                    </content>
+                                </Page>
+                            </f:midColumnPages>
+                        </f:FlexibleColumnLayout>
+                    </IconTabFilter>
+                    <!--  OTHER TABS  -->
+                    <!--  <IconTabFilter key="dag" text="DAG Graph" icon="sap-icon://org-chart" />
+                    <IconTabFilter key="constraints" text="Constraints" icon="sap-icon://table-chart"/>  -->
+                </items>
+            </IconTabBar>
+        </content>
+        <!--  CLOSE BUTTON  -->
+        <beginButton>
+            <Button
+                text="Confirm"
+                type="Accept"
+                press=".onConfirmCompute"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                text="Close"
+                type="Reject"
+                press=".onCloseSimulation"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>
+ 
+ 

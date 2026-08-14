@@ -1,0 +1,75 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        contentHeight="35vh"
+        contentWidth="40vw"
+        title="Key Figures"
+        draggable="true"
+        resizable="true"
+    >
+        <Table
+            id="idkeyTableAR"
+            items="{
+    path: '/data',
+    templateShareable: true
+}"
+            showNoData="false"
+            mode="MultiSelect"
+            selectionChange="checkSelect2"
+        >
+            <columns>
+                <Column />
+                <Column />
+                <Column />
+            </columns>
+            <items>
+                <ColumnListItem selected="{select}">
+                    <cells>
+                        <Text text="{field}" />
+                        <FlexBox justifyContent="SpaceBetween"
+                        >
+                            <core:Icon
+                                color="blue"
+                                class="icon"
+                                press="onIconPress2"
+                                src="sap-icon://navigation-up-arrow"
+                                tooltip="up"
+                            />
+                            <core:Icon
+                                color="blue"
+                                class="icon"
+                                press="onIconPress2"
+                                src="sap-icon://slim-arrow-down"
+                                tooltip="down"
+                            />
+                            <core:Icon
+                                color="blue"
+                                class="icon"
+                                press="onIconPress2"
+                                src="sap-icon://collapse-group"
+                                tooltip="top"
+                            />
+                            <core:Icon
+                                color="blue"
+                                class="icon"
+                                press="onIconPress2"
+                                src="sap-icon://expand-group"
+                                tooltip="bottom"
+                            />
+                        </FlexBox>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <beginButton>
+            <Button
+                tooltip="OK"
+                text="OK"
+                type="Emphasized"
+                press="onAddKey"
+            />
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

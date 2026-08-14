@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified">
+    <Dialog title="Update Unique Description" contentWidth="450px" titleAlignment="Center">
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="SimpleFormToolbarUC" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="4" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                <f:content>
+                    <Label text="{i18n>unqid}"/>
+                    <Input id="uniqIdUC" value="{oGModel>/SelectedId}" editable="false" width="100%"/>
+                    <Label text="{i18n>unidesc}"/>
+                    <TextArea id="idUniqDescUC" value="{oGModel>/SelectedDesc}" width="100%" maxLength="50"/>
+                     <Label text="{i18n>inden}" required="true"/>
+                    <TextArea id="idUniqIdenUC" value="{oGModel>/SelectedIden}" width="100%" maxLength="50"/>
+                    <Label text="Valid From/To" visible="false"/>
+                    <DateRangeSelection id="DPEditUC" placeholder="dd-MM-yyy" change="dateChange" visible="false" displayFormat="yyyy-MM-dd" />
+                    <!-- <Label text="{i18n>uniRate}"/>
+                    <Input id="idUniqRate" value="{oGModel>/SelectedURate}" width="100%"/> -->
+                </f:content>
+            </f:SimpleForm>
+        </VBox>
+        <buttons>
+            <Button type='Ghost' text="{i18n>save}" press="onUpdateUniqueDesc"></Button>
+            <Button type='Reject' text="{i18n>close}" press="onCloseDesc"></Button>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

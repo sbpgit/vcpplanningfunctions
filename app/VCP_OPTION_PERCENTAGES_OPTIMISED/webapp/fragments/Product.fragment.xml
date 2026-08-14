@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog id="idprodDialogOPMIXP" resizable="true" selectionChange="handleSelectionChange" titleAlignment="Center" liveChange=".onAllSearch" noDataText="No Products Found" multiSelect="false" rememberSelections="true" title="Products" search=".onSearch" growingThreshold="30" updateStarted=".onUpdateStarted" items="{
+			path: '/items'
+		}" confirm="onConfirmSelection">
+        <StandardListItem title="{PRODUCT_ID}" description="{PROD_DESC}" iconDensityAware="false" iconInset="false" type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

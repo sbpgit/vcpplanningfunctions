@@ -1,0 +1,52 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog id="_IDGenDialog1UC" title="Manage Views" contentWidth="850px" titleAlignment="Center">
+        <Toolbar id="IDGenToolbar1UC">
+            <SearchField id="_IDGenSearchField1UC" width="100%" liveChange="handleSearch" placeholder="View Name/User" />
+        </Toolbar>
+        <Table id="varNameListUC" items="{path: '/items1'}" >
+            <columns>
+                <Column id="_IDGenColumn1UC">
+                    <Text id="_IDGenText1UC" text="View" />
+                </Column>
+                <!-- <Column id="_IDGenColumn2">
+                    <Text id="_IDGenText2" text="Public/Private" />
+                </Column> -->
+                <Column id="_IDGenColumn3UC">
+                    <Text id="_IDGenText3UC" text="Default" />
+                </Column>
+                <!-- <Column id="_IDGenColumn4">
+                    <Text id="_IDGenText4" text="Default" />
+                </Column> -->
+                
+                <Column id="_IDGenColumn6UC" width="300px">
+                    <Text id="_IDGenText6UC" text="Created By" />
+                </Column>
+                <Column id="_IDGenColumn5UC" visible="false">
+                    <Text id="_IDGenText5UC" text="Variant ID" />
+                </Column>
+                <Column id="_IDGenColumn7UC" visible="true" hAlign="End">
+                    <Text id="_IDGenText7UC" text="" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem >
+                    <cells>
+                        <!-- <ObjectIdentifier title="{VARIANTNAME}" text="{APPLICATION_NAME}"  titleActive="true" titlePress="onTitlePress"/> -->
+                        <!-- <Text id="_IDGenText9" text="{VARIANTID}" /> -->
+                        <Text  text="{VARIANTNAME}" />
+                        <!-- <Text id="_IDGenText11" text="{SCOPE}" /> -->
+                        <RadioButton  selected="{= ${DEFAULT} === 'Y'}" />
+                        <Text  text="{USER}" />
+                        <Text  text="{VARIANTID}" />
+                        <Button  icon="sap-icon://decline" visible="{=${VARIANTNAME}!=='Standard'}" press="onViewDelete" />
+                        <!-- <Text id="_IDGenText14" text="{FIELD_CENTER}" /> -->
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <buttons>
+            <Button id="_IDGenButtUC" type='Emphasized' text="Save" press="onManage" />
+            <Button id="IDGenButton2UC"  text="Close" press="handleManageClose" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

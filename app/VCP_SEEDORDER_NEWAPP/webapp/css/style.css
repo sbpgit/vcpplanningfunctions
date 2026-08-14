@@ -1,0 +1,108 @@
+Enter your custom styles here
+.idVBox{
+    margin-left:0em !important;
+}
+
+.sapUiSizeCompact .sapUxAPObjectPageSectionHeader, .sapUxAPObjectPageSectionHeader {
+    height: 0rem !important;
+    line-height: 0rem !important;
+}
+
+.sapUxAPObjectPageContainerNoBar>.sapUxAPObjectPageSection:first-child:not(.sapUxAPObjectPageSectionNoTitle) {
+    margin-top: 0rem !important;
+}
+
+.sapUxAPObjectPageSubSection {
+    padding: 0 !important;
+    padding-top: 0 !important;
+}
+
+.sapUxAPObjectPageSection .sapUxAPObjectPageSectionContainer .sapUxAPObjectPageSubSection .sapUxAPBlockContainer {
+    padding-bottom: 0;
+    padding-top: 0rem !important;
+    padding-left: 0;
+    padding-right: 0;
+    background: #fff;
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+    border-radius: .75rem;
+}
+
+.sapMWizard .sapMWizardStepContainer {
+    margin-top: 3rem !important;
+}
+
+.sapMWizard .sapMWizardStepContainer {
+    position: relative;
+    height: calc(100% - 4rem);
+    box-sizing: border-box;
+    padding: 0 !important;
+}
+
+.idVBox1{
+    margin-left:2em !important;
+}
+
+.sapMWizardFinishButtonText {
+    visibility: hidden;
+}
+
+/* span.sapMBtnInner.sapMBtnEmphasized {
+    visibility: hidden !important;
+} */
+
+.boldText{
+    margin-left:450px;
+}
+
+button#container-vcp\.vcpseedordercreationnew---Home--FileUploaderSON-fu_button {margin-left: 14px;}
+
+.newclass{
+    margin-bottom: -0.6rem !important;
+    margin-right: 0.2rem !important;
+}
+
+.inputClass{
+    font-size: 16px;
+    color: black;
+    margin-top: 0.4rem !important;
+    margin-right: 0.2rem !important;
+    font-weight: bold;
+}
+
+.buttonClass{
+    padding-left:20px !important;
+}
+
+/* .buttonClass1{
+    padding-left:130px !important;
+} */
+
+
+
+.disabledInput input.sapMInputBaseInner {
+    pointer-events: none;
+}
+
+[data-style-class=white] {
+    background-color: white !important
+   }
+
+
+.whiteClass{
+    background-color: white !important
+   } 
+.panelsettings{
+    margin-top: -10px !important;
+}
+
+tr[data-mydata="0"]{	
+    background:   rgb(241, 239, 239)!important;
+  }
+/* div#__panel0-content {
+    margin-top: -10px;
+}
+
+div#__panel1-content {
+    margin-top: -10px;
+} */

@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog id="locDialog" resizable="true" selectionChange="handleSelectionChange" titleAlignment="Center" liveChange=".onSearch" noDataText="No Locations Found" multiSelect="true" rememberSelections="true" title="Select Location" search=".onSearch" growingThreshold="30" updateStarted=".onUpdateStarted" items="{
+			path: '/items'
+		}" confirm="onConfirmSelection">
+        <StandardListItem title="{LOCATION_DESC}" description="{LOCATION_ID}" iconDensityAware="false" iconInset="false" type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

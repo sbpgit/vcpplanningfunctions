@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:macros="sap.fe.macros"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+>
+ <SelectDialog
+        id="prodPID"
+        title="Partial Products"
+        items="{/ProdModel}"
+        selectionChange="RequireProduct"
+        liveChange="handleSearch"
+        confirm="onProdSelect"
+        cancel="onProdSelect"
+    >
+        <StandardListItem
+            title="{PRODUCT_ID}"
+            description="{PROD_DESC}"
+        />
+    </SelectDialog>
+
+</core:FragmentDefinition>

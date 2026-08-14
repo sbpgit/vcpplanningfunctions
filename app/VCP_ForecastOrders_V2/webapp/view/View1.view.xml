@@ -1,0 +1,145 @@
+<mvc:View controllerName="vcpapp.vcpforecastingordersbeta.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core" displayBlock="true"
+    xmlns:m="sap.m"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table"
+    xmlns:ux="sap.uxap"
+    xmlns:l="sap.ui.layout"
+    xmlns:tnt="sap.tnt"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <Page id="_IDGenUPage1" title="{i18n>title}" showHeader="true" showFooter="true" enableScrolling="false" showNavButton="true" navButtonPress="onNavBackToHome">
+
+        <content>
+            <ux:ObjectPageLayout id="idObjectPageLayoutU" headerContentPinned="true" toggleAnchorBar="onChangeHeaderPinStatusU" showTitleInHeaderContent="true" showEditHeaderButton="true" preserveHeaderStateOnScroll="true">
+                <ux:headerTitle>
+                    <ux:ObjectPageDynamicHeaderTitle id="_IDGenUObjectPageDynamicHeaderTitle1" visible="false">
+                        <!-- <ux:expandedHeading>                            
+                            <Title id="_IDGenUTitle1" text="{i18n>title}" class="boldText" titleAlignment="Center" />
+                        </ux:expandedHeading> 
+
+                         <ux:snappedHeading>                           
+                            <Title id="_IDGenUTitle2" text="{i18n>title}" titleAlignment="Center" />
+                        </ux:snappedHeading> -->
+                    </ux:ObjectPageDynamicHeaderTitle>
+                </ux:headerTitle>
+                <ux:headerContent>
+                    <FlexBox id="_IDGenUFlexBox2" wrap="Wrap" fitContainer="true" width="100%">
+                        <l:Grid id="_IDGenUGrid1" defaultSpan="XL2 L2 M4 S12" width="100%">
+                            <!-- <VBox id="_IDGenUVBox1">
+                                <Label id="_IDGenULabel1" text="" />
+                                <SearchField id="idSearchU" liveChange="onSearchUniqueChar" placeholder="Characteristic" />
+                            </VBox> -->
+                            <VBox id="_IDGenUVBox2">
+                                <Label id="_IDGenULabel2" text="Location" required="true" />
+                                <Input id="idlocU" value="" placeholder="Location" enabled="false" />
+                            </VBox>
+                            <VBox id="_IDGenUVBox3">
+                                <Label id="_IDGenULabel3" text="Product" required="true" />
+                                <Input id="idprodListU" placeholder="Product" enabled="false" />
+                            </VBox>
+                            <VBox id="_IDGenUVBox4">
+                                <Label id="_IDGenULabel4" text="Unique Id" required="true" />
+                                <Input id="idUniqueId" placeholder="Unique Id" enabled="false" />
+                            </VBox>
+                            <VBox id="_IDGenUVBox12">
+                                <Label id="_IDGenULabel12" text="External Id" required="true" />
+                                <Input id="idExtId" placeholder="External Id" enabled="false" />
+                            </VBox>
+
+                            <VBox id="_IDGenUVBox8" width="400px">
+                                <Label id="_IDGenULabel8" text="Description" required="true" />
+                                <HBox >
+                                    <Input id="idUniqueIdDesc" width="400px" placeholder="max length- 50 characters" maxLength="50"/>
+                                    <Button icon="sap-icon://save" press="onPressUniqueDescEdit" tooltip="Update Unique Description"/>
+                                </HBox>
+
+                            </VBox>
+
+                            <!-- <VBox id="_IDGenUVBox7">
+                                <Label id="_IDGenULabel7" text="Week Date" required="true" />
+                                <Select id="_IDWeekDtSel" forceSelection="false" change="onChangeWeekDate" items="{
+                                    path: '/weeks'
+                                }">
+                                    <core:Item key="{WEEK_DATE}" text="{WEEK_INDEX}" />
+                                </Select>
+                            </VBox> -->
+                        </l:Grid>
+                    </FlexBox>
+
+                    <FlexBox id="_IDGenUFlexBox3" wrap="Wrap" fitContainer="true">
+                        <l:Grid id="_IDGenUGrid2" defaultSpan="XL3 L3 M6 S12" width="100%">
+                            <VBox id="_IDGenUVBox7">
+                                <Label id="_IDGenULabel7" text="Week Date" required="true" />
+                                <Select id="_IDWeekDtSel" width="500px" forceSelection="false" change="onChangeWeekDate" items="{
+						            path: '/weeks'
+					            }">
+                                    <core:Item key="{WEEK_DATE}" text="{WEEK_INDEX}" />
+                                </Select>
+                            </VBox>
+                            <VBox id="_IDGenUVBox5">
+                                <Label id="_IDGenULabel5" text="Filter Type (Equals)" required="true" />
+                                <MultiComboBox id="idUniqueCharDetailsEQ" showSelectAll="true" showSecondaryValues="true" 
+                                            width = "600px"
+                                            selectionChange = "onCharEQSelectionChange" items="{
+                                            path: '/charDetails',
+                                            sorter: { path: 'CHAR_NAME' }
+                                                    }">
+                                    <core:ListItem key="{CHAR_NUM}:{CHARVAL_NUM}" text="{CHAR_DESC} - {CHAR_NAME}" additionalText="{CHARVAL_DESC} - {CHAR_VALUE}" />
+                                </MultiComboBox>
+                            </VBox>
+                            <VBox id="_IDGenUVBox6">
+                                <Label id="_IDGenULabel6" text="Filter Type (Not Equals)" required="true" />
+                                <MultiComboBox id="idUniqueCharDetailsNEQ" showSelectAll="true" showSecondaryValues="true" 
+                                          selectionChange = "onCharNEQSelectionChange"
+                                          width = "600px" items="{
+                                            path: '/charDetails',
+                                            sorter: { path: 'CHAR_NAME' }
+                                                    }">
+                                    <core:ListItem key="{CHAR_NUM}:{CHARVAL_NUM}" text="{CHAR_DESC} - {CHAR_NAME}" additionalText="{CHARVAL_DESC} - {CHAR_VALUE}" />
+                                </MultiComboBox>
+                            </VBox>
+
+                            <!-- </l:Grid>
+                            </FlexBox>
+                            <FlexBox id="_IDGenUFlexBox4" wrap="Wrap" fitContainer="true">
+                            <l:Grid id="_IDGenUGrid3" defaultSpan="XL3 L3 M6 S12" width="100%" class="sapUiRespGridOverflowHidden"> -->
+                            <VBox>
+                                <Label text="" />
+                                <HBox id="_IDGenUHBox1">
+                                    <Button id="_IDGenUButton1" text="Go" type="Emphasized" press="onFilterData" tooltip="Get data based on filters" />
+                                    <Button id="_IDGenUButton2" text="Reset" type="Transparent" press="onResetFilters" tooltip="Reset filters and Data" />
+                                </HBox>
+                            </VBox>
+                        </l:Grid>
+                    </FlexBox>
+                </ux:headerContent>
+                <ux:sections>
+                    <ux:ObjectPageSection id="_IDGenUObjectPageSection1" class="sapUiNoMargin" showTitle="false">
+                        <ux:subSections>
+                            <ux:ObjectPageSubSection id="_IDGenUObjectPageSubSection1" mode="Expanded" class="sapUiNoMargin">
+                                <ux:blocks>
+                                    <VBox id="_IDGenUVBox9" class="sapUiNoMargin">
+                                        <Toolbar>
+                                            <tnt:InfoLabel id="idInfoLabel1" text=" Unique ID Description (Matched Characteristics) - (Weekly Quantity)" colorScheme="6" icon="sap-icon://information"/>
+                                            <ToolbarSpacer />
+                                            <RadioButtonGroup id="idRBGChars" columns="3" valueState="Information" select="onSelectRBCharFilter">
+                                                <RadioButton id="idAllChars" text="All" selected="true" />
+                                                <RadioButton id="idMatchd" text="Matched" />
+                                                <RadioButton id="idUnMatchd" text="UnMatched" />
+                                            </RadioButtonGroup>
+                                        </Toolbar>
+                                        <t:Table id="idUniqueIdChars" class="table" fixedColumnCount="2" selectionMode="None" alternateRowColors="true" enableSelectAll="false" >
+                                            <t:columns />
+                                        </t:Table>
+                                    </VBox>
+                                </ux:blocks>
+                            </ux:ObjectPageSubSection>
+                        </ux:subSections>
+                    </ux:ObjectPageSection>
+                </ux:sections>
+            </ux:ObjectPageLayout>
+        </content>
+    </Page>
+</mvc:View>

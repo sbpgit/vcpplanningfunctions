@@ -1,0 +1,61 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog id="CharacteristicsDialog"
+            title="Characteristics"
+            draggable="true"
+            resizable="true"
+            contentWidth="60%"
+            contentHeight="70%"
+            afterClose=".onDialogClose">
+        <VBox width="100%">
+            <SearchField id="idUCSchar" width="100%" liveChange=".onCharSearch" placeholder="Search" />
+
+            <Table id="idCharTable"
+                   inset="false"
+                   
+                   items="{path: '/getUniqueItem',sorter: {
+               path: 'CHAR_NAME',
+               descending: false
+           }}"
+                   growing="true"
+                   growingThreshold="900"
+                   growingScrollToLoad="true"
+                   mode="MultiSelect"
+                   selectionChange="onSelectCharFrag12"
+                
+                >
+                 <!-- <headerToolbar>
+                <Toolbar>
+                  
+                    <HBox >
+                    <CheckBox text="Select All" select="onSelectAll" id="idChkFragChar" ></CheckBox>
+                   
+                    </HBox>
+                    <ToolbarSpacer/>
+                            
+                </Toolbar>
+            </headerToolbar> -->
+                 
+                <columns>
+                    <Column width="50%"><Text text="Characteristic"  visible="true" /></Column>
+                    <Column width="50%"><Text text="value" visible="true" /></Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier
+                                title="{CHAR_NAME}"
+                                text="{CHAR_DESC}" />
+                            <ObjectIdentifier
+                                title="{CHAR_VALUE}"
+                                text="{CHARVAL_NUM}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+        <buttons>
+            <Button text="Select" press=".onSelectCharacteristic" type="Emphasized" />
+            <Button text="Close" press=".onDialogClose" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

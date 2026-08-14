@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="charValListUC" title="{i18n>charval}" search="handleCharSearch" liveChange="handleCharSearch" rememberSelections="false"
+		confirm="handleCharSelection" cancel="handleCharClose" items="{/results}">
+		<StandardListItem title="{CHAR_VALUE}" description="{CHARVAL_NUM}" type="Active"/>
+	</SelectDialog>
+</core:FragmentDefinition>

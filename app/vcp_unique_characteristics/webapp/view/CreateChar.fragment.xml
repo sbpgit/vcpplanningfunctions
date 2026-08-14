@@ -1,0 +1,118 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified">
+    <Dialog title="Create Unique Characteristics" contentWidth="750px" titleAlignment="Center">
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm
+                id="SimpleFormToolbar1UC"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="4"
+                labelSpanL="4"
+                labelSpanM="4"
+                labelSpanS="4"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="0"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                <f:content>
+                    <Label text="{i18n>locid}" visible="false"/>
+                    <Input id="locId1UC" value="" editable="false" width="100%" enabled="false" visible="false"/>
+
+                    <Label text="{i18n>prodid}" />
+                    <Input id="prodId1UC" value="" editable="false" width="100%" enabled="false" />
+
+                    <Label text="{i18n>UidTid}" />
+                    <Input id="idComboBox1UC" value="Unique" editable="false" width="100%" enabled="false" type="Text" />
+
+                    <Label text="{i18n>activid}" />
+                    <Input id="idComboBoxUC" value="True" editable="false" width="100%" enabled="false" type="Text" />
+
+                    <Label text="{i18n>unidesc}" />
+                     <TextArea id="idUniqDesc1UC" value="" maxLength="50" placeholder="maximum length - 50 characters" />
+
+                    <Label text="{i18n>UidRid}" />
+                    <Input id="uidRId1UC" value="" editable="false" width="100%" type="Number" visible="false" />
+
+                    <Label text="{i18n>unqid}" />
+                    <Input id="uniqId1UC" value="" editable="false" width="100%" visible="false" />
+                     <Label text="{i18n>inden}" />
+                    <Input id="IDindenUC" value="" required="true" editable="true" width="100%" visible="true" maxLength="40" />
+                    	
+                     <Label id="_IDGenLabel5UC" text="Valid From/To" visible="false"/>	
+                               <DateRangeSelection id="DRS1UC" value="{}" visible="false" placeholder="YYYY/MM/dd - YYYY/MM/dd" change="dateChange" displayFormat="" />
+                </f:content>
+            </f:SimpleForm>
+        </VBox>
+        <!-- <Button id="idadd1UC" icon="sap-icon://add" press="onAddChar" /> -->
+        <Toolbar height="5%">
+            <ToolbarSpacer />
+            <Button id="idadd1UC" icon="sap-icon://add" press="onAddChar" />
+        </Toolbar>
+
+        <Table id="idCharItemUC" items="{path: '/results'}">
+            <columns>
+            <Column hAlign="Left" width="120px">
+                    <Text text="Class Name" />
+                </Column>
+                <Column hAlign="Left" width="120px">
+                    <Text text="{i18n>charname}" />
+                </Column>
+                 <Column hAlign="Left" width="120px">
+                    <Text text="{i18n>chardesc}" />
+                </Column>
+                <Column hAlign="Left" visible="false">
+                    <Text text="{i18n>charno}" />
+                </Column>
+              
+                 <Column hAlign="Left" width="120px">
+                    <Text text="{i18n>charval}" />
+                </Column>
+                  <Column hAlign="Left" width="120px">
+                    <Text text="{i18n>charvaldesc}" />
+                </Column>
+                <Column hAlign="Left" visible="false">
+                    <Text text="{i18n>charvalno}" />
+                </Column>
+                 
+                 <Column hAlign="Left" visible="false">
+                    <Text text="MULTI_CHAR" />
+                </Column>
+                <Column hAlign="Left" visible="false">
+                    <Text text="REF_CHAR_NAME" />
+                </Column>
+                 <Column hAlign="Left" visible="true">
+                    <Text text="Char Type" />
+                </Column>
+                <Column hAlign="Right" >
+                    <Text text="" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                    <Text text="{CLASS_NAME}" />
+                        <Text text="{CHAR_NAME}" />
+                         <Text text="{CHAR_DESC}" />
+                        <Text text="{CHAR_NUM}" />
+                        <Text text="{CHAR_VALUE}" />
+                          <Text text="{CHARVAL_DESC}" />
+                        <Text text="{CHARVAL_NUM}" />
+                        <Text text="{MULTI_CHAR}" />
+                        <Text text="{REF_CHAR_NAME}" />
+                        <Text text="{CHAR_TYPE}" />
+                        <Button icon="sap-icon://decline" press="onTabDel" type="Transparent" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <buttons>
+            <Button type='Ghost' text="{i18n>save}" press="onCreateUniq" />
+            <Button type='Reject' text="{i18n>close}" press="onCloseCreate" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

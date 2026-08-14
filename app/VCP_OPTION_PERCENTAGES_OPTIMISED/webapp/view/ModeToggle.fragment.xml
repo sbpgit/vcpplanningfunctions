@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <VBox class="sapUiTinyMarginTop sapUiTinyMarginBottom">
+        <Title text="Planning Mode" level="H5" class="sapUiTinyMarginBottom"/>
+        <SegmentedButton
+            id="modeToggle"
+            selectedKey="{state>/planMode}"
+            selectionChange=".onModeChange"
+            width="100%">
+            <items>
+                <SegmentedButtonItem
+                    key="DETERMINISTIC"
+                    text="🎯 Deterministic"
+                    width="50%"/>
+                <SegmentedButtonItem
+                    key="PROBABILISTIC"
+                    text="📊 Probabilistic"
+                    width="50%"/>
+            </items>
+        </SegmentedButton>
+    </VBox>
+
+</core:FragmentDefinition>

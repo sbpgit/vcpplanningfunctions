@@ -1,0 +1,75 @@
+<mvc:View xmlns:table="sap.ui.table"
+    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+    xmlns:smartvariants="sap.ui.comp.smartvariants"
+    xmlns:custom="vcpapp.vcpmaterialrequirements.controls"
+    xmlns:f="sap.f" controllerName="vcpapp.vcpmaterialrequirements.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <f:DynamicPage id="idDynamicPageAR">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <VariantManagement xmlns="sap.m" id="idMatList123AR" select="handleSelectPress" save="onCreate" manage="onManage" supportFavorites="false" showFooter="true" popoverTitle="My Views" items="{path: '/items12'}" creationAllowed="true" supportPublic="true" supportApplyAutomatically="false" manageCancel="onManageCancel" cancel="onNameCancel" visible="true">
+                        <items>
+                            <VariantItem key="{VARIANTID}" title="{VARIANTNAME}" author="{USER}" visible="true" remove="{path:'REMOVE', formatter:'.formatter.formatRemove'}" sharing="{SCOPE}" changeable="{path:'CHANGE', formatter:'.formatter.formatChange'}" rename="false" enabled="{path:'ENABLE', formatter:'.formatter.formatEnable'}"/>
+                        </items>
+                    </VariantManagement>
+                </f:heading>
+                <f:actions>
+						<Button class="classHdr" icon="sap-icon://sys-help" id="idNavAR" press="onNavPress" type="Emphasized" tooltip="Help Document"/>
+					</f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader>
+                <smartfilterbar:SmartFilterBar id="smartFilterBarAR" entitySet="getAssemblyCompQty" search="onGo" clear="onClear" showClearOnFB="true" initialized="onFilterBarInit" useToolbar="false" liveMode="false" filterChange="onFilterChange">
+                    <smartfilterbar:controlConfiguration>
+                        <smartfilterbar:ControlConfiguration key="LOCATION_ID" mandatory="mandatory" label="Manufacturing Location" />
+                        <smartfilterbar:ControlConfiguration key="REF_PRODID"  label="Config Product" mandatory="mandatory" />
+                        <smartfilterbar:ControlConfiguration key="ASSEMBLY" label="Assembly"/>
+                        <smartfilterbar:ControlConfiguration key="UNIQUE_ID" label="Unique ID"/>
+                        <smartfilterbar:ControlConfiguration key="VERSION_NAME" label="Version" mandatory="mandatory" filterType="single">
+                            <smartfilterbar:defaultFilterValues>
+                                <smartfilterbar:SelectOption low="Base Version" operator="EQ"/>
+                            </smartfilterbar:defaultFilterValues>
+                        </smartfilterbar:ControlConfiguration>
+                        <smartfilterbar:ControlConfiguration key="SCENARIO_NAME" label="Scenario" mandatory="mandatory" filterType="single">
+                            <smartfilterbar:defaultFilterValues>
+                                <smartfilterbar:SelectOption low="_PLAN" operator="EQ" />
+                            </smartfilterbar:defaultFilterValues>
+                        </smartfilterbar:ControlConfiguration>
+                        <smartfilterbar:ControlConfiguration key="WEEK_STARTDATE" label="Week Date">
+                            <smartfilterbar:customControl>
+                                <DateRangeSelection id="idDaterangeAR"/>
+                            </smartfilterbar:customControl>
+                        </smartfilterbar:ControlConfiguration>
+                        <smartfilterbar:ControlConfiguration key="MRP_GROUP" label="MRP Group" />
+                        <smartfilterbar:ControlConfiguration key="MRP_TYPE" label="MRP Type" />
+                    </smartfilterbar:controlConfiguration>
+                </smartfilterbar:SmartFilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <VBox id="pivotPageAR" busyIndicatorDelay="0">
+                <OverflowToolbar height="8%" visible="{= ${oGModel>/OverFlow} }">
+                    <SegmentedButton id="idTypeSegmentAR" width="20%" selectedKey="Assembly" selectionChange="onChangeType">
+                        <items>
+                            <SegmentedButtonItem text="Assembly" key="Assembly" />
+                            <SegmentedButtonItem text="Component" key="Component" />
+                        </items>
+                    </SegmentedButton>
+                    <ToolbarSpacer />
+                    <ToggleButton  id ="idToggleAR" visible="{= ${oGModel>/showPivot} }" text="Telescopic View" width="200px" pressed="true" press="onTogglePress" />
+                    <Button text="Key Figure" visible="{= ${oGModel>/TypeAssemb} }" icon="sap-icon://list" press="onPressKey"/>
+                    <Button text="Columns" visible="{= ${oGModel>/showPivot} }" icon="sap-icon://table-column" iconFirst="true" press="onSelectColumnsSetting"/>
+                    <Button icon="sap-icon://bar-chart" iconFirst="true" visible="{= ${oGModel>/showPivot} }" press="onSelectChart"/>
+                    <Button icon="sap-icon://excel-attachment" visible="{= ${oGModel>/showPivot} }" press="onExportPivot"/>
+                </OverflowToolbar>
+                <table:Table visible="{= !${oGModel>/showPivot} }" width="100%"/>
+                <html:div id="mainDivAR" class = "mainDivClass"/>
+                <custom:Unique_Config id="uniqueButtonControl" />
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

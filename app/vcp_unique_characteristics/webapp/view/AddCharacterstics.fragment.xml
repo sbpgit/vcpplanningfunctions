@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified">
+    <Dialog id="idRestItem2UC" title="Create Characteristic Description" contentWidth="550px" titleAlignment="Center">
+           
+                
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="SimpleFormToolbaritem2UC" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="4" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                <f:content>
+
+                    <!-- <Label text="Class Name"/>
+                    <Input id="idClassname2UC" value=""  placeholder="Class Name" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleCharValueHelp"/>
+                    <Label text="Characteristic Name"/>
+                    <Input id="idCharname2UC" value=""  placeholder="Characteristic Name" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleCharValueHelp"/>
+                    <Label text="Characteristic Value"/>
+                    <Input id="idCharval2UC" value=""  placeholder="Characteristic Value" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleCharValueHelp"/> -->
+                    <Label text="Class Name"/>
+                    <Input id="idClassname2UC" value="" width="225px"  placeholder="Class Name" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleCharValueHelp"/>
+                    <Label text="Characteristic Name"/>
+                    <Input id="idCharname2UC" value="" width="225px" placeholder="Characteristic Name" editable="false"/>
+                    
+                    <Label text="Characteristic Value"/>
+                    <Input id="idCharval2UC" value="" width="225px" placeholder="Characteristic Value" editable="false"/>
+                    <Label />
+                    <Input id="idCharno2UC" value="" visible="false"/>
+                    <Input id="idCharvalno2UC" value="" visible="false"/>
+
+                                  
+                    
+
+                </f:content>
+            </f:SimpleForm>
+
+        </VBox>
+     
+        <buttons>
+            
+            <Button id="idAddUC" text="Add" press="onAdd" type="Emphasized"/>
+            <Button type='Reject' text="{i18n>close}" press="onCloseRestItem"></Button>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

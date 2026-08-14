@@ -1,0 +1,37 @@
+<core:FragmentDefinition
+    xmlns:p13n="sap.m.p13n"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <p13n:Popup
+        xmlns:p13n="sap.m.p13n"
+        id="KeyFigPopup"
+        title="{i18n>personalizationTitle}"
+        mode="Dialog"
+        close="onCloseKeyFig"
+        class="settingsDialog"
+    >
+        <p13n:panels>
+            <p13n:SelectionPanel
+                id="idNorKeyFigure"
+                title="Normal"
+                change="onNorSelect"
+                enableCount="false"
+                showHeader="false"
+                objectBindings="{/items}"
+                multiSelectMode="SelectAll"
+            />
+
+            <p13n:SelectionPanel
+                id="idCalKeyFigure"
+                title="Calculated"
+                change="onCalSelect"
+                enableCount="false"
+                showHeader="false"
+                objectBindings="{/items}"
+                multiSelectMode="SelectAll"
+            />
+        </p13n:panels>
+    </p13n:Popup>
+</core:FragmentDefinition>

@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog id="clsDialogOPMIXP" resizable="true" titleAlignment="Center" liveChange=".onSearch" noDataText="No Classes Found" multiSelect="true" rememberSelections="true" title="Select Class" search=".onSearch" growingThreshold="30" updateStarted=".onUpdateStarted" items="{
+			path: '/items'
+		}" confirm="onConfirmSelection">
+        <StandardListItem title="{CLASS_DESC}" description="{CLASS_NUM}" iconDensityAware="false" iconInset="false" type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

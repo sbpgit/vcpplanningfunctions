@@ -1,0 +1,472 @@
+<mvc:View
+    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+    xmlns:core="sap.ui.core"
+    xmlns:variants="sap.ui.fl.variants"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:filterbar="sap.ui.comp.filterbar"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:table="sap.ui.table"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:smartvariants="sap.ui.comp.smartvariants"
+    xmlns:l="sap.ui.layout"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    controllerName="vcp.vcpoptionpercentagesoptimised.controller.Home"
+>
+    <Page
+        title="{i18n>title}"
+        titleAlignment="Center"
+        showHeader="false"
+    >
+        <content>
+            <l:Splitter
+                height="100%"
+                resize="onSplitResize"
+            >
+                <f:DynamicPage
+                    id="idDynamicPage"
+                    headerExpanded="{/headerExpanded}"
+                    toggleHeaderOnTitleClick="{/titleClickable}"
+                >
+                    <f:layoutData>
+                        <l:SplitterLayoutData
+                            id="idMasterPage"
+                            size="25%"
+                            resizable="false"
+                        />
+                    </f:layoutData>
+                    <f:title>
+                        <f:DynamicPageTitle>
+                            <f:heading>
+                                <VariantManagement
+                                    xmlns="sap.m"
+                                    id="idMatList123OPR"
+                                    select="handleSelectPress"
+                                    save="onCreate"
+                                    manage="onManage"
+                                    supportFavorites="false"
+                                    showFooter="true"
+                                    popoverTitle="My Views"
+                                    items="{path: '/items12'}"
+                                    creationAllowed="true"
+                                    supportPublic="true"
+                                    supportApplyAutomatically="false"
+                                    manageCancel="onManageCancel"
+                                    cancel="onNameCancel"
+                                    visible="true"
+                                >
+                                    <items>
+                                        <VariantItem
+                                           key="{VARIANTID}" text="{VARIANTNAME}" author="{USER}" visible="true" remove="{path:'REMOVE', formatter:'.formatter.formatRemove'}" sharing="{path:'SCOPE', formatter:'.formatter.formatScope'}" 
+                                           changeable="{path:'CHANGE', formatter:'.formatter.formatChange'}" 
+                                           rename="false" enabled="{path:'ENABLE', formatter:'.formatter.formatEnable'}"
+                                        />
+                                    </items>
+                                </VariantManagement>
+                            </f:heading>
+                            <f:actions>
+                                <Button
+                                    class="classHdr"
+                                    icon="sap-icon://sys-help"
+                                    id="idNav3PRD"
+                                    press="onNavPress"
+                                    type="Emphasized"
+                                    tooltip="Help Document"
+                                />
+                            </f:actions>
+                        </f:DynamicPageTitle>
+                    </f:title>
+                    <f:header>
+                        <f:DynamicPageHeader
+                            pinnable="true"
+                            xmlns:l="sap.ui.layout"
+                        >
+                            <VBox width="100%">
+                                <l:Grid
+                                    defaultSpan="XL6 L12 M12 S12"
+                                    hSpacing="1"
+                                    vSpacing="0.5"
+                                    width="100%"
+                                >
+                                    <!-- COLUMN ITEMS -->
+                                    <VBox>
+                                        <Label text="Demand Location:" required="true" />
+                                        <MultiInput
+                                            id="idLocOPMIXP"
+                                            showValueHelp="true"
+                                            valueHelpOnly="true"
+                                            valueHelpRequest="oHandleValuehelp"
+                                        />
+                                    </VBox>
+
+                                    <VBox>
+                                        <Label
+                                            text="Products:"
+                                            required="true"
+                                        />
+                                        <Input
+                                            id="idProdOPMIXP"
+                                            showValueHelp="true"
+                                            valueHelpOnly="true"
+                                            valueHelpRequest="oHandleValuehelp"
+                                        />
+                                    </VBox>
+
+                                    <VBox>
+                                        <Label text="Customer Group:" />
+                                        <MultiInput
+                                            id="idCustOPMIXP"
+                                            showValueHelp="true"
+                                            valueHelpOnly="true"
+                                            valueHelpRequest="oHandleValuehelp"
+                                        />
+                                    </VBox>
+
+                                    <VBox>
+                                        <Label text="Characteristic:" />
+                                        <MultiInput
+                                            id="idCharOPMIXP"
+                                            showValueHelp="true"
+                                            valueHelpOnly="true"
+                                            valueHelpRequest="oHandleValuehelp"
+                                        />
+                                    </VBox>
+
+                                    <VBox>
+                                        <Label text="Characteristic Value:" />
+                                        <MultiInput
+                                            id="idCharValuOPMIXP"
+                                            showValueHelp="true"
+                                            valueHelpOnly="true"
+                                            valueHelpRequest="oHandleValuehelp"
+                                        />
+                                    </VBox>
+
+                                    <VBox>
+                                        <Label
+                                            text="Version Name:"
+                                            required="true"
+                                        />
+                                        <Input
+                                            id="idVersionOPMIXP"
+                                            showValueHelp="true"
+                                            valueHelpOnly="true"
+                                            valueHelpRequest="oHandleValuehelp"
+                                        />
+                                    </VBox>
+
+                                    <VBox>
+                                        <Label
+                                            text="Scenario Name:"
+                                            required="true"
+                                        />
+                                        <Input
+                                            id="idScenarioOPMIXP"
+                                            showValueHelp="true"
+                                            valueHelpOnly="true"
+                                            valueHelpRequest="oHandleValuehelp"
+                                        />
+                                    </VBox>
+
+                                    <VBox>
+                                        <Label
+                                            text="Model Version:"
+                                            required="true"
+                                        />
+                                        <!-- <Select
+                                            width="200px"
+                                            id="idModelVerOPMIXP"
+                                            items="{/items}"
+                                            selectedKey="{/selectedModelVersion}"
+                                        >
+                                            <core:Item
+                                                key="{MODEL_VERSION}"
+                                                text="{MODEL_VERSION}"
+                                            />
+                                        </Select> -->
+
+                                        <Select
+                                    width="200px"
+                                    id="idModelVerOPMIXP"
+                                    selectedKey="{/selectedModelVersion}"
+                                >
+                                    <core:Item key="Active" text="Active" />
+                                    <core:Item key="Simulation" text="Simulation" />
+                                </Select>
+
+                                    </VBox>
+
+                                    <!-- <VBox>
+                                        <Label text="Valid Between:*" />
+                                        <DateRangeSelection    width="400px"
+                                            id="idWeekDateOPMIXP"
+                                            delimiter="-"
+                                            displayFormat="yyyy-MM-dd"
+                                            valueFormat="yyyy-MM-dd"
+                                        />
+                                    </VBox> -->
+                                </l:Grid>
+
+                                <l:Grid
+                                    defaultSpan="XL12 L12 M12 S12"
+                                    hSpacing="1"
+                                    vSpacing="0.5"
+                                >
+                                    <VBox>
+                                        <Label text="Valid Between:*" />
+                                        <DateRangeSelection
+                                            id="idWeekDateOPMIXP"
+                                            width="100%"
+                                            delimiter="-"
+                                            displayFormat="yyyy-MM-dd"
+                                            valueFormat="yyyy-MM-dd"
+                                        />
+                                    </VBox>
+                                </l:Grid>
+
+                                <!-- Buttons Right Aligned -->
+                                <HBox
+                                    width="100%"
+                                    justifyContent="End"
+                                    class="buttonBar"
+                                >
+                                    <Button
+                                        text="Go"
+                                        type="Emphasized"
+                                        press="onGo"
+                                    />
+                                    <Button
+                                        text="Clear"
+                                        press="onClear"
+                                        class="btnGap"
+                                    />
+                                </HBox>
+                            </VBox>
+                        </f:DynamicPageHeader>
+                    </f:header>
+                    <f:content>
+                        <Panel>
+                        <Button  icon="sap-icon://tree" id = "Independent" class="sapUiMediumMarginEnd" press="onTreeItemSelect" tooltip="Independent"></Button>
+                         <Button  icon="sap-icon://product" id = "Dependent" class="sapUiMediumMarginEnd" press="onTreeItemSelect" tooltip="Dependent" ></Button>
+                            <Button icon="sap-icon://numbered-text" id = "Numeric" class="sapUiMediumMarginEnd" press="onTreeItemSelect" tooltip="Numeric"></Button>
+                            <Button icon="sap-icon://checklist" id = "MultiSelect" class="sapUiMediumMarginEnd" press="onTreeItemSelect" tooltip="Multi Select" ></Button>
+                            <Button icon="sap-icon://refresh" id = "Refresh" class="sapUiMediumMarginEnd" press="onClearToolBar" tooltip="Refresh"></Button>
+                         
+                            <!-- <HBox> -->
+                            <SearchField
+                                id="idSearchFieldOPMIXP"
+                                width="100%"
+                                liveChange="onSearch"
+                            />
+                            <!-- <Button id="treeExpandCollapse" text="Expand" press="onExpandCollapse" visible="false"></Button> -->
+                            
+                            <!-- </HBox> -->
+                            <Tree
+                                id="idTreeOPMIXP"
+                                selectionChange="onTreeItemSelect"
+                                busy="false"
+                                busyIndicatorDelay="0"
+                                 mode="SingleSelectMaster"
+                                   items="{path: 'treeModel>/items',parameters: {arrayNames: ['products','nodes','children','charvals'],numberOfExpandedLevels: 1}}"
+                            >
+                            
+                                <StandardTreeItem
+                                    title="{treeModel>description}"
+                                    highlightText="{treeModel>description}"
+                                   
+                                />
+                            </Tree>
+                        </Panel>
+                    </f:content>
+                </f:DynamicPage>
+                <Page
+                    id="idDynamicPage2OPMIXP"
+                    showFooter="false"
+                    busyIndicatorDelay="0"
+                >
+                    <headerContent>
+                        <Label text="Periodic Display : " />
+                        <!-- <Select
+                            id="idWeekType"
+                            change="onWeekTypeChange"
+                            enabled="true"
+                        >
+                            <items>
+                                <core:Item
+                                    text="Telescopic View"
+                                    key="TELESCOPIC_WEEK"
+                                />
+                                <core:Item
+                                    text="Calendar View"
+                                    key="CALENDAR_WEEK"
+                                />
+                            </items>
+                        </Select> -->
+                        <!-- <HBox alignItems="Center">
+    <Text id="idWeekLabel" text="Telescopic View" class="sapUiSmallMarginEnd" />
+    <Switch
+        id="idWeekTypeSwitch"
+        state="false"
+        change="onWeekTypeChange"
+    />
+</HBox> -->
+
+                        <SegmentedButton
+                            id="idWeekTypeOPMIXP"
+                            selectionChange="onWeekTypeChange"
+                        >
+                            <items>
+                                <SegmentedButtonItem
+                                    key="TELESCOPIC_WEEK"
+                                    text="Telescopic View"
+                                    pressed="true"
+                                />
+                                <SegmentedButtonItem
+                                    key="CALENDAR_WEEK"
+                                    text="Calendar View"
+                                />
+                            </items>
+                        </SegmentedButton>
+
+                        <ToolbarSpacer />
+
+                        <Label text="Version : " />
+                        <Input
+                            id="idVerInputOPMIXP"
+                            editable="false"
+                            width="10rem"
+                        />
+                        <Label text="Scenario : " />
+                        <Input
+                            id="idScenInputOPMIXP"
+                            editable="false"
+                            width="10rem"
+                        />
+                        <!-- <CheckBox id="idPri" select="selectPriorityChek" text="Show All Characteristics" selected="false" enabled="false"></CheckBox> -->
+                        <Button
+                            id="idColConfigOPMIXP"
+                            tooltip="Customize Columns"
+                            icon="sap-icon://customize"
+                            press="onColSettings"
+                        />
+                        <Button
+                            id="idKeyFigSortOPMIXP"
+                            tooltip="Sort Key Figure"
+                            icon="sap-icon://sort"
+                            press="onOpenKeyFigPopup"
+                        />
+                        <Button
+                        id="idToggleMasterColumns"
+                        icon="sap-icon://collapse-group"
+                        tooltip="Hide / Show Master Columns"
+                        press="onToggleMasterColumns"
+                    />
+                        <!-- <SegmentedButton id="idSegBtn" selectionChange="onSegBtnChange">
+                            <items>
+                                <SegmentedButtonItem id="idOptPer" text="Option %" key="Percent"/>
+                                <SegmentedButtonItem id="idOptQty" text="Option Quantity" key="Quantity"/>
+                            </items>
+                        </SegmentedButton> -->
+                        <Button
+                            id="idFullScreenOPMIXP"
+                            icon="sap-icon://full-screen"
+                            press="handleFullScreen"
+                            tooltip="Enter Full Screen Mode"
+                        />
+                    </headerContent>
+                    <content>
+                        <Panel
+                            expandable="true"
+                            expanded="false"
+                            expandAnimation="true"
+                            height="auto"
+                            expand="onPanelExpand"
+                        >
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <ToolbarSpacer />
+                                         <Button
+                                        id = "idSimualteOPMIX"
+                                        type="Ghost"
+                                        text="Derived Characteristics Simulation"
+                                        press="onSimulateConfirm"
+                                        enabled="true"
+                                        
+                                        
+                                    />
+                                    <Button
+                                        id = "idoUPDOPMIXP"
+                                        type="Ghost"
+                                        text="Update Product Demand"
+                                        press="handleEditMenu"
+                                        visible="{= ${oGModel>/hasCustomerGroup}}"
+                                    />
+                                    <!-- <Button type="Ghost" text="Save Product Demand" press="onSaveProductDemand" enabled="{= ${oGModel>/subDataChanges}.length > 0 }"/> -->
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <content>
+                                <html:div id="subDivOPMIXP" class="toptable"/>
+                            </content>
+                        </Panel>
+
+                     
+                        <!-- <html:div id="mainDivOPMIXP" /> -->
+
+                       <!-- <html:div id="mainDivOPMIXP"
+    style="height:83vh; width:100%; overflow:auto;">
+</html:div>
+                      -->
+
+                      <!-- <html:div id="mainDivOPMIXP"
+    style="height:83vh; width:100%; overflow:hidden;">
+</html:div> -->
+
+<!-- <VBox width="100%">
+    <html:div id="topScrollBar" class="topScrollBar">
+        <html:div id="topScrollInner"></html:div>
+    </html:div> -->
+
+    <html:div id="mainDivOPMIXP" class="hotWrap"/>
+<!-- </VBox> -->
+                    </content>
+                    <footer>
+                        <Bar>
+                            <contentRight>
+                             <!-- <Button
+                                text="Export XLSX"
+                                press=".onExportExcel"/> -->
+
+                                <!-- <Button
+                                    text="Derived Characteristics Simulation"
+                                    press=".onSaveExcel"/> -->
+                                    <Label text="Sum :" />
+                                <Text
+                                    id="idSumTagOPMIXP"
+                                    text="{sumModel>/sum}"
+                                />
+                                <!-- <Button
+                                    type="Ghost"
+                                    text="Simulate"
+                                    press="onSimulateChanges"
+                                /> -->
+                                <Button
+                                    type="Emphasized"
+                                    text="Save"
+                                    press="onSaveExcel"
+                                     id="idSaveOPMIXP" visible="true"
+                                />
+                                <Button
+                                    type="Neutral"
+                                    text="Refresh"
+                                    icon="sap-icon://refresh"
+                                    press="onRefreshExcel"
+                                />
+                            </contentRight>
+                        </Bar>
+                    </footer>
+                </Page>
+            </l:Splitter>
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,28 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:macros="sap.fe.macros"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form">
+    <SelectDialog
+        id="locPID"
+        title="Demand Location"
+        items="{/LocModel}"
+        selectionChange="RequireProduct"
+        liveChange="handleSearch"
+        confirm="onLocationSelect"
+        cancel=".onLocationSelect"
+      
+    >
+        <StandardListItem
+            title="{DEMAND_LOC}"
+            description="{DEMAND_DESC}"
+        />
+    </SelectDialog>
+
+
+
+
+
+   
+</core:FragmentDefinition>

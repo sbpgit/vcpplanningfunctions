@@ -1,0 +1,48 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog
+		contentWidth="40%"
+		id="charDetailsDialog"
+		noDataText="No Characteristics Found"
+		title="Select Characteristics"
+		search=".handleSearchs"
+		showClearButton="true"
+		liveChange=".handleSearchs"
+		rememberSelections="true"
+		confirm=".onCharSelectionFinish"
+		cancel=".onCharDialogCancel"
+		multiSelect="true"
+		items="{
+			path : '/charDetails',
+			sorter : {
+				path : 'CHAR_NAME',
+				descending : false
+			}
+		}">
+		<ColumnListItem
+			vAlign="Middle"
+			selected="{isSelected}">
+			<cells>
+				<ObjectIdentifier
+					title="{CHAR_DESC}"
+					text="{CHAR_NAME}" />
+				<ObjectIdentifier
+					title="{CHAR_VALUE}"
+					text="{CHAR_VALUE}" />
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="10em">
+				<header>
+					<Text text="Characteristic" />
+				</header>
+			</Column>
+			<Column width="10em">
+				<header>
+					<Text text="Value" />
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,50 @@
+<core:FragmentDefinition xmlns:p13n="sap.m.p13n"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <!-- <p13n:Popup xmlns:p13n="sap.m.p13n" id="personalizationPopup" title="{i18n>personalizationTitle}" mode="Dialog" close="onClose" class = "settingsDialog">
+        <p13n:panels>
+            <p13n:SelectionPanel id="columnsPanel" title="Columns" enableCount="true" showHeader="true" objectBindings="{/items}">
+            </p13n:SelectionPanel>
+        </p13n:panels>
+    </p13n:Popup> -->
+    <Dialog contentHeight="60vh" contentWidth="35vw" title="Columns">
+        <Table id="idDataTable" items="{/data}" showNoData="false" mode="MultiSelect" selectionChange="checkSelect">
+            <columns>
+                <Column/>
+                <Column/>
+                <Column/>
+            </columns>
+            <items>
+                <ColumnListItem selected="{select}">
+                    <cells>
+                        <Text text="{field}"/>
+                        <Select items="{option}" visible="{= ${option}.length > 0 }" selectedKey="{selectedKey}">
+                            <items >
+                                <core:Item key="{key}" text="{text}" />
+                            </items>
+                        </Select>
+                        <HBox justifyContent="Center">
+                            <Button class="icon" press="onIconPress" type="Transparent" icon="sap-icon://navigation-up-arrow" tooltip="up"></Button>
+                            <Button class="icon" press="onIconPress" type="Transparent" icon="sap-icon://slim-arrow-down" tooltip="down"></Button>
+                            <Button class="icon" press="onIconPress" type="Transparent" icon="sap-icon://collapse-group" tooltip="top"></Button>
+                            <Button class="icon" press="onIconPress" type="Transparent" icon="sap-icon://expand-group" tooltip="bottom"></Button>
+                        </HBox>
+                        <!-- <FlexBox id="idFlexBox" justifyContent="SpaceBetween" width="50%">
+                            <core:Icon color="blue" class="icon" press="onIconPress" src="sap-icon://navigation-up-arrow" tooltip="up" />
+                            <core:Icon color="blue" class="icon" press="onIconPress" src="sap-icon://slim-arrow-down" tooltip="down" />
+                            <core:Icon color="blue" class="icon" press="onIconPress" src="sap-icon://collapse-group" tooltip="top" />
+                            <core:Icon color="blue" class="icon" press="onIconPress" src="sap-icon://expand-group" tooltip="bottom" />
+                        </FlexBox> -->
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <beginButton>
+            <Button tooltip="OK" text="OK" type="Emphasized" press="onCloseColSettings"/>
+        </beginButton>
+        <endButton>
+            <Button tooltip="Cancel" text="Cancel" press="onCloseColSettings"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

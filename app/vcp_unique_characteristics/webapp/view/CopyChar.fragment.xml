@@ -1,0 +1,50 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified">
+    <Dialog title="Copy Unique Characteristics" contentWidth="450px" titleAlignment="Center">
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm
+                id="SimpleFormToolbar2UC"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="4"
+                labelSpanL="4"
+                labelSpanM="4"
+                labelSpanS="4"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="0"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                <f:content>
+                    <Label text="{i18n>locid}" visible="false" />
+                    <Input id="locIdCCUC" value="" editable="false" width="100%" enabled="false" visible="false" />
+
+                    <Label text="{i18n>prodid}" />
+                    <Input id="prodIdCCUC" value="" editable="false" width="100%" enabled="false" />
+                    <Label text="{i18n>UidTid}" />
+                    <Input id="idComboBoxCCUC" value="Unique" editable="false" width="100%" enabled="false" type="Text"/>
+
+                    <Label text="{i18n>activid}" />
+                    <Input id="idComboBoxACUC" value="True" editable="false" width="100%" enabled="false" type="Text" />
+
+                    <Label text="{i18n>unqid}" />
+                    <Input id="uniqIdCCUC" value="" editable="false" width="100%" visible="false" />
+
+                    <Label text="{i18n>unidesc}" />
+                     <TextArea id="idUniqDescCCUC" value="" width="100%" maxLength="50" placeholder="maximum length - 50 characters"/>
+
+                    <Label text="{i18n>UidRid}" />
+                    <Input id="uidRIdCCUC" value="" editable="true" width="100%" type="Number" visible="false" />
+                </f:content>
+            </f:SimpleForm>
+        </VBox>
+        <buttons>
+            <Button type='Ghost' text="{i18n>save}" press="onCopyUniqueDesc" />
+            <Button type='Reject' text="{i18n>close}" press="onCloseCopy" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

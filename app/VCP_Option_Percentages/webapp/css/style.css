@@ -1,0 +1,267 @@
+.handsontable .htDimmed {
+    color: #000000 !important;
+    font-family: "72", "72full", Arial, Helvetica, sans-serif !important;
+    background-color: #f7f7f7 !important;
+    text-align: left !important;
+}
+
+.handsontable .manualBg {
+    background: #e3e6ea !important;
+    color: #0b0b0b !important;
+    text-align: right !important;
+}
+
+.handsontable .manualBgAlign {
+    background: #e3e6ea !important;
+    color: #0b0b0b !important;
+    text-align: right !important;
+}
+
+.handsontable .editable {
+    background: white !important;
+    text-align: right !important;
+}
+
+.handsontable .editableFirm {
+    background: #a9bccf !important;
+    text-align: right !important;
+}
+
+.handsontable .finalKeyFigF {
+    color: #0070f2 !important;
+    font-weight: bold !important;
+    text-align: right !important;
+    background: #e3e6ea !important;
+}
+
+.handsontable .finalKeyFigT {
+    color: #0070f2 !important;
+    font-weight: bold !important;
+    text-align: right !important;
+}
+
+/* .handsontable .stat-forecast-cell {
+    padding-bottom: 0 !important;
+    text-align: right !important;
+} */
+
+.handsontable th {
+    /* background-color: rgb(4, 94, 124) !important; */
+    color: #fff !important;
+    font-weight: 500 !important;
+    white-space: nowrap !important;
+    font-family: system-ui !important;
+}
+
+.handsontable .hotAlign {
+    text-align: right !important;
+}
+
+.handsontable .rightAlign {
+    text-align: left !important;
+}
+
+div [id*='idScenarioInp-content'] {
+    margin-left: 6px !important;
+}
+
+div [id*='idVersionInp-content'] {
+    margin-left: 6px !important;
+}
+
+/* div [id*='KeyFigPopup'] {
+    width: 26rem !important;
+    height: 26rem !important;
+} */
+
+.sapMPanelContent {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.handsontable.ht__manualRowMove.after-selection--rows tbody th.ht__highlight {
+    cursor: -webkit-grab !important;
+}
+
+.sapFDynamicPageTitleMain>.sapFDynamicPageTitleMainInner .sapFDynamicPageTitleMainHeading .sapFDynamicPageTitleMainHeadingInner .sapMTitle:not(.sapUICompVarMngmtTitle) {
+    font-size: larger !important;
+}
+
+
+.sapUiFormResGridCont {
+    padding-bottom: 1rem !important;
+}
+
+.handsontable .wtBorder.corner {
+    cursor: crosshair !important;
+}
+
+.icon {
+    visibility: hidden;
+}
+
+.selectItem:hover .icon {
+    visibility: visible;
+}
+
+/* div [id*='excelSubGrid'] .wtHolder {
+    scrollbar-width: none !important;
+} */
+
+* {
+    scrollbar-width: thin;
+    /*"auto"or "thin"*/
+    scrollbar-color: #888 #f1f1f1;
+    /*thumb and track color*/
+}
+
+/* .lastCharVal {
+    border-top: 1px solid #787986 !important;
+} */
+
+.applyWeek {
+    background-color: #0096c7 !important;
+}
+
+.applyMonth {
+    background-color: #0077b6 !important;
+}
+
+.applyQ {
+    background-color: #225290 !important;
+}
+
+.applyHeader {
+    background-color: #0096c7 !important;
+
+}
+
+/* Base table styling with consistent heights */
+.handsontable * {
+    box-sizing: border-box !important;
+}
+
+.handsontable .ht_master .htCore tbody th,
+.handsontable .ht_master .htCore tbody td,
+.handsontable .ht_clone_left .htCore tbody th,
+.handsontable .ht_clone_left .htCore tbody td {
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    box-sizing: border-box !important;
+    vertical-align: middle !important;
+    line-height: 1.2 !important;
+    padding: 4px 8px !important;
+}
+
+/* Fix for virtual scrolling row alignment */
+.handsontable .ht_master .htCore tbody tr,
+.handsontable .ht_clone_left .htCore tbody tr {
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+}
+
+/* Header consistency */
+.handsontable .ht_master .htCore thead th,
+.handsontable .ht_clone_left .htCore thead th {
+    height: 40px !important;
+    min-height: 40px !important;
+    box-sizing: border-box !important;
+}
+
+.sapUiDisabledText {
+    opacity: 0.5;
+    pointer-events: none;
+    /* Prevent clicks */
+    transition: opacity 0.2s ease;
+}
+
+
+.sapUiNormalText {
+    opacity: 1 !important;
+    font-weight: 600 !important;
+    color: inherit !important;
+    transition: opacity 0.2s ease, font-weight 0.2s ease;
+}
+
+
+.handsontable .rowWhite {
+    background-color: #f4f3f3 !important;
+    text-align: right !important;
+}
+
+.handsontable .rowGrey {
+    background-color: #dedfe0 !important;
+    text-align: right !important;
+}
+
+.handsontable .rowGrey1 {
+    background-color: #e0e0e0 !important;
+    text-align: right !important;
+}
+
+.handsontable .lastCharVal {
+    border-top: 0.5px solid #ccc !important;
+    /* optional visual separator */
+
+}
+
+/* Outline between different CHARVAL_NUM blocks */
+.handsontable .charValDivider {
+    border-top: 0.5px solid #555 !important;
+    /* dark grey border */
+}
+
+
+/* 3️⃣ Ensure numeric and percentage data align right in all dynamic (week/date) columns */
+.handsontable .hotAlign,
+.handsontable .editable,
+.handsontable .editableFirm,
+.handsontable .finalKeyFigF,
+.handsontable .finalKeyFigT {
+    text-align: right !important;
+}
+
+/* 4️⃣ Specifically fix Option Percentage % text alignment */
+.handsontable td:has(span:contains("Option Percentage %")),
+.handsontable td:has(div:contains("Option Percentage %")) {
+    text-align: right !important;
+}
+
+/* .manualOptionWhite {
+  background-color: white !important;
+  color: black !important;
+  font-weight: 500; */
+/* } */
+
+
+.manualOptionWhite {
+  background-color: white !important;
+  color: black !important;
+  font-weight: 500;
+  
+  text-align: right !important;
+}
+
+.manualOptionLocked {
+  background-color: #f2f2f2 !important;
+  color: #2e2e2e !important;
+}
+
+.handsontable .noCustomer{
+    text-align: right !important;
+}
+
+.handsontable.readOnlyGrey {
+    background-color: #e0e0e0 !important; /* grey for locked/manual past/frozen */
+    color: #555 !important;
+}
+
+.handsontable.editableManual {
+    background-color: #f5fff0 !important; /* soft green tint for manual editable cells */
+}
+
+
+
+

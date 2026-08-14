@@ -1,0 +1,78 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ui="sap.ui.table" xmlns:m="sap.m" xmlns:u="sap.ui.unified">
+    <Dialog id="idCharUC" contentWidth="650px" title="Characteristics">
+        <content>
+            <Toolbar id="_IDGenToolbar1UC">
+                <SearchField id="idCharSearchUC" liveChange="handleCharSearch" placeholder="Class/Char Name, Char Value" />
+            </Toolbar>
+
+            <!-- <List id="idListUC" items="{oModel>/}">
+                <items >
+                    <CustomListItem id="_IDGenCustomListItem1">
+                        <Panel id="_IDGenPanel1UC" expandable="true" expanded="true" headerText="{= ${oModel>Description} + ' - ' + ${oModel>Class_Desc}}">
+                            <content>
+                                <List id="idList2" items="{path:'oModel>children/',templateShareable:false}" >
+                                    <items>
+                                        <CustomListItem id="_IDGenCustomListItem2">
+                                            <Panel id="_IDGenPanel2UC" expandable="true" expanded="true" headerText="{= ${oModel>Description} + ' - ' + ${oModel>CHAR_DESC} + ' - ' + ${oModel>Char_type} }" >
+                                                <content>
+                                                    <RadioButtonGroup id="rbg2UC" buttons="{path:'oModel>nodes',templateShareable:false}" select="onSelect" >
+                                                   
+                                                        <RadioButton id="RB2-1UC"  text="{= ${oModel>CHAR_VALUE} + ' - ' + ${oModel>CHAR_DESC} }" selected="{path:'oModel>Selection'}"/>
+                                                        
+                                                    </RadioButtonGroup>
+                                                </content>
+                                            </Panel>
+                                        </CustomListItem>
+                                    </items>
+                                </List>
+                            </content>
+                        </Panel>
+                    </CustomListItem>
+                </items>
+                
+            </List> -->
+            <List id="idListUC" items="{oModel>/}">
+        <items>
+            <CustomListItem>
+                <Panel id="_IDGenPanel1UC" expandable="true" expanded="true" headerText="{= ${oModel>CLASS_NAME}+ ' - ' + ${oModel>CLASS_DESC}}">
+                    <content>
+                        <!-- Iterate over CHAR_TYPE groups -->
+                        <List items="{path:'oModel>CHAR_TYPEGroups/',templateShareable:false}">
+                            <items>
+                                <CustomListItem>
+                                    <Panel id="_IDGenPanel2UC" expandable="true" expanded="true" headerText="{path:'oModel>CHAR_TYPE',formatter: '.formatter.getStatus'}">
+                                        <content>
+                                            <!-- Iterate over CHAR_NUM within each CHAR_TYPE -->
+                                            <List items="{path:'oModel>CHAR_NUMs/',templateShareable:false}">
+                                                <items>
+                                                    <CustomListItem>
+                                                        <Panel id="_IDGenPanel3UC" expandable="true" expanded="true" headerText="{oModel>CHAR_NAME} - {oModel>CHAR_DESC}">
+                                                            <content>
+                                                                <RadioButtonGroup id="rbg2UC" buttons="{path:'oModel>nodes',templateShareable:false}" select="onSelect">
+                                                                    <buttons>
+                                                                        <RadioButton id="RB2-1UC" text="{oModel>CHAR_VALUE} - {oModel>CHARVAL_DESC}" selected="{oModel>Selection}" />
+                                                                    </buttons>
+                                                                </RadioButtonGroup>
+                                                            </content>
+                                                        </Panel>
+                                                    </CustomListItem>
+                                                </items>
+                                            </List>
+                                        </content>
+                                    </Panel>
+                                </CustomListItem>
+                            </items>
+                        </List>
+                    </content>
+                </Panel>
+            </CustomListItem>
+        </items>
+    </List>
+
+        </content>
+        <buttons>
+            <Button id="_IDGenButton1UC" type='Accept' text="Submit" press="handleCharSelection" />
+            <Button id="_IDGenButton2UC" type='Reject' text="Close" press="onClassClose" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

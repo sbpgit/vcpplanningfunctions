@@ -1,0 +1,119 @@
+<mvc:View controllerName="vcpapp.vcpuniquecharacteristics.controller.Home" xmlns:dnd="sap.ui.core.dnd" xmlns:ux="sap.uxap"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:l="sap.ui.layout"
+	xmlns:unified="sap.ui.unified" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m">
+	<ux:ObjectPageLayout id="ObjectPageLayout" enableScrolling="false">
+		<ux:headerTitle>
+			<ux:ObjectPageDynamicHeaderTitle>
+				<ux:expandedHeading>
+					<Title text="" class="boldText" titleAlignment="Center"/>
+				</ux:expandedHeading>
+				<ux:snappedHeading>
+					<FlexBox fitContainer="true" alignItems="Center">
+						<Title text="{i18n>title}" wrapping="true"/>
+					</FlexBox>
+				</ux:snappedHeading>
+			</ux:ObjectPageDynamicHeaderTitle>
+		</ux:headerTitle>
+		<ux:headerContent>
+			<FlexBox wrap="Wrap" fitContainer="true">
+				<l:Grid defaultSpan="XL3 L3 M6 S12">
+					<VBox >
+                    <Label text="Location" visible="false"/>
+                    <Input id="idlocUC" value=""  placeholder="Location" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" visible="false"/>
+                </VBox>
+                <VBox>
+                    <Label text="Product" required="true"/>
+                    <MultiInput id="prodInputUC1"  placeholder="Product" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" tokenUpdate="handleTokenUpdate"/>
+                </VBox>
+                <VBox>    
+                <Label text=""/>               
+                    <Button text="Go" type="Emphasized" press="onGetData" tooltip="Get data based on filters"/>                </VBox>
+				</l:Grid>
+			</FlexBox>
+		</ux:headerContent>
+		<ux:sections>
+			<ux:ObjectPageSection >
+				<ux:subSections>
+					<ux:ObjectPageSubSection>
+						<ux:blocks>
+							<HBox>
+								<VBox>
+									<Text text="{i18n>pcharTitle}" class="bold"/>
+									<SearchField liveChange="onPriSearch" id="primarySearchUC" placeholder="Characteristics Name"/>
+									<Table id="idMatVHeadUC1" items="{path: '/results'}" growingScrollToLoad="true" itemPress="onhandlePress" mode="SingleSelectMaster"
+										selectionChange="onhandlePress" sticky="ColumnHeaders">
+										<columns>
+											<Column hAlign="Left" vAlign="Middle">
+												<Text text="{i18n>matdesc}"/>
+											</Column>
+											<Column hAlign="Left" vAlign="Middle">
+												<Text text="{i18n>matvar}"/>
+											</Column>
+											<Column hAlign="Left" vAlign="Middle">
+												<Text text="Active"/>
+											</Column>
+											<Column hAlign="Left" vAlign="Middle">
+												<Text text="Active"/>
+											</Column>
+										</columns>
+										<items>
+											<ColumnListItem>
+												<cells>
+													<ObjectIdentifier title="{MATVARDESC}" text="{MATVAR_TYPE}"/>
+													<Text text="{MATVARID}"/>
+													<Switch width="150px" state="{= ${ACTIVE} === true ? true : false}"
+                                                            change="onChange" customTextOn="True" customTextOff="False">
+														<layoutData>
+															<FlexItemData growFactor="1"/>
+														</layoutData>
+													</Switch>
+													<ToggleButton text="{= ${ACTIVE} === true ? 'True' : 'False'}" enabled="true" pressed="{= ${ACTIVE} === true ? true : false}"
+														press="onPress"/>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</VBox>
+								<VBox>
+									<Text text="{i18n>sCharTitle}" class="bold"/>
+									<Table id="idMatVItemUC" items="{path: '/results'}" growingScrollToLoad="true" itemPress="onhandlePress" mode="SingleSelectMaster"
+										selectionChange="onhandlePress" sticky="ColumnHeaders">
+										<columns>
+											<Column hAlign="Left" vAlign="Middle">
+												<Text text="{i18n>matdesc}"/>
+											</Column>
+											<Column hAlign="Left" vAlign="Middle">
+												<Text text="{i18n>matvar}"/>
+											</Column>
+											<Column hAlign="Left" vAlign="Middle">
+												<Text text="Active"/>
+											</Column>
+											<Column hAlign="Left" vAlign="Middle">
+												<Text text="Active"/>
+											</Column>
+										</columns>
+										<items>
+											<ColumnListItem>
+												<cells>
+													<ObjectIdentifier title="{MATVARDESC}" text="{MATVAR_TYPE}"/>
+													<Text text="{MATVARID}"/>
+													<Switch state="{= ${ACTIVE} === true ? true : false}" customTextOn="True" customTextOff="False">
+														<layoutData>
+															<FlexItemData growFactor="1"/>
+														</layoutData>
+													</Switch>
+													<ToggleButton text="{= ${ACTIVE} === true ? 'True' : 'False'}" enabled="true" pressed="{= ${ACTIVE} === true ? true : false}"
+														press="onPress"/>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</VBox>
+							</HBox>
+						</ux:blocks>
+					</ux:ObjectPageSubSection>
+				</ux:subSections>
+			</ux:ObjectPageSection>
+		</ux:sections>
+	</ux:ObjectPageLayout>
+</mvc:View>

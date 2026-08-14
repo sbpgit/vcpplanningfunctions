@@ -1,0 +1,263 @@
+_schema-version: 3.3.0
+ID: vcpplanningfunctions
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+  deploy_mode: html5-repo
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+modules:
+  
+  - name: vcpplanningfunctions-app-deployer
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: vcpplanningfunctions-html5-repo-host
+        parameters:
+          content-target: true
+          config:
+            HTML5Runtime_enabled: true
+    build-parameters:
+      build-result: resources/
+      requires:      
+      - artifacts:
+        - cdm.json
+        name: vcpplanningfunctions-workzone-cdm
+        target-path: resources/
+
+      - artifacts:
+        - vcpvcpseedordercreationnew.zip
+        name: vcpvcpseedordercreationnew
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcpuniquecharacteristics.zip
+        name: vcpappvcpuniquecharacteristics
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcpplanningrelevantpid.zip
+        name: vcpappvcpplanningrelevantpid
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcpconstraints.zip
+        name: vcpappvcpconstraints
+        target-path: resources/
+
+      - artifacts:
+        - vcpvcpoptionpercentagesoptimised.zip
+        name: vcpvcpoptionpercentagesoptimised
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcpforecastingordersbeta.zip
+        name: vcpappvcpforecastingordersbeta
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcpmaterialrequirements.zip
+        name: vcpappvcpmaterialrequirements
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcpoptionpercentage.zip
+        name: vcpappvcpoptionpercentage
+        target-path: resources/
+
+  - name: vcpvcpoptionpercentagesoptimised
+    type: html5
+    path: app/VCP_OPTION_PERCENTAGES_OPTIMISED
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules
+      supported-platforms: []  
+      ignore:
+      - node_modules/ 
+      - dist/
+
+  - name: vcpappvcpoptionpercentage
+    type: html5
+    path: app/VCP_Option_Percentages
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules
+      supported-platforms: []  
+      ignore:
+      - node_modules/ 
+      - dist/
+
+  - name: vcpappvcpmaterialrequirements
+    type: html5
+    path: app/VCP_Material_Requirements
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules
+      supported-platforms: []  
+      ignore:
+      - node_modules/ 
+      - dist/
+
+  - name: vcpappvcpforecastingordersbeta
+    type: html5
+    path: app/VCP_ForecastOrders_V2
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/
+
+  - name: vcpappvcpconstraints
+    type: html5
+    path: app/vcp_constraints
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/
+
+  - name: vcpappvcpplanningrelevantpid
+    type: html5
+    path: app/vcp_planning_relavent_pid
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/
+
+  - name: vcpappvcpuniquecharacteristics
+    type: html5
+    path: app/vcp_unique_characteristics
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/
+        
+  - name: vcpvcpseedordercreationnew
+    type: html5
+    path: app/VCP_SEEDORDER_NEWAPP
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules
+      supported-platforms: []  
+      ignore:
+      - node_modules/ 
+      - dist/
+
+  - name: vcpplanningfunctions-destinations
+    type: com.sap.application.content
+    requires:
+      - name: vcpplanningfunctions-html5-repo-host
+        parameters:
+          service-key:
+            name: vcpplanningfunctions-repo-host-key
+      - name: vcpplanningfunctions-html5-runtime
+        parameters:
+          service-key:
+            name: vcpplanningfunctions-html5-app-runtime-service-key
+      - name: vcpplanningfunctions-destination
+        parameters:
+          content-target: true
+    parameters:
+      content:
+        subaccount:
+          destinations:
+            - Name: vcpplanningfunctions_cdm
+              ServiceInstanceName: vcpplanningfunctions-html5-runtime
+              ServiceKeyName: vcpplanningfunctions-html5-app-runtime-service-key
+              URL: https://html5-apps-repo-rt.cfapps.us10.hana.ondemand.com/applications/cdm/vcpplanningfunctions
+              sap.cloud.service: vcpplanningfunctions
+          existing_destinations_policy: update
+    build-parameters:
+      no-source: true
+
+  - name: vcpplanningfunctions-workzone-cdm
+    type: html5
+    path: workzone
+    build-parameters:
+      build-result: .
+      supported-platforms: []
+
+resources:
+  - name: vcpplanningfunctions-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+      config:
+        ExposeToSubaccounts: true
+        HTML5Runtime_enabled: true
+        init_data:
+          subaccount:
+            destinations:
+            - Authentication: NoAuthentication
+              Name: ui5
+              ProxyType: Internet
+              Type: HTTP
+              URL: https://ui5.sap.com
+            - Authentication: NoAuthentication
+              CEP.HTML5contentprovider: true
+              Name: vcpplanningfunctions-workzone-runtime
+              ProxyType: Internet
+              Type: HTTP
+              URL: https://mttsbpdigital.launchpad.cfapps.us10.hana.ondemand.com
+            existing_destinations_policy: update
+
+  - name: vcpplanningfunctions-html5-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+
+  - name: vcpplanningfunctions-html5-runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime
+    

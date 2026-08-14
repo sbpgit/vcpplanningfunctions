@@ -1,0 +1,348 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common" />
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI" />
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication" />
+    </edmx:Reference>
+    <edmx:Reference Uri="/v2/analytical/$metadata">
+        <edmx:Include Namespace="AnalyticalService" Alias="SAP" />
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="SAP.getAssemblyCompQty">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>LOCATION_ID</PropertyPath>
+                        <PropertyPath>REF_PRODID</PropertyPath>
+                        <PropertyPath>ASSEMBLY</PropertyPath>
+                        <PropertyPath>UNIQUE_ID</PropertyPath>
+                        <PropertyPath>VERSION_NAME</PropertyPath>
+                        <PropertyPath>SCENARIO_NAME</PropertyPath>
+                        <PropertyPath>MRP_GROUP</PropertyPath>
+                        <PropertyPath>MRP_TYPE</PropertyPath>
+                        <PropertyPath>WEEK_STARTDATE</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getAssemblyCompQty/LOCATION_ID">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getAlytRolesLocProd" />
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterConstant">
+                                    <PropertyValue Property="ValueListProperty" String="USER" />
+                                    <PropertyValue Property="Constant" String="Email" />
+                                </Record>
+
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="REF_PRODID" />
+                                    <PropertyValue Property="ValueListProperty" String="REF_PRODID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="FACTORY_LOC" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue PropertyPath="LOCATION_DESC" />
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_DESC" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getAssemblyCompQty/REF_PRODID">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <!--   <PropertyValue Property="FetchValues" Int="2"/>   -->
+                        <PropertyValue Property="CollectionPath" String="getAlytRolesLocProd" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterConstant">
+                                    <PropertyValue Property="ValueListProperty" String="USER" />
+                                    <PropertyValue Property="Constant" String="Email" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="FACTORY_LOC" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="REF_PRODID" />
+                                    <PropertyValue Property="ValueListProperty" String="REF_PRODID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue PropertyPath="REFPROD_DESC" />
+                                    <PropertyValue Property="ValueListProperty" String="REFPROD_DESC" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getAssemblyCompQty/ASSEMBLY">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getAssemblyCompQty" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                            <Record Type="Common.ValueListParameterConstant">
+                                    <PropertyValue Property="ValueListProperty" String="REQ_TYPE" />
+                                    <PropertyValue Property="Constant" String="OD" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterConstant">
+                                    <PropertyValue Property="ValueListProperty" String="TYPE" />
+                                    <PropertyValue Property="Constant" String="PI" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="REF_PRODID" />
+                                    <PropertyValue Property="ValueListProperty" String="REF_PRODID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ASSEMBLY" />
+                                    <PropertyValue Property="ValueListProperty" String="ASSEMBLY" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ASM_DESC" />
+                                    <PropertyValue Property="ValueListProperty" String="ASM_DESC" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getAssemblyCompQty/UNIQUE_ID">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getAssemblyCompQty" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <!--   <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID" />
+                                </Record>   -->
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="REF_PRODID" />
+                                    <PropertyValue Property="ValueListProperty" String="REF_PRODID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ASSEMBLY" />
+                                    <PropertyValue Property="ValueListProperty" String="ASSEMBLY" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="UNIQUE_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="UNIQUE_ID" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getAssemblyCompQty/VERSION_NAME">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getAssemblyCompQty" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="REF_PRODID" />
+                                    <PropertyValue Property="ValueListProperty" String="REF_PRODID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ASSEMBLY" />
+                                    <PropertyValue Property="ValueListProperty" String="ASSEMBLY" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="UNIQUE_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="UNIQUE_ID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <!-- <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION" /> -->
+                                    <PropertyValue Property="ValueListProperty" String="VERSION" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION_NAME" />
+                                    <PropertyValue Property="ValueListProperty" String="VERSION_NAME" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getAssemblyCompQty/SCENARIO_NAME">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getAssemblyCompQty" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="REF_PRODID" />
+                                    <PropertyValue Property="ValueListProperty" String="REF_PRODID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ASSEMBLY" />
+                                    <PropertyValue Property="ValueListProperty" String="ASSEMBLY" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="UNIQUE_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="UNIQUE_ID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION" />
+                                    <PropertyValue Property="ValueListProperty" String="VERSION" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <!-- <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO" /> -->
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO_NAME" />
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO_NAME" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getAssemblyCompQty/PRODUCT_ID">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getAssemblyCompQty" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="REF_PRODID" />
+                                    <PropertyValue Property="ValueListProperty" String="REF_PRODID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ASSEMBLY" />
+                                    <PropertyValue Property="ValueListProperty" String="ASSEMBLY" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="UNIQUE_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="UNIQUE_ID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION" />
+                                    <PropertyValue Property="ValueListProperty" String="VERSION" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO" />
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCT_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="PRODUCT_ID" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getAssemblyCompQty/MRP_GROUP">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getAlytRolesLocProd" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterConstant">
+                                    <PropertyValue Property="ValueListProperty" String="USER" />
+                                    <PropertyValue Property="Constant" String="Email" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="FACTORY_LOC" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="REF_PRODID" />
+                                    <PropertyValue Property="ValueListProperty" String="REF_PRODID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="MRP_GROUP" />
+                                    <PropertyValue Property="ValueListProperty" String="MRP_GROUP" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.getAssemblyCompQty/MRP_TYPE">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="getAssemblyCompQty" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LOCATION_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="LOCATION_ID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="REF_PRODID" />
+                                    <PropertyValue Property="ValueListProperty" String="REF_PRODID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ASSEMBLY" />
+                                    <PropertyValue Property="ValueListProperty" String="ASSEMBLY" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="UNIQUE_ID" />
+                                    <PropertyValue Property="ValueListProperty" String="UNIQUE_ID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VERSION" />
+                                    <PropertyValue Property="ValueListProperty" String="VERSION" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SCENARIO" />
+                                    <PropertyValue Property="ValueListProperty" String="SCENARIO" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterIn">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="MRP_GROUP" />
+                                    <PropertyValue Property="ValueListProperty" String="MRP_GROUP" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="MRP_TYPE" />
+                                    <PropertyValue Property="ValueListProperty" String="MRP_TYPE" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

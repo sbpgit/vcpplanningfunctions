@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"> 
+    <SelectDialog id="idcharValDialogOPMIXP" resizable="true" selectionChange="handleSelectionChange" titleAlignment="Center" liveChange=".onAllSearch" noDataText="No Characteristics Values Found" rememberSelections="true" multiSelect="true" title="Char Value" search=".onSearch" growingThreshold="30" updateStarted=".onUpdateStarted" items="{
+			path: '/items'
+		}" confirm="onConfirmSelection">
+        <StandardListItem title="{CHARVAL_DESC}" description="{CHARVAL_NUM}" iconDensityAware="false" iconInset="false" type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

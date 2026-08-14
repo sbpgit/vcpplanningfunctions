@@ -1,0 +1,212 @@
+table {
+    box-sizing: border-box;
+}
+
+.pvtUi {
+    color: #1a1a1a;
+    font-family: "72", "Arial", sans-serif;
+}
+
+table.pvtTable {
+    width: 80vw;
+    height: 49vh;
+    font-size: 9pt;
+    border-collapse: separate;
+    /* Don't collapse */
+    border-spacing: 0;
+    background-color: #ffffff;
+    /* Horizon light background */
+    border: 0px solid #d9dadb;
+    border-radius: 4px;
+
+}
+
+table.pvtTable thead th {
+    background-color: #f2f2f2;
+    /* Soft Horizon header background */
+    color: #0b74de;
+    /* Horizon blue */
+    padding: 12px;
+    font-size: 10pt;
+    text-align: left;
+    border-bottom: 0px solid #d9dadb;
+    border-top: 0px solid #d9dadb;
+}
+
+table.pvtTable tbody tr th {
+    background-color: #f9fafb;
+    /* Horizon soft background for row labels */
+    color: #0b74de;
+    padding: 10px;
+    font-size: 9pt;
+    text-align: left;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+table.pvtTable tbody tr td {
+    padding: 10px;
+    border: 1px solid #d9dadb;
+    text-align: right;
+    color: #2e3b43;
+    /* Horizon text color */
+    background-color: #ffffff;
+}
+
+table.pvtTable tbody tr:nth-child(even) td {
+    background-color: #ffffff;
+    /* Alternating row background */
+}
+
+table.pvtTable .pvtColLabel {
+    /* text-align: center; */
+    font-weight: bold;
+    background-color: #f2f2f2;
+    color: #0b74de;
+    padding: 10px;
+}
+
+table.pvtTable .pvtTotalLabel {
+    background-color: #f9fafb;
+    color: #0b74de;
+    padding: 10px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.pvtGrandTotal,
+.pvtTotal {
+    font-weight: bold;
+    background-color: #f2f2f2;
+    color: #0b74de;
+    padding: 10px;
+    /* text-align: center; */
+}
+
+.pvtVals {
+    /* text-align: center; */
+    white-space: nowrap;
+    padding: 10px;
+    color: #1a1a1a;
+}
+
+.pvtColOrder,
+.pvtRowOrder {
+    cursor: pointer;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+.pvtAggregator {
+    margin-bottom: 5px;
+}
+
+.pvtAxisContainer,
+.pvtVals {
+    border: 1px solid #d9dadb;
+    background-color: #ffffff;
+    padding: 10px;
+    min-width: 20px;
+    min-height: 20px;
+}
+
+.pvtAxisContainer li {
+    list-style-type: none;
+    background-color: #ffffff;
+    border: 1px solid #d9dadb;
+    padding: 6px;
+    margin: 5px 0;
+    border-radius: 4px;
+    cursor: move;
+}
+
+.pvtAxisContainer li.pvtPlaceholder {
+    background-color: #f9fafb;
+    border: 1px dashed #d9dadb;
+}
+
+.pvtAxisContainer li span.pvtAttr {
+    background-color: #ffffff;
+    border: 1px solid #d9dadb;
+    padding: 5px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.pvtTriangle {
+    cursor: pointer;
+    color: #6a6d70;
+}
+
+.pvtFilterBox {
+    /* z-index: 100; */
+    background-color: #ffffff;
+    border: 1px solid #d9dadb;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pvtFilterBox h4 {
+    margin: 10px 0;
+}
+
+.pvtFilterBox label {
+    font-weight: 400;
+}
+
+.pvtCheckContainer {
+    font-size: 13px;
+    max-height: 250px;
+    overflow-y: auto;
+    border-top: 1px solid #d9dadb;
+    border-bottom: 1px solid #d9dadb;
+}
+
+.pvtTable tbody tr th,
+.pvtTable thead tr th,
+.pvtTable tbody tr td {
+    height: auto;
+}
+
+.pvtRows .pvtVals {
+    width: 50px !important;
+}
+
+table th {
+    position: sticky;
+    top: 0px;
+    background: #E8D468;
+    text-align: center;
+    color: #fff;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    z-index: 2;
+}
+
+/* th:first-child,
+th:nth-child(3) {
+    z-index: 3;
+}  */
+
+th.frezz {
+    position: sticky;
+    /* z-index: 4; */
+}
+
+th.frezzThead {
+    position: sticky;
+    z-index: 200;
+}
+th.frezzThead1 {
+    position: sticky;
+    z-index: 600;
+}
+
+th.frezzThead2 {
+    position: sticky;
+    z-index: 600;
+}
+
+th.frezzThead3 {
+    position: sticky;
+    z-index: 200;
+}

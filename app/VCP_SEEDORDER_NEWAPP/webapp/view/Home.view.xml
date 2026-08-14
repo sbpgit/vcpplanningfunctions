@@ -1,0 +1,271 @@
+<mvc:View xmlns:table="sap.ui.table" controllerName="vcp.vcpseedordercreationnew.controller.Home" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:smarttable="sap.ui.comp.smarttable" xmlns:m="sap.m" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" displayBlock="true"
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:ux="sap.uxap" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:u="sap.ui.unified" xmlns:f="sap.f" height="100%">
+	<Page id="idPageSON" showFooter="true" showHeader="false">
+		<ux:ObjectPageLayout id="ObjectPageLayoutSON" showFooter="true" headerContentPinnable="true" alwaysShowContentHeader="true">
+			<ux:headerTitle>
+				<ux:ObjectPageDynamicHeaderTitle>
+					<ux:expandedHeading>
+						<HBox>
+							<m:VariantManagement id="idMatList123SON" select="handleSelectPress" save="onCreate"	manage="onManage" supportFavorites="false" 
+							showFooter="true"	popoverTitle="My Views" items="{path: '/items12'}" creationAllowed="true" 
+							supportPublic="true" supportApplyAutomatically="false" manageCancel="onManageCancel" cancel="onNameCancel" visible="false" >
+							<items>
+							<m:VariantItem key="{VARIANTID}" text="{VARIANTNAME}"  author="{USER}" visible="true" 
+							remove="{path:'REMOVE', formatter:'.formatter.formatRemove'}" sharing="{path:'SCOPE', formatter:'.formatter.formatScope'}"
+							changeable="{path:'CHANGE', formatter:'.formatter.formatChange'}" rename="false" enabled="{path:'ENABLE', formatter:'.formatter.formatEnable'}"/>
+								</items>
+						</m:VariantManagement>
+						</HBox>
+					</ux:expandedHeading>
+					<ux:snappedHeading>
+					</ux:snappedHeading>
+					<ux:navigationActions>
+						<Button class="classHdr" icon="sap-icon://sys-help" id="idNav3SON" press="onNavPress" type="Emphasized" tooltip="Help Document"/>
+					</ux:navigationActions>
+				</ux:ObjectPageDynamicHeaderTitle>
+			</ux:headerTitle>
+			<ux:headerContent>
+				<FlexBox wrap="Wrap" fitContainer="true">
+					<l:Grid defaultSpan="XL4 L3 M4 S12">
+						<VBox>
+							<Label text="Config Product" required="true"/>
+							<Input id="prodInputSON" placeholder="Configurable Product" value="" showValueHelp="true" valueHelpOnly="true"
+								valueHelpRequest="handleValueHelp2"/>
+						</VBox>
+						<VBox>
+							<Label text="Demand Location" required="true"/>
+							<Input id="idlocSON" value="" placeholder="Demand Location" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp2"/>
+						</VBox>
+						<VBox>
+							<Label text="Date Range" required="true"/>
+							<DateRangeSelection id="idDateRangeSON" delimiter="To" dateValue="" secondDateValue="" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd"
+								change="handleDateChange" maxDate="" class="disabledInput"/>
+						</VBox>
+						<!-- <HBox> -->
+						<!-- <HBox> -->
+							<VBox>
+								<Label text="Customer Group" required="true"/>
+								<MultiInput id="idCustGrpSON" placeholder="Customer Group" value="" showValueHelp="true"  valueHelpOnly="true"
+									valueHelpRequest="handleValueHelp2"/>
+							</VBox>
+							<VBox class="idVBox1">
+								<Label text=""/>
+								<HBox  class="buttonClass1">
+									<Button text="Go" type="Emphasized" press="onGetData" tooltip="Get data based on filters" class="sapUiTinyMarginEnd"/>
+									<Button text="Reset" type="Transparent" press="onResetDate" tooltip="Reset all Filters" class="sapUiTinyMarginEnd"/>
+								</HBox>
+							</VBox>
+						<!-- </HBox> -->
+					</l:Grid>
+				</FlexBox>
+			</ux:headerContent>
+			<ux:sections>
+				<ux:ObjectPageSection>
+					<ux:subSections>
+						<ux:ObjectPageSubSection>
+							<ux:blocks>
+								<Wizard id="CreateProductWizardSON" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" complete="wizardCompletedHandler"
+									visible="false">
+									<WizardStep id="idUniqueCharSON" title="Filter Characteristics" validated="true">
+									<l:ResponsiveSplitter defaultPane="default">
+		<l:PaneContainer resize=".onRootContainerResize">
+			<l:SplitPane requiredParentWidth="400" id="default" >
+				<l:layoutData>
+					<l:SplitterLayoutData size="70%"  />
+				</l:layoutData>
+				<Panel showHeader="false" class="panelsettings"  height="500px">
+					<Table id="idCharTableSON" sticky="ColumnHeaders,HeaderToolbar" items="{path: '/items1', sorter:{path:'CHAR_NUM'}}" visible="false"  growingThreshold="1000"
+																growingScrollToLoad="true" growing="true" selectionChange="onTableItemsSelect" mode="MultiSelect" >
+																<headerToolbar>
+																	<OverflowToolbar >
+																		<Button id="idPartProdSON" text="Partial Product" press="handleValueHelp2" type="Emphasized" visible="false"/>
+																		<ToolbarSpacer/>
+																		<SearchField id="idCharSearchSON" liveChange="handleSearch1" placeholder="Char Num/Char Value" width="600px"/>
+																	</OverflowToolbar>
+																</headerToolbar>
+																<columns>
+																	<Column id="_IDGenColumn11SON" hAlign="Center" vAlign="Middle">
+																		<Text id="_IDGenText11SON" text="Characteristic Name"/>
+																	</Column>
+																	<Column id="_IDGenColumn22SON" hAlign="Center" vAlign="Middle">
+																		<Text id="_IDGenText22SON" text="Characteristic Value"/>
+																	</Column>
+																	<Column id="_IDGenColumn23SON" hAlign="Center" vAlign="Middle" visible="false">
+																		<Text id="_IDGenText23SON" text="Characteristic Value Number"/>
+																	</Column>
+																</columns>
+																<items>
+																	<ColumnListItem id="_IDGenColumnListItem11SON">
+																		<cells>
+																			<ObjectIdentifier title="{CHAR_DESC}" text="{CHAR_NAME}" />
+																			<ObjectIdentifier title="{CHARVAL_DESC}" text="{CHAR_VALUE}"/>
+																			<ObjectIdentifier text="{CHARVAL_NUM}"/>
+																		</cells>
+																	</ColumnListItem>
+																</items>
+															</Table>
+				</Panel>
+			</l:SplitPane>
+			<l:PaneContainer resize=".onInnerContainerResize">
+				<l:SplitPane requiredParentWidth="600">
+					<l:layoutData>
+						<l:SplitterLayoutData  />
+					</l:layoutData>
+					<Panel height="500px" class="panelsettings">
+						<Table id="idUniqueDetailsSON" sticky="ColumnHeaders,HeaderToolbar" items="{path: '/uniqueDetails', sorter:{path:'UNIQUE_ID'}}" rememberSelections="false" >
+															<headerToolbar>
+																<OverflowToolbar >
+																	<Label text="Count of Unique ID:" labelFor="idInputSON" class="newclass"/>
+																	<Text id="idInputSON" text="" class="inputClass"/>
+																	<ToolbarSpacer/>
+																	<SearchField id="idUniqueSearchSON" liveChange="handleSearch" change="handleSearch" width="200px" placeholder="Unqiue Id"/>
+																</OverflowToolbar>
+															</headerToolbar>
+															<columns>
+																<Column hAlign="Center">
+																	<Text text="Unique ID"/>
+																</Column>
+															</columns>
+															<ColumnListItem>
+																<cells>
+																<VBox>
+																<Text text="{UNIQUE_DESC}"/>
+																	<Link text="{UNIQUE_ID}" press="onUniqueIdPress"/>
+																	</VBox>
+																</cells>
+															</ColumnListItem>
+														</Table>
+					</Panel>
+				</l:SplitPane>
+				
+			</l:PaneContainer>
+		</l:PaneContainer>
+	</l:ResponsiveSplitter>
+									</WizardStep>
+									<WizardStep id="idCharOptPerSON" validated="false" activate="optionalStepActivation" title="Characteristic Value Option Percentage">
+										<VBox>
+											<Label text="Characteristic Name" labelFor="idCharNameSON" id="idLabelTextSON" required="false"/>
+											<MultiInput id="idCharNameSON" value="" width="400px" valueHelpOnly="true" placeholder="Characteristic Name" showValueHelp="true"
+												valueHelpRequest="handleValueHelp2" class="inputClass"/>
+										</VBox>
+										<HBox id="idHBox100SON" alignItems="End" justifyContent="End" width="100%" visible="true">
+											<items>
+												<m:Button type="Emphasized" id="idDownLdSON" text="Download" press="onDownLoad" visible="true"/>
+												<u:FileUploader id="FileUploaderSON" fileType="XLSX,xlsx" buttonOnly="true" class="Emp" buttonText="Upload" icon="sap-icon://arrow-top"
+													uploadOnChange="true" change="onUpload" visible="true" sameFilenameAllowed="true"/>
+											</items>
+										</HBox>
+										<VBox items="{path:'/setPanel'}" id="idVBoxSON" visible="false">
+											<Panel id="_IDGenPanelNewSON" expandable="true" expanded="false" expand="onPanelExpand" headerText="{CHAR_NAME}-{LENGTH}">
+											
+												<content>
+													<Table id="" items="{path: 'child'}" growingScrollToLoad="true" growingThreshold="1000" growing="true" rememberSelections="false"
+														itemPress="onhandlePress" mode="None" selectionChange="onhandlePress" sticky="ColumnHeaders">
+														<columns>
+															<Column hAlign="Center" vAlign="Middle">
+																<Text text="Characteristic Value"/>
+															</Column>
+															<Column hAlign="Center" vAlign="Middle">
+																<Text text="Option Percentage"/>
+															</Column>
+														</columns>
+														<items>
+															<ColumnListItem>
+															<customData>
+    														 <core:CustomData key="mydata" value="{CHARVAL_INPUT}" writeToDom="true" ></core:CustomData>
+  															 </customData>
+																<cells>
+																	<VBox>
+																		<Text text="{CHAR_VALUE} "/>
+																		<Text text="{CHARVAL_DESC}"/>
+																	</VBox>
+																	<Input value="{path:'CHARVAL_INPUT', formatter:'.formatter.formatStyle'}" enabled="{ENABLED}" liveChange="onOptEnter"  class="whiteClass"/>
+																</cells>
+															</ColumnListItem>
+														</items>
+													</Table>
+												</content>
+											</Panel>
+										</VBox>
+										<m:VBox>
+											<m:IconTabBar id="idIconTabBarSON" select="onTabSelect" visible="false">
+												<m:items>
+													<m:IconTabFilter text="Valid" iconColor="Positive" key="Success"/>
+													<m:IconTabSeparator/>
+													<m:IconTabFilter text="In-Valid" key="Error" iconColor="Negative"/>
+												</m:items>
+												<m:content>
+													<table:TreeTable id="LogListSON" visible="false" selectionMode="None" rows="{path:'/res', parameters: {arrayNames:['children']}}">
+														<table:columns>
+															<table:Column>
+																<m:Label wrapping="true" text="Characteristic Name"/>
+																<table:template>
+																	<m:Text text="{CHAR_NAME}" visible="{parent}"/>
+																</table:template>
+															</table:Column>
+															<table:Column>
+																<m:Label wrapping="true" text="Characteristic Value"/>
+																<table:template>
+																	<m:Text text="{CHAR_VALUE}" visible="{child}"/>
+																</table:template>
+															</table:Column>
+															<table:Column>
+																<m:Label wrapping="true" text="Characteristic Value Desc"/>
+																<table:template>
+																	<m:Text text="{CHARVAL_DESC}" visible="{child}"/>
+																</table:template>
+															</table:Column>
+															<table:Column>
+																<m:Label wrapping="true" text="Option Percentage"/>
+																<table:template>
+																	<m:VBox>
+																		<m:Text text="{TotalPercentage}" visible="{= ${parent} }" />
+																		<m:Text text="{OPT_PERCENT}" visible="{= !${parent} }"/>
+																	</m:VBox>
+																</table:template>
+															</table:Column>
+														</table:columns>
+														<table:Column>
+															<m:Label wrapping="true" text="Comments"/>
+															<table:template>
+																<m:VBox>
+																	<m:Text text="{COMMENT}" visible="{=${parent}}"/>
+																	<m:Text text="{COMMENT}" visible="{=!${parent}}"/>
+																</m:VBox>
+															</table:template>
+														</table:Column>
+													</table:TreeTable>
+													<HBox id="idHBox2SON" alignItems="End" justifyContent="End" width="100%" visible="false">
+														<m:Button id="BulKSaveSON" icon="sap-icon://save" text="Save" visible="false" press="onCharSave"/>
+														<m:Button id="idCanlBtnSON" icon="sap-icon://cancel" text="Cancel" press="onCharCancel"/>
+													</HBox>
+												</m:content>
+											</m:IconTabBar>
+										</m:VBox>
+										<HBox id="idHBox1SON" alignItems="End" justifyContent="End" width="100%" visible="false">
+											<SegmentedButton width="320px" selectionChange="getCharBtn">
+												<items>
+													<SegmentedButtonItem id="idSaveBtnSON" icon="sap-icon://save" text="Save" enabled="false" press="onCharSave"/>
+													<SegmentedButtonItem id="idCancelBtnSON" icon="sap-icon://cancel" text="Cancel" press="onCharCancel"/>
+												</items>
+											</SegmentedButton>
+										</HBox>
+									</WizardStep>
+								</Wizard>
+							</ux:blocks>
+						</ux:ObjectPageSubSection>
+					</ux:subSections>
+				</ux:ObjectPageSection>
+			</ux:sections>
+		</ux:ObjectPageLayout>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button id="idGenSeedOrderSON" text="Generate Seed Order" enabled="false" press="onGenSeedOrder" visible="false"/>
+				<!-- <Button text="Cancel"/> -->
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

@@ -1,0 +1,154 @@
+Enter your custom styles here */
+/* Enter your custom styles here */
+
+.sapUxAPObjectPageContainerNoBar>.sapUxAPObjectPageSection:first-child:not(.sapUxAPObjectPageSectionNoTitle) {
+    margin-top: 0.1rem !important;
+}
+.sapUiSizeCompact .sapUxAPObjectPageSectionHeader, .sapUxAPObjectPageSectionHeader {
+    height: 0.1rem !important;
+}
+
+.sapUiSizeCompact .sapMSwt {
+    width: 5rem;
+    height: 1.625rem;
+}
+.sapUxAPObjectPageHeaderDetails .sapMLabel {
+    color: #666;
+    width: 300px;
+}
+.sapUiSizeCompact .sapFDynamicPageTitle .sapMTB {
+    height: 3.75rem;
+}
+/* 
+.BtnClass{
+    margin-right:10px;
+    margin-left:20px;
+    margin-top:0px;
+} */
+.boldText1{
+    margin-top:0.185rem;
+}
+/* .BtnClass1{
+    margin-left:10px;
+    margin-top:0px;
+    margin-right: 10px;
+} */
+
+.hdrBtnMarginHdr1{
+    margin-left:1rem;
+    margin-top:0.185rem
+}
+.text.sapMLIBSelectM {
+    display:none
+  }
+
+  /* div[aria-level='3']{
+    pointer-events: none !important;
+    visibility: hidden;
+}
+div[aria-level='3'] {
+    background-color: whitesmoke;
+    visibility: hidden;
+} */
+
+
+
+
+.sapMIBar>.sapMBarLeft>.sapMBarChild:last-child, .sapMIBar .sapMBarPH>.sapMBarChild:last-child{
+    font-weight: normal !important;
+    padding-left: 0.75rem;
+    color:#32363a;
+}
+.boldText{
+    margin-left:450px;
+}
+
+.boldText1 {
+    font-weight: bold;
+}
+
+.Text{
+    font-size:1.25rem;
+    padding-top:0.3rem;
+    padding-right:0.2rem;
+    color: #0a6ed1;
+}
+
+
+.customMargin{
+    margin-left: 10px !important;
+    margin-top: 5px !important;
+}
+
+*{
+    scrollbar-width: thin;
+    /*"auto"or "thin"*/
+    scrollbar-color: #888 #f1f1f1;
+    /*thumb and track color*/
+}
+.search{
+    margin-right: 10px !important;
+    /* margin-top: -15px !important; */
+}
+/* .buton{
+    margin-bottom: 45px !important;
+} */
+.Uniq{
+    margin-top: 4px !important;
+    margin-bottom: 8px !important;
+    /* margin-top: -4px !important;  */
+}
+
+.sapUiHLayoutChildWrapper.sapUiHLayoutChildWrapper {
+    margin-right: 10px !important;
+    margin-top: 10px !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .Detailsrch{
+        width:250px !important;
+    }
+
+}
+.stickyToolbar {
+    position: sticky;
+    top: 0;
+    background: white; /* Ensures it does not overlap with content */
+    z-index: 1000; /* Keeps it above other elements */
+    padding: 50px;
+    display: flex; /* Ensures horizontal layout */
+    gap: 10px; /* Provides spacing between fields */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+.hideCheckUC .sapMListTblSelCol,
+.hideCheckUC .sapMCb {
+    display: none !important;
+}
+
+
+
+/* #__button0{
+    margin-top: 20px !important;
+}
+#__xmlview0--idCreateBtn{
+    margin-top: 20px !important;
+}
+#__xmlview0--idCopyBtn{
+    margin-top: 20px !important;
+}
+#__xmlview0--FileUploaderId{
+    margin-top: 20px !important;
+} */
+
+
+/* .hiddenBox {
+    display: none !important;
+} */
+
+/* #__grid0-wrapperfor-__xmlview0--count {
+    display: none;
+} */
+/* .hiddenBox {
+    display: none !important;
+   
+}

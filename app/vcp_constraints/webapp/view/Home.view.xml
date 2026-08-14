@@ -1,0 +1,218 @@
+<mvc:View controllerName="vcpapp.vcpconstraints.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+    xmlns:f="sap.f"
+    xmlns="sap.m"
+    xmlns:dnd="sap.ui.core.dnd"
+    xmlns:core="sap.ui.core">
+    <f:DynamicPage id="idDynamicPageVC" showFooter="true">
+        <f:header>
+            <f:DynamicPageHeader>
+                <smartfilterbar:SmartFilterBar id="smartFilterBarVC" liveMode="true" entitySet="getAlytRolesLocProd" useToolbar="false" filterChange="onProductChange" showFilterConfiguration="false" search="onGo">
+                    <smartfilterbar:controlConfiguration>
+                        <smartfilterbar:ControlConfiguration key="REF_PRODID" mandatory="mandatory" label="Configurable Product" filterType="single" />
+                    </smartfilterbar:controlConfiguration>
+                </smartfilterbar:SmartFilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <HBox width="100%" alignItems="Start" fitContainer="true">
+
+                <FlexBox direction="Column" width="20%" class="charListBox">
+                    <items>
+                        <Title text="Characteristics" level="H5" class="sapUiSmallMarginBottom charListTitle" />
+                        <SearchField liveChange="onCharSearch" placeholder="Search characteristics..." class="sapUiSmallMarginBottom" width="100%" />
+                        <ScrollContainer height="calc(100vh - 270px)" vertical="true" horizontal="false" width="100%">
+                            <List id="idCharList" showSeparators="None" items="{/charList}" noDataText="No Characteristics">
+                                <CustomListItem visible="{charVisible}">
+                                    <Panel expandable="true" expanded="{charExpanded}" width="100%" class="charPanel">
+                                        <headerToolbar>
+                                            <OverflowToolbar active="true" press="onOverflowToolbarPress">
+                                                <Text text="{charDesc} - {CHAR_NAME}" />
+                                            </OverflowToolbar>
+                                        </headerToolbar>
+                                        <content>
+                                            <List showSeparators="Inner" items="{
+                                path: 'charValues',
+                                templateShareable: false
+                            }">
+                                                <dragDropConfig>
+                                                    <dnd:DragInfo enabled="{=${GModel>/addRule}}" sourceAggregation="items" dragStart="onCharDragStart" />
+                                                </dragDropConfig>
+                                                <StandardListItem title="{CHARVAL_DESC}" visible="{valVisible}" />
+                                            </List>
+                                        </content>
+                                    </Panel>
+                                </CustomListItem>
+                            </List>
+                        </ScrollContainer>
+                    </items>
+                </FlexBox>
+
+
+                <FlexBox direction="Column" width="80%" id="RuleBox" busyIndicatorDelay="0">
+                    <items>
+                        <OverflowToolbar design="Transparent">
+                            <ToolbarSpacer />
+                            <Button text="Add Rules" visible="{=${GModel>/addRule}}" type="Emphasized" press="onAddRule" />
+                        </OverflowToolbar>
+                        <ScrollContainer height="calc(100vh - 220px)" vertical="true" horizontal="false" width="100%">
+                            <List id="idRoleList" showSeparators="None" items="{/roleList}" noDataText="No Configuration  Rules defined" updateFinished="onListUpdateFinished">
+                                <CustomListItem>
+                                    <Panel expandable="true" expanded="false" width="100%">
+                                        <headerToolbar>
+                                            <OverflowToolbar active="false" design="Solid" press="onOverflowToolbarPress">
+                                                <ToggleButton pressed="{isActive}" icon="{= ${isActive} ? 'sap-icon://accept' : 'sap-icon://decline'}" type="{= ${isActive} ? 'Success' : 'Negative'}" tooltip="{= ${isActive} ? 'Active' : 'Inactive'}" press="onToggleRuleActive" />
+                                                <Input value="{roleName}" maxLength="43" width="30%" class="roleNameInput" />
+                                                <ToolbarSpacer />
+                                                <Button icon="sap-icon://copy" visible="{editable}" type="Transparent" press="onCopyRule" />
+                                                <Button icon="sap-icon://delete" visible="{editable}" type="Transparent" press="onDeleteRule" />
+                                            </OverflowToolbar>
+                                        </headerToolbar>
+
+                                        <content>
+                                            <HBox width="100%" alignItems="Start">
+                                                <!-- 50% IF Column -->
+                                                <VBox width="50%" class="sapUiSmallMarginEnd">
+                                                    <HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                                        <core:HTML content='&lt;div style=&quot;display:inline-flex;align-items:center;padding:4px 0;&quot;&gt;&lt;div style=&quot;width:36px;height:25px;border:2px solid #B8860B;border-radius:4px;background:#FFF8DC;display:flex;align-items:center;justify-content:center;&quot;&gt;&lt;span style=&quot;font-size:15px;font-weight:700;color:#B8860B;letter-spacing:1px;font-family:Arial,sans-serif;&quot;&gt;IF&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;'>
+                                                        </core:HTML>
+                                                        <Text text="When these conditions are met..." class="sapUiSmallMarginBegin" />
+                                                    </HBox>
+
+                                                    <VBox width="100%" class="ruleDropZone">
+                                                        <dragDropConfig>
+                                                            <dnd:DropInfo drop="onDropIF" dropEffect="Copy" />
+                                                        </dragDropConfig>
+
+                                                        <VBox alignItems="Center" class="dropPlaceholder" visible="{= ${ifConditions}.length === 0 }">
+                                                            <core:Icon src="sap-icon://target-group" size="2rem" color="Default" />
+                                                            <Text text="Drop features here" />
+                                                            <Text text="or leave empty for unconditional rule" class="sapUiTinyMarginTop" />
+                                                        </VBox>
+                                                        <ScrollContainer height="300px" width="100%" vertical="true" horizontal="false" visible="{= ${ifConditions}.length > 0 }">
+                                                            <List showSeparators="None" items="{
+                                                            path: 'ifConditions',
+                                                            templateShareable: false
+                                                        }" visible="{= ${ifConditions}.length > 0 }">
+                                                                <CustomListItem>
+                                                                    <VBox class="conditionCard sapUiSmallMargin">
+                                                                        <HBox alignItems="Center" justifyContent="SpaceBetween" width="100%">
+                                                                            <HBox alignItems="Center">
+                                                                                <core:Icon src="sap-icon://circle-task-2" size="10px" color="#378ADD" class="sapUiTinyMarginEnd" />
+                                                                                <Title text="{charDesc}" level="H6" />
+                                                                            </HBox>
+                                                                            <HBox alignItems="Center">
+                                                                                <Select selectedKey="{operator}" editable="{editable}" width="8rem">
+                                                                                    <core:Item key="EQ" text="equals" />
+                                                                                    <!-- <core:Item key="NE" text="not equals" /> -->
+                                                                                    <core:Item key="IN" text="contains" />
+                                                                                </Select>
+                                                                                <Button icon="sap-icon://decline" visible="{editable}" type="Transparent" press="onRemoveIfCondition" />
+                                                                            </HBox>
+                                                                        </HBox>
+
+                                                                        <FlexBox wrap="Wrap" class="sapUiTinyMarginTop">
+                                                                            <items>
+                                                                                <List showSeparators="None" items="{
+                                                                                path: 'charValues',
+                                                                                templateShareable: false
+                                                                            }">
+                                                                                    <CustomListItem class="valueTag">
+                                                                                        <HBox alignItems="Center">
+                                                                                            <Text text="{CHARVAL_DESC}" class="sapUiTinyMarginEnd" />
+                                                                                            <Button icon="sap-icon://decline" visible="{editable}" type="Transparent" press="onRemoveTag" />
+                                                                                        </HBox>
+                                                                                    </CustomListItem>
+                                                                                </List>
+                                                                            </items>
+                                                                        </FlexBox>
+
+                                                                    </VBox>
+                                                                </CustomListItem>
+                                                            </List>
+                                                        </ScrollContainer >
+                                                    </VBox>
+                                                </VBox>
+
+                                                <!-- THEN Column -->
+                                                <VBox width="50%">
+                                                    <HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                                        <core:HTML content='&lt;div style=&quot;display:inline-flex;align-items:center;padding:4px 0;&quot;&gt;&lt;div style=&quot;width:45px;height:25px;border:2px solid #2E7D32;border-radius:4px;background:#F1F8E9;display:flex;align-items:center;justify-content:center;&quot;&gt;&lt;span style=&quot;font-size:12px;font-weight:700;color:#2E7D32;letter-spacing:1px;font-family:Arial,sans-serif;&quot;&gt;THEN&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;'>
+                                                        </core:HTML>
+                                                        <Text text="Apply these restrictions..." class="sapUiSmallMarginBegin" />
+                                                    </HBox>
+
+                                                    <VBox width="100%" class="ruleDropZone">
+                                                        <dragDropConfig>
+                                                            <dnd:DropInfo drop="onDropTHEN" dropEffect="Copy" />
+                                                        </dragDropConfig>
+
+                                                        <VBox alignItems="Center" class="dropPlaceholder" visible="{= ${thenConditions}.length === 0 }">
+                                                            <core:Icon src="sap-icon://shield" size="2rem" color="Default" />
+                                                            <Text text="Drop features here" />
+                                                            <Text text="to define restrictions" class="sapUiTinyMarginTop" />
+                                                        </VBox>
+                                                        <ScrollContainer height="300px" width="100%" vertical="true" horizontal="false" visible="{= ${thenConditions}.length > 0 }">
+                                                            <List showSeparators="None" items="{
+                                                            path: 'thenConditions',
+                                                            templateShareable: false
+                                                        }" visible="{= ${thenConditions}.length > 0 }">
+                                                                <CustomListItem>
+                                                                    <VBox class="conditionCard sapUiSmallMargin">
+                                                                        <HBox alignItems="Center" justifyContent="SpaceBetween" width="100%">
+                                                                            <HBox alignItems="Center">
+                                                                                <core:Icon src="sap-icon://circle-task-2" size="10px" color="#378ADD" class="sapUiTinyMarginEnd" />
+                                                                                <Title text="{charDesc}" level="H6" />
+                                                                            </HBox>
+                                                                            <HBox alignItems="Center">
+                                                                                <Select selectedKey="{operator}" editable="{editable}" width="8rem">
+                                                                                    <core:Item key="MB" text="must be" />
+                                                                                    <core:Item key="MBOF" text="must be one of " />
+                                                                                    <core:Item key="CNB" text="cannot be" />
+                                                                                </Select>
+                                                                                <Button icon="sap-icon://decline" visible="{editable}" type="Transparent" press="onRemoveIfCondition" />
+                                                                            </HBox>
+                                                                        </HBox>
+
+                                                                        <FlexBox wrap="Wrap" class="sapUiTinyMarginTop">
+                                                                            <items>
+                                                                                <List showSeparators="None" items="{
+                                                                                path: 'charValues',
+                                                                                templateShareable: false
+                                                                            }">
+                                                                                    <CustomListItem class="valueTag">
+                                                                                        <HBox alignItems="Center">
+                                                                                            <Text text="{CHARVAL_DESC}" class="sapUiTinyMarginEnd" />
+                                                                                            <Button icon="sap-icon://decline" visible="{editable}" type="Transparent" press="onRemoveTag" />
+                                                                                        </HBox>
+                                                                                    </CustomListItem>
+                                                                                </List>
+                                                                            </items>
+                                                                        </FlexBox>
+
+                                                                    </VBox>
+                                                                </CustomListItem>
+                                                            </List>
+                                                        </ScrollContainer >
+                                                    </VBox>
+                                                </VBox>
+                                            </HBox>
+                                        </content>
+                                    </Panel>
+                                </CustomListItem>
+                            </List>
+                        </ScrollContainer>
+                    </items>
+                </FlexBox>
+            </HBox>
+        </f:content>
+        <f:footer>
+            <Toolbar class="sapContrast sapContrastPlus" visible="{=${GModel>/isEditable}}" width="100%">
+                <ToolbarSpacer />
+                <Button icon="sap-icon://save" text="Save Rules" press="onPressSave" type="Emphasized" />
+                <Button icon="sap-icon://reset" text="Reset" press="onPressReset" type="Ghost" class="sapUiSmallMarginEnd" />
+            </Toolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

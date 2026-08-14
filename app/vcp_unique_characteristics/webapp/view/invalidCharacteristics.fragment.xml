@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified">
+    <Dialog id="idInvalidCharUC" title="" contentWidth="650px" titleAlignment="Center">
+		<Text id="confirmtxtUC" text="" visible="false"  class="sapUiSmallMarginBegin sapUiTinyMarginTopBottom"></Text>
+            <Table id="idCharTableUC"  items="{path: '/results'}">
+				<columns>
+					<Column hAlign="Left" vAlign="Middle">
+						<Text text="{i18n>product}" />
+					</Column>
+					<Column hAlign="Left" vAlign="Middle">
+						<Text text="{i18n>inden}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+                            <Text text="{PRODUCT_ID}"/>
+                            <Text text="{EX_IDENTIFICATION}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>  
+            	<buttons>
+				<Button type='Accept' id="HConfirm_YUC" text="{i18n>yes}" press="onConfirmYes"></Button>
+				<Button type='Reject' id="HConfirm_NUC" text="{i18n>no}" press="onConfirmNo"></Button>
+			<Button type='Reject' id="idcloseUC" text="{i18n>close}" press="onCloseChar"></Button>
+		</buttons>
+    </Dialog>
+</core:FragmentDefinition>

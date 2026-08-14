@@ -1,0 +1,229 @@
+<mvc:View controllerName="vcpapp.vcpuniquecharacteristics.controller.ItemMaster"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:ux="sap.uxap"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:u="sap.ui.unified">
+
+    <ux:ObjectPageLayout id="ObjectPageLayoutUC" headerContentPinned="true" showTitleInHeaderContent="false">
+        <ux:headerTitle>
+            <ux:ObjectPageDynamicHeaderTitle>
+                <ux:expandedHeading>
+                    <HBox>
+                        <VariantManagement id="idMatList123UC"
+                            select="handleSelectPress"
+                            save="onCreate"
+                            manage="onManage"
+                            supportFavorites="false"
+                            showFooter="true"
+                            popoverTitle="My Views"
+                            items="{path: '/items12'}"
+                            creationAllowed="true"
+                            supportPublic="true"
+                            supportApplyAutomatically="false"
+                            manageCancel="onManageCancel"
+                            cancel="onNameCancel"
+                            visible="true">
+
+                            <items>
+                                <VariantItem key="{VARIANTID}" title="{VARIANTNAME}" author="{USER}"
+                                    visible="true"
+                                    remove="{path:'REMOVE', formatter:'.formatter.formatRemove'}"
+                                    sharing="{path:'SCOPE', formatter:'.formatter.formatScope'}"
+                                    changeable="{path:'CHANGE', formatter:'.formatter.formatChange'}"
+                                    rename="false"
+                                    enabled="{path:'ENABLE', formatter:'.formatter.formatEnable'}"/>
+                            </items>
+                        </VariantManagement>
+                    </HBox>
+                </ux:expandedHeading>
+                         <ux:navigationActions>
+                            <Button
+                                class="hdrBtnMarginHdr"
+                                icon="sap-icon://sys-help"
+                                id="idNavUC"
+                                press="onNavPress"
+                                type="Emphasized"
+                                tooltip="Help Document"
+                            />
+                        </ux:navigationActions>
+            </ux:ObjectPageDynamicHeaderTitle>
+        </ux:headerTitle>
+        <ux:headerContent>
+            <l:VerticalLayout class="search">
+                <Label text="{i18n>matvarsearch}" />
+                <SearchField id="idMatSearchUC" 
+                    liveChange="onSearch" 
+                    class="sapUiTinyMarginEnd" 
+                    placeholder="Unique Desc/ Unique ID"/>
+            </l:VerticalLayout>
+            <!-- <l:VerticalLayout id="countUC" visible="false">
+                <l:HorizontalLayout>
+                    <Text id="pCountTextUC" text="Primary Count: 0" class="Uniq"/>
+                    <Text id="oUniqueCountTextUC" text="  Unique Count: 0" class="Uniq"/>
+                </l:HorizontalLayout>
+            </l:VerticalLayout> -->
+            <l:VerticalLayout class="search">
+                <Label text="{i18n>prod}" id="LabelProdUC" required="true"/>
+                <MultiInput id="prodInputUC" 
+                    class="sapUiTinyMarginEnd" 
+                    placeholder="{i18n>prod}" 
+                    showValueHelp="true" 
+                    valueHelpOnly="true" 
+                    valueHelpRequest="handleValueHelp" 
+                    tokenUpdate="handleTokenUpdate"/>
+            </l:VerticalLayout>
+            <l:VerticalLayout class="search">
+                <Label text="{i18n>type}" id="oIdUniqUC"/>
+                <Select id="idUniqueUC" 
+                    change="onUnqChange" 
+                    class="sapUiTinyMarginEnd" 
+                    width="100%" 
+                    selectedKey="U">
+                    <core:ListItem key="A" text="All"/>
+                    <core:ListItem key="U" text="Unique"/>
+                    <core:ListItem key="P" text="Primary"/>
+                </Select>
+            </l:VerticalLayout>
+            <l:VerticalLayout >
+            <Label text="{i18n>Char}" id="idCharacteristicsUC"></Label>
+               <MultiComboBox id="idUComb" selectionFinish="onSelectCharacteristic"   items="{path:'/resultsCombos',	sorter: { path: 'CHAR_NAME' }}"  selectionChange="" width="300px" showSecondaryValues= "true">
+                
+                            <core:ListItem id="idUCombItem" key="{CHAR_NAME}" text="{CHAR_NAME}"  additionalText="{CHAR_VALUE}" 
+
+                            
+                             />
+                        </MultiComboBox>
+            </l:VerticalLayout>
+            <l:HorizontalLayout class="sapUiTinyMarginBegin">
+                <l:HorizontalLayout>
+                    <Button text="{i18n>go}" 
+                        type="Emphasized" 
+                        class="sapUiTinyMarginEnd" 
+                        id="idGoButtonUC"
+                        press="onGetData"/>
+                </l:HorizontalLayout>
+                <l:HorizontalLayout>
+                    <Button text="{i18n>create}" 
+                        type="Emphasized" 
+                        class="sapUiTinyMarginEnd" 
+                        press="onCreateBtn" 
+                        id="idCreateBtnUC" visible="{oGModel>/createFlag}"/>
+                </l:HorizontalLayout>
+                <l:HorizontalLayout>
+                    <Button text="{i18n>copy}" 
+                        type="Emphasized" 
+                        class="sapUiTinyMarginEnd" 
+                        press="onCopyBtn" 
+                        id="idCopyBtnUC" visible="{oGModel>/createFlag}"/>
+                </l:HorizontalLayout>
+                <l:HorizontalLayout>
+                    <u:FileUploader id="FileUploaderIdUC" 
+                        class="sapUiTinyMarginEnd" 
+                        sameFilenameAllowed="true"
+                        iconOnly="false" 
+                        buttonOnly="true" 
+                        icon="sap-icon://upload" 
+                        iconFirst="true"
+                        style="Emphasized" 
+                        change="uploadData" visible="{oGModel>/createFlag}"/>
+                </l:HorizontalLayout>
+            </l:HorizontalLayout>
+        </ux:headerContent>
+        <ux:sections>
+            <ux:ObjectPageSection showTitle="false">
+                <ux:subSections>
+                    <ux:ObjectPageSubSection showTitle="false">
+                        <ux:blocks>
+                            <VBox>
+                                <Table id="idMatVHeadUC" items="{path: '/results'}"
+                                    growingScrollToLoad="true"
+                                    itemPress="onhandlePress"
+                                    mode="SingleSelectMaster"
+                                    selectionChange="onhandlePress"
+                                    sticky="HeaderToolbar,ColumnHeaders">
+                                    
+                                    <headerToolbar>
+                                        <Toolbar>
+                                         <Text id="pCountTextUC" text="Primary Count: 0" class="Uniq"/>
+                                         <Text id="oUniqueCountTextUC" text="  Unique Count: 0" class="Uniq"/>
+                                         <!-- <Text id="idUCuc"  visible="false" text=""/> -->
+                                            <ToolbarSpacer />
+                                           
+<!--                                            
+                                            <Button text="Characteristics"
+                                                    type="Emphasized"
+                                                    
+                                                    press="onCharacteristicsPress" /> -->
+                                        </Toolbar>
+                                    </headerToolbar>
+                                    <columns>
+                                        <Column hAlign="Begin" vAlign="Middle" width="90px">
+                                            <Text text="{i18n>unidesc}" />
+                                        </Column>
+                                        <Column hAlign="Left" vAlign="Middle" width="140px" visible="false">
+                                            <Text text="Valid From/To"/>
+                                        </Column>
+                                        <Column hAlign="Left" vAlign="Middle" width="70px">
+                                            <Text text="{i18n>uidtype}"/>
+                                        </Column>
+                                        <Column hAlign="Left" vAlign="Middle" width="80px" visible="{oGModel>/updateFlag}">
+                                            <Text text="{i18n>active}"/>
+                                        </Column>
+                                        <Column width="60px" vAlign="Middle" visible="{oGModel>/updateFlag}">
+                                            <Text text="Action"/>
+                                        </Column>
+                                        <Column width="30px" hAlign="End">
+                                            <Text text=""/>
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem>
+                                            <cells>
+                                                <ObjectIdentifier title="{UNIQUE_ID}" text="{UNIQUEID_DESC}"/>
+                                                <VBox visible="false">
+                                                    <Text text="{path:'VALID_FROM',type:'sap.ui.model.type.Date',formatOptions:{pattern:'yyyy-MM-dd'}}"/>
+                                                    <Text text="{path:'VALID_TO',type:'sap.ui.model.type.Date',formatOptions:{pattern:'yyyy-MM-dd'}}"/>
+                                                </VBox>
+
+                                                <Text text="{= ${UID_TYPE} === 'U' ? 'Unique' : 'Primary'}"/>
+
+                                                <Switch type="AcceptReject"
+                                                    state="{= ${ACTIVE} === true ? true : false}"
+                                                    id="idSwitchUC"
+                                                    change="onChange"
+                                                    visible="{= ${UID_TYPE} === 'U' ? true : false}">
+                                                    <layoutData>
+                                                        <FlexItemData growFactor="1"/>
+                                                    </layoutData>
+                                                </Switch>
+
+                                                <Button icon="sap-icon://edit" 
+                                                    type="Transparent" 
+                                                    id="idEditUC" 
+                                                    press="onEditDesc" 
+                                                    enabled="true"/>
+                                                <!-- Use this   visible="{oGModel>/deleteFlag}" if delete needs to be visible in future-->
+                                                <Button icon="sap-icon://delete" 
+                                                    type="Transparent" 
+                                                    id="oDeleteUC" 
+                                                    press="onPressDelete" 
+                                                    enabled="false"
+                                                    visible="false"/>
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+
+                                </Table>
+                            </VBox>
+                        </ux:blocks>
+                    </ux:ObjectPageSubSection>
+                </ux:subSections>
+            </ux:ObjectPageSection>
+        </ux:sections>
+
+    </ux:ObjectPageLayout>
+ 
+</mvc:View>

@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+specVersion: "3.1"
+metadata:
+  name: vcpapp.vcpoptionpercentage
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - url: https://sbpmtt-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com
+            authenticationType: OAuth2ClientCredentials
+            destination: ConfigProdAuth
+            path: /v2
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: vcpapp.vcpoptionpercentage
+        ui5Theme: sap_horizon

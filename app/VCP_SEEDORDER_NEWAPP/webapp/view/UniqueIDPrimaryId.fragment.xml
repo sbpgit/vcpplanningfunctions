@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified">
+    <Dialog title="Characteristics" contentWidth="400px" titleAlignment="Center">
+    <HBox >
+        <OverflowToolbar>           
+                    <SearchField id="idCharSearchSON" liveChange="handleSearch" placeholder="Characteristic / Characteristic Value" width="375px"/>               
+                    </OverflowToolbar>
+                    </HBox>
+    <Table id="idMatvarItemSON" items="{path: '/resultsChar'}" rememberSelections="false"  sticky="ColumnHeaders">
+                        <columns>
+                        <Column hAlign="Center" >
+                                <Text text="Characteristic Name" />
+                            </Column>
+                            <Column hAlign="Center" >
+                                <Text text="Characteristic Value" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <ObjectIdentifier title="{CHAR_NAME}" text="{CHAR_DESC}"/>
+                                    <ObjectIdentifier title="{CHAR_VALUE}" text="{CHARVAL_DESC}" />
+                                    </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+    <buttons>
+            <Button type='Reject' text="Close" press="onCloseDesc"></Button>
+        </buttons>
+     </Dialog>
+</core:FragmentDefinition>

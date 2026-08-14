@@ -1,0 +1,172 @@
+{
+  "_version": "1.58.0",
+  "sap.app": {
+    "id": "vcpapp.vcpuniquecharacteristics",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "2512.01.01"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.11.2",
+      "toolsId": "01620010-5c25-4479-adb6-a3436bb5f215"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/v2/catalog/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "vcpunique-display": {
+          "semanticObject": "vcpunique",
+          "action": "display",
+          "title": "{{flpTitle}}",
+          "subTitle": "{{flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.143.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "vcpapp.vcpuniquecharacteristics.i18n.i18n"
+        }
+      },
+      "oGModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "settings": {
+            "defaultBindingMode": "TwoWay"
+        },
+        "preload": true
+    },
+      "BModel": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true,
+          "groupId": "$direct"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "vcpapp.vcpuniquecharacteristics.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "Details",
+          "pattern": "",
+          "target": [
+              "Details"
+          ]
+        }
+      ],
+      "targets": {
+                       
+        "Details": {
+          "viewType": "XML",
+          "viewName": "Details",
+          "viewId": "Details",
+          "viewLevel": 1
+        },
+          "ItemMaster": {
+          "viewType": "XML",
+          "viewName": "ItemMaster",
+            "viewId": "ItemMaster",
+          "viewLevel": 2
+        },
+        "ItemDetail": {
+          "viewType": "XML",
+          "viewName": "ItemDetail",
+          "viewId": "ItemDetail",
+          "viewLevel": 3
+        }
+    }
+    },
+    "rootView": {
+      "viewName": "vcpapp.vcpuniquecharacteristics.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "vcpplanningfunctions"
+  },
+  "sap.platform.cf": {
+    "oAuthScopes": [
+        "$XSAPPNAME.User",
+        "$XSAPPNAME.admin"
+    ],
+    "ui5VersionNumber": "1.143.2"
+}
+
+}
