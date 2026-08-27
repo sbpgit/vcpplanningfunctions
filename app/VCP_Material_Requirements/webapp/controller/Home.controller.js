@@ -5,7 +5,8 @@ sap.ui.define(
         "sap/ui/model/FilterOperator",
         "sap/m/MessageToast",
         "sap/ui/model/json/JSONModel",
-        "../model/formatter",
+        "sap/ui/core/Fragment",
+        "../model/formatter"
     ],
     function (
         Controller,
@@ -13,7 +14,8 @@ sap.ui.define(
         FilterOperator,
         MessageToast,
         JSONModel,
-        formatter
+        formatter,
+        Fragment
     ) {
         "use strict";
         var that;
@@ -137,39 +139,39 @@ sap.ui.define(
             },
             async loadFragment() {
                 if (!that.ChartDialog) {
-                    that.ChartDialog = sap.ui.xmlfragment(
-                        "vcpapp.vcpmaterialrequirements.fragment.ChartOption",
-                        that
-                    );
+                    that.ChartDialog = await sap.ui.core.Fragment.load({
+                        name: "vcpapp.vcpmaterialrequirements.fragment.ChartOption",
+                        controller: that
+                    });
                     that.getView().addDependent(that.ChartDialog);
                 }
                 if (!that.colSetting) {
-                    that.colSetting = sap.ui.xmlfragment(
-                        "vcpapp.vcpmaterialrequirements.fragment.ColumnSettings",
-                        that
-                    );
+                    that.colSetting = await sap.ui.core.Fragment.load({
+                        name: "vcpapp.vcpmaterialrequirements.fragment.ColumnSettings",
+                        controller: that
+                    });
                     that.getView().addDependent(that.colSetting);
                 }
-                if (!that.uniqueIDTable) {
-                    that.uniqueIDTable = await sap.ui.xmlfragment(
-                        "vcpapp.vcpmaterialrequirements.fragment.UniqueID",
-                        that
-                    );
-                    that.getView().addDependent(that.uniqueIDTable);
+                if (!that.keyTable) {
+                    that.keyTable = await sap.ui.core.Fragment.load({
+                        name: "vcpapp.vcpmaterialrequirements.fragment.keyFigure",
+                        controller: that
+                    });
+                    that.getView().addDependent(that.keyTable);
                 }
                 if (!that.compTable) {
-                    that.compTable = await sap.ui.xmlfragment(
-                        "vcpapp.vcpmaterialrequirements.fragment.Comp",
-                        that
-                    );
+                    that.compTable = await sap.ui.core.Fragment.load({
+                        name: "vcpapp.vcpmaterialrequirements.fragment.Comp",
+                        controller: that
+                    });
                     that.getView().addDependent(that.compTable);
                 }
-                if (!that.keyTable) {
-                    that.keyTable = sap.ui.xmlfragment(
-                        "vcpapp.vcpmaterialrequirements.fragment.keyFigure",
-                        that
-                    );
-                    that.getView().addDependent(that.keyTable);
+                if (!that.uniqueIDTable) {
+                    that.uniqueIDTable = await sap.ui.core.Fragment.load({
+                        name: "vcpapp.vcpmaterialrequirements.fragment.UniqueID",
+                        controller: that
+                    });
+                    that.getView().addDependent(that.uniqueIDTable);
                 }
             },
             onAfterRendering: function () {

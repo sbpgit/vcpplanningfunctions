@@ -83,7 +83,8 @@
         "sap.ui.comp": {},
         "sap.ui.table": {},
         "sap.ui.layout": {},
-        "sap.ui.unified": {}
+        "sap.ui.unified": {},
+        "sap.ui.codeeditor": {}
       }
     },
     "contentDensities": {
