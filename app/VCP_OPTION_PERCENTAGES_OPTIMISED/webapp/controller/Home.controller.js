@@ -3972,6 +3972,11 @@ sap.ui.define(
                 try {
                     // Reset all data first
                     that.skip = 0;
+                    that.oFlg = "";          
+                    that.ocIbp = [];        
+                    that.subAllData = [];    
+                    that.oTalData = [];      
+                    that.allData = [];  
                     that.oGo = true
                     that._loadDataTriggered = false; //  allow reload
                     // that.KeyfigsVisible = false
@@ -4442,51 +4447,109 @@ sap.ui.define(
                 });
             },
 
-            getFilteredSubData: function () {
-                // return new Promise((resolve, reject) => {
-                var topCount = 50000
-                if (that.oFlg === "more") {
-                    // do nothing
-                } else { that.ocIbp = [] }
+            // getFilteredSubData: function () {
+            //     // return new Promise((resolve, reject) => {
+            //     var topCount = 50000
+            //     if (that.oFlg === "more") {
+            //         // do nothing
+            //     } else { that.ocIbp = [] }
 
-                var urlparams = that.urlparams
-                // var urlparams = { "$apply": "filter(TYPE eq 997 and LOCATION_ID eq '1600' and PRODUCT_ID eq 'VCP_1600' and VERSION eq '__BASELINE' and SCENARIO eq '_PLAN')/groupby((LOCATION_ID,PRODUCT_ID,CUSTOMER_GROUP,VERSION,SCENARIO,WEEK_STARTDATE),aggregate(OPT_QTY with sum as OPT_QTY_SUM))" }
+            //     var urlparams = that.urlparams
+            //     // var urlparams = { "$apply": "filter(TYPE eq 997 and LOCATION_ID eq '1600' and PRODUCT_ID eq 'VCP_1600' and VERSION eq '__BASELINE' and SCENARIO eq '_PLAN')/groupby((LOCATION_ID,PRODUCT_ID,CUSTOMER_GROUP,VERSION,SCENARIO,WEEK_STARTDATE),aggregate(OPT_QTY with sum as OPT_QTY_SUM))" }
+            //     const oUrlParams = Object.assign({}, urlparams, {
+            //         "$skip": that.skip,
+            //         "$top": topCount  // default top value for safety
+            //     });
+            //     that.aModel.read("/getFinalOptionPercentages", {
+            //         urlParameters: oUrlParams,
+            //         success: function (oData) {
+            //             // resolve(oData.results);
+            //             if (topCount == oData.results.length) {
+            //                 that.oFlg = "more"
+
+            //                 that.skip += (topCount);
+            //                 that.ocIbp = that.ocIbp.concat(oData.results);
+            //                 that.getFilteredSubData();
+            //             } else {
+            //                 that.skip = 0;
+
+            //                 that.ocIbp = that.ocIbp.concat(oData.results);
+            //                 that.subAllData = that.ocIbp
+            //                 that.subAllData.map((d) => {
+            //                     // Only rename OPT_QTY_SUM if it exists
+            //                     if (d.hasOwnProperty("OPT_QTY_SUM")) {
+            //                         d.OPT_QTY = d.OPT_QTY_SUM;
+            //                         delete d.OPT_QTY_SUM;
+            //                     }
+            //                 });
+            //                 //  resolve(that.ocIbp);
+
+            //             }
+            //         },
+            //         error: function (err) {
+            //             reject(new Error(err.message || "Failed to load sub data"));
+            //         },
+            //     });
+            //     // });
+            // },
+
+              getFilteredSubData: function () {
+ 
+                var topCount = 50000;
+ 
+                that.subAllData = [];
+ 
+                // Fresh GO/request
+                if (that.skip === 0) {
+                    that.ocIbp = [];
+                    that.oFlg = "";
+                }
+ 
+                var urlparams = that.urlparams;
+ 
                 const oUrlParams = Object.assign({}, urlparams, {
                     "$skip": that.skip,
-                    "$top": topCount  // default top value for safety
+                    "$top": topCount
                 });
+ 
                 that.aModel.read("/getFinalOptionPercentages", {
                     urlParameters: oUrlParams,
+ 
                     success: function (oData) {
-                        // resolve(oData.results);
+ 
                         if (topCount == oData.results.length) {
-                            that.oFlg = "more"
-
-                            that.skip += (topCount);
+ 
+                            that.oFlg = "more";
+ 
+                            that.skip += topCount;
+ 
                             that.ocIbp = that.ocIbp.concat(oData.results);
+ 
                             that.getFilteredSubData();
+ 
                         } else {
+ 
                             that.skip = 0;
-
+ 
                             that.ocIbp = that.ocIbp.concat(oData.results);
-                            that.subAllData = that.ocIbp
+ 
+                            that.subAllData = that.ocIbp;
+ 
                             that.subAllData.map((d) => {
-                                // Only rename OPT_QTY_SUM if it exists
                                 if (d.hasOwnProperty("OPT_QTY_SUM")) {
                                     d.OPT_QTY = d.OPT_QTY_SUM;
                                     delete d.OPT_QTY_SUM;
                                 }
                             });
-                            //  resolve(that.ocIbp);
-
                         }
                     },
+ 
                     error: function (err) {
                         reject(new Error(err.message || "Failed to load sub data"));
-                    },
+                    }
                 });
-                // });
             },
+ 
 
 
             loadLockComments: async function (params) {
@@ -13331,8 +13394,6 @@ sap.ui.define(
                         vUser = email ? email : "";
                     }
                 }
-
-                // return "narendrakumark@sbpcorp.in";
 
                 return vUser;
             },
