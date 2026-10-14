@@ -32,7 +32,7 @@ server:
         backend:
           - url: https://sbpbtp-vcpprovider-sc0jeojq-dev-config-products-srv.cfapps.us10.hana.ondemand.com
             authenticationType: OAuth2ClientCredentials
-            destination: ConfigProdAuth
+            destination: VCPlanneroAuth
             path: /v2
     - name: sap-fe-mockserver
       beforeMiddleware: csp

@@ -5,14 +5,14 @@
     {
       "source": "^/v2/catalog/(.*)$",
       "target": "/v2/catalog/$1",
-      "destination": "ConfigProdAuth",
+      "destination": "VCPlanneroAuth",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },
     {
       "source": "^/v2/analytical/(.*)$",
       "target": "/v2/analytical/$1",
-      "destination": "ConfigProdAuth",
+      "destination": "VCPlanneroAuth",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },

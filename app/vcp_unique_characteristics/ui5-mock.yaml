@@ -18,7 +18,7 @@ server:
         backend:
           - path: /v2
             url: https://sbpbtp-vcpprovider-sc0jeojq-dev-config-products-srv.cfapps.us10.hana.ondemand.com
-            destination: ConfigProdAuth
+            destination: VCPlanneroAuth
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

@@ -19,7 +19,7 @@ server:
           - scp: true
             path: /v2
             url: https://sbpmtt-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com
-            destination: ConfigProdAuth
+            destination: VCPlanneroAuth
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

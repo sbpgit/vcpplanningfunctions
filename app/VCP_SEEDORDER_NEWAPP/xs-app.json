@@ -5,7 +5,7 @@
     {
       "source": "^/v2/(.*)$",
       "target": "/v2/$1",
-      "destination": "ConfigProdAuth",
+      "destination": "VCPlanneroAuth",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },

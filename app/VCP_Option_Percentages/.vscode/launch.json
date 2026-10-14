@@ -23,7 +23,7 @@
       "outputCapture": "std",
       "env": {
         "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/vcp_option_percentages\"}",
-        "FIORI_TOOLS_BACKEND_CONFIG": "[{\"destination\":\"ConfigProdAuth\",\"url\":\"https://sbpbtp-vcpprovider-sc0jeojq-dev-config-products-srv.cfapps.us10.hana.ondemand.com\",\"path\":\"/v2\"}]",
+        "FIORI_TOOLS_BACKEND_CONFIG": "[{\"destination\":\"VCPlanneroAuth\",\"url\":\"https://sbpbtp-vcpprovider-sc0jeojq-dev-config-products-srv.cfapps.us10.hana.ondemand.com\",\"path\":\"/v2\"}]",
         "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
       }
     }

@@ -17,7 +17,7 @@ server:
         backend:
           - url: https://sbpmtt-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com
             authenticationType: OAuth2ClientCredentials
-            destination: ConfigProdAuth
+            destination: VCPlanneroAuth
             path: /v2
     - name: fiori-tools-appreload
       afterMiddleware: compression
