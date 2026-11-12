@@ -69,7 +69,7 @@ sap.ui.define(
                 // that.oGModel.setProperty("/defaultModel", "Active");
 
 
-                that.sUser = that.getUserDetails(); 
+                that.sUser = that.getUserDetails();
                 that.oTree = that.getView().byId("idTreeOPMIXP");
                 that.oModel = that.getOwnerComponent().getModel("oModel");
                 that.aModel = that.getOwnerComponent().getModel("aModel");
@@ -3972,11 +3972,11 @@ sap.ui.define(
                 try {
                     // Reset all data first
                     that.skip = 0;
-                    that.oFlg = "";          
-                    that.ocIbp = [];        
-                    that.subAllData = [];    
-                    that.oTalData = [];      
-                    that.allData = [];  
+                    that.oFlg = "";
+                    that.ocIbp = [];
+                    that.subAllData = [];
+                    that.oTalData = [];
+                    that.allData = [];
                     that.oGo = true
                     that._loadDataTriggered = false; //  allow reload
                     // that.KeyfigsVisible = false
@@ -4493,48 +4493,48 @@ sap.ui.define(
             //     // });
             // },
 
-              getFilteredSubData: function () {
- 
+            getFilteredSubData: function () {
+
                 var topCount = 50000;
- 
+
                 that.subAllData = [];
- 
+
                 // Fresh GO/request
                 if (that.skip === 0) {
                     that.ocIbp = [];
                     that.oFlg = "";
                 }
- 
+
                 var urlparams = that.urlparams;
- 
+
                 const oUrlParams = Object.assign({}, urlparams, {
                     "$skip": that.skip,
                     "$top": topCount
                 });
- 
+
                 that.aModel.read("/getFinalOptionPercentages", {
                     urlParameters: oUrlParams,
- 
+
                     success: function (oData) {
- 
+
                         if (topCount == oData.results.length) {
- 
+
                             that.oFlg = "more";
- 
+
                             that.skip += topCount;
- 
+
                             that.ocIbp = that.ocIbp.concat(oData.results);
- 
+
                             that.getFilteredSubData();
- 
+
                         } else {
- 
+
                             that.skip = 0;
- 
+
                             that.ocIbp = that.ocIbp.concat(oData.results);
- 
+
                             that.subAllData = that.ocIbp;
- 
+
                             that.subAllData.map((d) => {
                                 if (d.hasOwnProperty("OPT_QTY_SUM")) {
                                     d.OPT_QTY = d.OPT_QTY_SUM;
@@ -4543,13 +4543,13 @@ sap.ui.define(
                             });
                         }
                     },
- 
+
                     error: function (err) {
                         reject(new Error(err.message || "Failed to load sub data"));
                     }
                 });
             },
- 
+
 
 
             loadLockComments: async function (params) {
@@ -8176,15 +8176,32 @@ sap.ui.define(
 
                     // var norKeyFig = that.oGModel.getProperty("/norKeyFig") || []
                     // var calKeyFig = that.oGModel.getProperty("/calKeyFig");
-                    var aDefaultData = that.oGModel.getProperty("/oSeqData");
-                    // If nothing selected → assign all CHAR_NUM
-                    if (!oChar || oChar.length === 0) {
-                        oChar = aDefaultData.map(o => o.CHAR_NUM);
+                    // var aDefaultData = that.oGModel.getProperty("/oSeqData");
+                    // // If nothing selected → assign all CHAR_NUM
+                    // if (!oChar || oChar.length === 0) {
+                    //     oChar = aDefaultData.map(o => o.CHAR_NUM);
+                    // }
+                    // // If selected → keep only selected CHAR_NUM
+                    // else {
+                    //     oChar = oChar; // already contains selected CHAR_NUM
+                    // }
+
+                    var aDefaultData = that.oGModel.getProperty("/oSeqData") || [];
+
+                    // Get only the selected characteristic tokens
+                    var oChar = getTokenKeys(
+                        that.byId("idCharOPMIXP").getTokens()
+                    ).map(key => String(key).trim());
+
+                    // If user hasn't selected any characteristic,
+                    // retain the existing default behavior (all characteristics)
+                    if (oChar.length === 0) {
+                        oChar = [...new Set(
+                            aDefaultData.map(o => String(o.CHAR_NUM).trim())
+                        )];
                     }
-                    // If selected → keep only selected CHAR_NUM
-                    else {
-                        oChar = oChar; // already contains selected CHAR_NUM
-                    }
+
+                    console.log("Selected CHAR_NUM filters:", oChar);
 
                     aFilters = {
                         LOCATION_ID: oLocation,     // array of location IDs

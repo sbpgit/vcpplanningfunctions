@@ -356,12 +356,12 @@
                             icon="sap-icon://sort"
                             press="onOpenKeyFigPopup"
                         />
-                        <Button
+                        <!-- <Button
                         id="idToggleMasterColumns"
                         icon="sap-icon://collapse-group"
                         tooltip="Hide / Show Master Columns"
-                        press="onToggleMasterColumns"
-                    />
+                        press="onToggleMasterColumns" -->
+                    <!-- /> -->
                         <!-- <SegmentedButton id="idSegBtn" selectionChange="onSegBtnChange">
                             <items>
                                 <SegmentedButtonItem id="idOptPer" text="Option %" key="Percent"/>
